@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perion Linear Perimeter Illumination Infrastructure — Level 2 Engineering Specification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       PERION VISUAL DESIGN FRAMEWORK — CSS VARIABLE GOVERNANCE
+       3-COLOR LAW: ENFORCED. NO GRADIENTS. NO SHADOWS. NO OVERLAYS.
+       ================================================================ */
+    :root {
+      --perion-midnight: #0A1D33;
+      --perion-graphite: #2B2E34;
+      --perion-amber:    #F2A900;
+      --perion-grey:     #F5F5F7;
+      --perion-white:    #FFFFFF;
+    }
+
+    /* ================================================================
+       RESET
+       ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ================================================================
+       BASE
+       ================================================================ */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--perion-white);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ================================================================
+       LAYOUT CONTAINER
+       ================================================================ */
+    .page-wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* ================================================================
+       DOCUMENT HEADER
+       ================================================================ */
+    .doc-header {
+      background-color: var(--perion-midnight);
+      border-bottom: 5px solid var(--perion-amber);
+      padding: 3rem 0 2.5rem;
+    }
+    .doc-header .level-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      border: 1px solid var(--perion-amber);
+      padding: 0.25rem 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .doc-header h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--perion-white);
+      line-height: 1.2;
+      max-width: 70ch;
+      margin-bottom: 1rem;
+    }
+    .doc-meta-bar {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .doc-meta-item {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+    }
+    .doc-meta-item strong {
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.15rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ================================================================
+       TABLE OF CONTENTS
+       ================================================================ */
+    .doc-toc {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: 1.75rem 2rem;
+      margin: 2.5rem 0;
+    }
+    .doc-toc h2 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+    .doc-toc ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+      column-count: 2;
+      column-gap: 2rem;
+    }
+    .doc-toc li {
+      font-size: 0.85rem;
+      color: var(--perion-graphite);
+      padding: 0.2rem 0;
+    }
+    .doc-toc a {
+      color: var(--perion-midnight);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .doc-toc a:hover { color: var(--perion-amber); text-decoration: underline; }
+    @media (max-width: 640px) { .doc-toc ol { column-count: 1; } }
+
+    /* ================================================================
+       SECTION STRUCTURE
+       ================================================================ */
+    main { padding: 2rem 0 1rem; }
+    section { margin-bottom: 3.5rem; }
+
+    /* ================================================================
+       HEADINGS — GOVERNANCE
+       ================================================================ */
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--perion-midnight);
+      border-bottom: 2px solid var(--perion-amber);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.25rem;
+      margin-top: 3rem;
+      scroll-margin-top: 1.5rem;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: 0.75rem;
+      margin-top: 2rem;
+      scroll-margin-top: 1.5rem;
+    }
+
+    /* ================================================================
+       BODY TEXT — 75ch MAX WIDTH, 1.6 LINE-HEIGHT
+       ================================================================ */
+    p {
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      max-width: 75ch;
+      margin-bottom: 1rem;
+    }
+
+    /* ================================================================
+       TECHNICAL PRECISION TAGGING — ISO 80000-1
+       ================================================================ */
+    .inline-technical {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--perion-midnight);
+      white-space: nowrap;
+      font-size: 0.95em;
+    }
+
+    /* ================================================================
+       TABLE GOVERNANCE
+       ================================================================ */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      border: 1px solid #D8D8DB;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+    }
+    thead th {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      text-align: center;
+      font-weight: 700;
+      padding: 0.8rem 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    thead th:last-child { border-right: none; }
+    tbody td {
+      text-align: left;
+      color: var(--perion-graphite);
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #E2E2E4;
+      border-right: 1px solid #E2E2E4;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    tbody td:last-child { border-right: none; }
+    /* MANDATORY: Row banding for tables >5 rows */
+    tbody tr:nth-child(even) td { background-color: var(--perion-grey); }
+
+    /* ================================================================
+       ENGINEERING CALLOUT — AMBER BORDER
+       ================================================================ */
+    .engineering-callout {
+      border: 2px solid var(--perion-amber);
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+      max-width: 75ch;
+    }
+    .callout-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.6rem;
+    }
+    .engineering-callout p { margin-bottom: 0; max-width: 100%; }
+
+    /* ================================================================
+       FAQ BLOCK
+       ================================================================ */
+    .faq-section { margin: 1.75rem 0; }
+    .faq-section h3 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      background-color: var(--perion-midnight);
+      padding: 0.6rem 1rem;
+      margin: 0;
+    }
+    .faq-item {
+      border-left: 4px solid var(--perion-midnight);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.5rem;
+      background-color: var(--perion-grey);
+    }
+    .faq-q {
+      font-weight: 700;
+      color: var(--perion-midnight);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    .faq-a {
+      color: var(--perion-graphite);
+      font-size: 0.875rem;
+      max-width: 75ch;
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       SPECIFICATION SNAPSHOT
+       ================================================================ */
+    .spec-snapshot {
+      background-color: var(--perion-midnight);
+      padding: 2rem 2.25rem;
+      margin: 1.75rem 0;
+    }
+    .spec-snapshot h3 {
+      color: var(--perion-amber);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+    }
+    .spec-snapshot ul { list-style: none; padding: 0; }
+    .spec-snapshot ul li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: var(--perion-white);
+      font-size: 0.875rem;
+    }
+    .spec-snapshot ul li:last-child { border-bottom: none; }
+    .spec-snapshot ul li::before {
+      content: "▸";
+      color: var(--perion-amber);
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      margin-top: 0.1em;
+    }
+
+    /* ================================================================
+       FORMULA BLOCK
+       ================================================================ */
+    .formula-block {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      padding: 1.5rem 1.75rem;
+      margin: 1.75rem 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      max-width: 60ch;
+    }
+    .formula-legend {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 0;
+    }
+    .formula-legend li {
+      font-size: 0.875rem;
+      color: var(--perion-graphite);
+      padding: 0.25rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .formula-legend li::before {
+      content: "·";
+      color: var(--perion-amber);
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+    .formula-constraints {
+      border-left: 4px solid var(--perion-amber);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .formula-constraints h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      margin-bottom: 0.6rem;
+    }
+    .formula-constraints ul { list-style: none; padding: 0; }
+    .formula-constraints ul li {
+      font-size: 0.875rem;
+      color: var(--perion-graphite);
+      padding: 0.2rem 0 0.2rem 1.25rem;
+      position: relative;
+    }
+    .formula-constraints ul li::before {
+      content: "·";
+      color: var(--perion-amber);
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+
+    /* ================================================================
+       MOUNTING SPECS INLINE LIST
+       ================================================================ */
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0;
+      max-width: 75ch;
+    }
+    .detail-list li {
+      padding: 0.4rem 0 0.4rem 1.25rem;
+      border-bottom: 1px solid #E2E2E4;
+      font-size: 0.9rem;
+      color: var(--perion-graphite);
+      position: relative;
+    }
+    .detail-list li:last-child { border-bottom: none; }
+    .detail-list li::before {
+      content: "▸";
+      color: var(--perion-amber);
+      position: absolute;
+      left: 0;
+    }
+
+    /* ================================================================
+       INSTALLATION STEPS
+       ================================================================ */
+    .install-steps {
+      counter-reset: step-counter;
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .install-steps li {
+      counter-increment: step-counter;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      align-items: flex-start;
+    }
+    .install-steps li::before {
+      content: counter(step-counter);
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      font-weight: 700;
+      font-size: 0.75rem;
+      min-width: 1.75rem;
+      height: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .install-steps li p { margin: 0; font-size: 0.9rem; }
+
+    /* ================================================================
+       COMMISSIONING CHECKLIST
+       ================================================================ */
+    .commissioning-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .commissioning-list li {
+      padding: 0.65rem 0 0.65rem 2rem;
+      border-bottom: 1px solid #E2E2E4;
+      font-size: 0.9rem;
+      color: var(--perion-graphite);
+      position: relative;
+    }
+    .commissioning-list li:last-child { border-bottom: none; }
+    .commissioning-list li::before {
+      content: "✓";
+      color: var(--perion-amber);
+      font-weight: 700;
+      position: absolute;
+      left: 0.25rem;
+    }
+
+    /* ================================================================
+       RECOMMENDATIONS
+       ================================================================ */
+    .rec-list {
+      counter-reset: rec-counter;
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+    }
+    .rec-list li {
+      counter-increment: rec-counter;
+      display: flex;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #E2E2E4;
+      max-width: 75ch;
+      align-items: flex-start;
+    }
+    .rec-list li:last-child { border-bottom: none; }
+    .rec-list li::before {
+      content: "0" counter(rec-counter);
+      color: var(--perion-white);
+      background-color: var(--perion-amber);
+      font-weight: 700;
+      font-size: 0.75rem;
+      min-width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .rec-list li p { margin: 0; font-size: 0.9rem; }
+
+    /* ================================================================
+       SPARES / REFERENCES LIST
+       ================================================================ */
+    .spares-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      max-width: 75ch;
+    }
+    .spares-list li {
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      border-bottom: 1px solid #E2E2E4;
+      color: var(--perion-graphite);
+      font-size: 0.9rem;
+      position: relative;
+    }
+    .spares-list li:last-child { border-bottom: none; }
+    .spares-list li::before {
+      content: "▸";
+      color: var(--perion-amber);
+      position: absolute;
+      left: 0;
+    }
+
+    /* ================================================================
+       ASSET PLACEHOLDER — MANDATORY DESIGN TEAM FLAG
+       ================================================================ */
+    .asset-placeholder {
+      border: 2px dashed var(--perion-midnight);
+      background-color: var(--perion-grey);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin: 1.75rem 0;
+    }
+    .asset-placeholder .ph-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.5rem;
+    }
+    .asset-placeholder .ph-id {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: 0.75rem;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .asset-placeholder .ph-caption {
+      font-size: 0.8rem;
+      color: var(--perion-graphite);
+      max-width: 55ch;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* ================================================================
+       WORKS CITED
+       ================================================================ */
+    .works-cited {
+      border-top: 2px solid var(--perion-midnight);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    .works-cited h2 { border-bottom: none; padding-bottom: 0; }
+    .works-cited ol {
+      padding-left: 1.5rem;
+      margin-top: 1rem;
+    }
+    .works-cited li {
+      font-size: 0.8rem;
+      color: var(--perion-graphite);
+      padding: 0.35rem 0;
+      line-height: 1.5;
+    }
+    .works-cited a {
+      color: var(--perion-midnight);
+      word-break: break-all;
+      text-decoration: underline;
+    }
+
+    /* ================================================================
+       DOCUMENT FOOTER
+       ================================================================ */
+    .doc-footer {
+      background-color: var(--perion-midnight);
+      color: rgba(255,255,255,0.45);
+      padding: 1.5rem 2.5rem;
+      font-size: 0.72rem;
+      text-align: center;
+      margin-top: 5rem;
+      border-top: 5px solid var(--perion-amber);
+    }
+    .doc-footer strong { color: rgba(255,255,255,0.75); }
+
+    /* ================================================================
+       PRINT
+       ================================================================ */
+    @media print {
+      .doc-header, thead th, .spec-snapshot,
+      .formula-block, .install-steps li::before {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 720px) {
+      .doc-header h1 { font-size: 1.4rem; }
+      h2 { font-size: 1.1rem; }
+      .page-wrapper { padding: 0 1.25rem; }
+      .doc-meta-bar { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     DOCUMENT HEADER
+     ================================================================ -->
+<header class="doc-header" role="banner">
+  <div class="page-wrapper">
+    <div class="level-badge">Level 2 — Engineering Specification &amp; Technical Authority</div>
+    <h1>Perion Linear Perimeter Illumination Infrastructure</h1>
+    <nav class="doc-meta-bar" aria-label="Document metadata">
+      <div class="doc-meta-item"><strong>Classification</strong>Governed by Level 6 Protocols</div>
+      <div class="doc-meta-item"><strong>Release Date</strong>February 26, 2026</div>
+      <div class="doc-meta-item"><strong>Document Type</strong>Engineering Technical Manual</div>
+      <div class="doc-meta-item"><strong>Audience</strong>Consulting Engineers / Specifiers / Procurement</div>
+    </nav>
+  </div>
+</header>
+
+<!-- ================================================================
+     TABLE OF CONTENTS
+     ================================================================ -->
+<div class="page-wrapper">
+  <nav class="doc-toc" aria-label="Document table of contents">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#s1">Executive Summary</a></li>
+      <li><a href="#s2">System Architecture and Design Authority</a></li>
+      <li><a href="#s3">Technical Specifications (TDS Core)</a></li>
+      <li><a href="#s4">System Design Rules and Engineering Calculations</a></li>
+      <li><a href="#s5">CCTV Integration and Illumination Optimization</a></li>
+      <li><a href="#s6">Performance Data and Comparative Analysis</a></li>
+      <li><a href="#s7">Maintenance, Service, and Spares</a></li>
+      <li><a href="#s8">Installation and Commissioning</a></li>
+      <li><a href="#s9">Compliance and International Standards</a></li>
+      <li><a href="#s10">Conclusions and Final Engineering Recommendations</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ================================================================
+     DOCUMENT PREAMBLE
+     ================================================================ -->
+<main>
+<div class="page-wrapper">
+
+  <section aria-label="Document preamble">
+    <p>This technical manual provides the engineering specifications for the Perion Linear Perimeter Illumination Infrastructure, a decentralized, low-voltage linear architecture. The document presents quantitative data and design rules. Distributed linear illumination eliminates high-contrast shadows. The system carries an <span class="inline-technical">IP69K</span> rating and rodent-resistant cabling. Power consumption is reduced by <span class="inline-technical">80 %</span>. Heavy civil infrastructure requirements are removed. The document is the authoritative guide for specifiers to implement a safe, integrated, and long-lasting illumination solution that functions as both an illuminator and a Perimeter-Lock cable-continuity sensor.</p>
+  </section>
+
+  <!-- ============================================================
+       1.1 EXECUTIVE SUMMARY
+       ============================================================ -->
+  <section id="s1" aria-labelledby="h2-s1">
+    <h2 id="h2-s1">1.1 Executive Summary</h2>
+
+    <p>The Perion Linear Perimeter Illumination Infrastructure is a decentralized, low-voltage, linear architecture. This document is the Level 2 Technical and Engineering Authority. It supplies the depth required for consulting engineers, specifiers, and procurement specialists to evaluate system performance, durability, and integration capabilities within infrastructure projects.</p>
+
+    <p>Traditional perimeter illumination relies on high-wattage HID or LED floodlights mounted on tall masts. These create high-contrast environments characterized by intense hot spots and deep shadow pockets. These environments are incompatible with the dynamic range limitations of modern digital CCTV sensors and the edge-detection requirements of AI-driven video analytics. The Perion system distributes low-wattage illumination directly onto the fence line. A continuous wall of light with high uniformity ratio is created. Consistent visibility is ensured for human observation and automated surveillance.</p>
+
+    <p>Operating on a <span class="inline-technical">24 V DC</span> Safety Extra-Low Voltage (SELV) framework, the system eliminates the extensive civil infrastructure required by legacy systems. This includes deep trenching, concrete foundations, and high-voltage cabling. This architectural efficiency results in an approximate <span class="inline-technical">80 %</span> reduction in power consumption and a total project cost lower than traditional high-voltage alternatives. With an ingress protection rating of <span class="inline-technical">IP69K</span> and a <span class="inline-technical">100,000 Hours</span> (L70) rated lifespan, the Perion system is engineered for resilience in the most demanding industrial, mining, and agricultural environments.</p>
+  </section>
+
+  <!-- ============================================================
+       2.1 SYSTEM ARCHITECTURE AND DESIGN AUTHORITY
+       ============================================================ -->
+  <section id="s2" aria-labelledby="h2-s2">
+    <h2 id="h2-s2">2.1 System Architecture and Design Authority</h2>
+
+    <p>The Perion system architecture is a linear, distributed model for perimeter illumination infrastructure. It follows the geometry of the fence or wall to eliminate shadows and provide uniform illumination. This section defines the engineering logic and component roles that form the basis of the system's performance.</p>
+
+    <h3 id="h3-s2-1">2.1.1 Core Architecture and Topologies</h3>
+
+    <p>The system is centered around the Perion Power Pack, which serves as the primary regulation and control hub. From this hub, the Illumination Cable — a proprietary, UV-stabilized backbone — carries <span class="inline-technical">24 V DC</span> power along the perimeter. The LED modules are attached directly to this cable using Quick Connect technology, which facilitates a gas-tight, waterproof connection without the need for pre-set junction points or specialized labor.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="System topology types and engineering applications">
+        <thead>
+          <tr>
+            <th scope="col">Topology Type</th>
+            <th scope="col">Engineering Application</th>
+            <th scope="col">Key Benefit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Single-Supply</td>
+            <td>Perimeters up to <span class="inline-technical">1,000 m</span> with moderate lighting requirements</td>
+            <td>Minimal hardware footprint and centralized control.</td>
+          </tr>
+          <tr>
+            <td>Multi-Supply</td>
+            <td>Extended perimeters (&gt;<span class="inline-technical">1 km</span>) or sites requiring segmentation</td>
+            <td>Operational resilience; a failure in one sector does not impact others.</td>
+          </tr>
+          <tr>
+            <td>Dual-Feed (Loop)</td>
+            <td>Long runs where voltage drop must be mitigated for consistency</td>
+            <td>Ensures the furthest LED modules receive nominal voltage to maintain lux levels.</td>
+          </tr>
+          <tr>
+            <td>Solar/Hybrid</td>
+            <td>Off-grid locations or areas with frequent grid instability</td>
+            <td>Solar-native architecture allows for direct battery/solar integration without inverters.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The system supports multiple topologies to accommodate different site layouts and power requirements. For infrastructure, the segmented multi-supply approach is used, as it allows personnel to locate events with greater geographical precision.</p>
+
+    <h3 id="h3-s2-2">2.1.2 Component Engineering and Material Selection</h3>
+
+    <p>Each component of the Perion system is selected to withstand extreme environmental exposure while maintaining electrical efficiency. The illumination cable is an engineered asset featuring a rodent-repellent formulation designed to prevent biological damage, a common failure mode in agricultural and industrial settings.</p>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: System schematic — power flow diagram">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: SYSTEM-SCHEMATIC-POWER-FLOW]</div>
+      <p class="ph-caption">Schematic illustrating the flow from AC/Solar input through the Perion Power Pack, along the linear Illumination Cable with Quick Connect LED modules, and the integration of the dry-contact alarm relay into the site's alarm ecosystem.</p>
+    </div>
+
+    <h3 id="h3-s2-3">2.1.3 Engineering Consideration: Thermal Management and Lifespan</h3>
+
+    <p>The <span class="inline-technical">3 W</span> LED modules are housed in industrial-grade, UV-stable polymers that provide passive thermal dissipation. Because the total power is distributed across many low-wattage points rather than concentrated in a few high-wattage fixtures, the system avoids the thermal stress common in high-output floodlights. This thermal efficiency is the primary driver behind the <span class="inline-technical">100,000 Hours</span> (L70) rated lifespan, which translates to approximately <span class="inline-technical">22 years</span> of service on a standard dusk-to-dawn cycle.</p>
+  </section>
+
+  <!-- ============================================================
+       3.1 TECHNICAL SPECIFICATIONS (TDS CORE)
+       ============================================================ -->
+  <section id="s3" aria-labelledby="h2-s3">
+    <h2 id="h2-s3">3.1 Technical Specifications (TDS Core)</h2>
+
+    <p>This section provides the precise quantitative data required for engineering review and tender submission. The Perion system is a procurement-ready solution, with explicit limits and performance metrics.</p>
+
+    <h3 id="h3-s3-1">3.1.1 Electrical Specifications</h3>
+
+    <p>The electrical design prioritizes safety and efficiency through its <span class="inline-technical">24 V DC</span> architecture. This low-voltage approach categorizes the system as Safety Extra-Low Voltage (SELV), reducing risk to installation personnel and simplifying regulatory compliance.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Electrical specifications table">
+        <thead>
+          <tr>
+            <th scope="col">Parameter</th>
+            <th scope="col">Specification Value</th>
+            <th scope="col">Context / Standard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nominal System Voltage</td>
+            <td><span class="inline-technical">24 V DC</span></td>
+            <td>Regulated output for LED consistency.</td>
+          </tr>
+          <tr>
+            <td>Input Voltage (Power Pack)</td>
+            <td><span class="inline-technical">110 V – 240 V AC</span></td>
+            <td>Wide-range input for global compatibility.</td>
+          </tr>
+          <tr>
+            <td>Max Input Current</td>
+            <td><span class="inline-technical">2.85 A</span> @ <span class="inline-technical">220 V</span></td>
+            <td>Efficient power conversion.</td>
+          </tr>
+          <tr>
+            <td>Power Consumption (600 m)</td>
+            <td>~<span class="inline-technical">625 W</span></td>
+            <td>Based on <span class="inline-technical">4 m</span> spacing (150 modules).</td>
+          </tr>
+          <tr>
+            <td>LED Module Wattage</td>
+            <td><span class="inline-technical">3 W</span></td>
+            <td>Nominal draw per illumination point.</td>
+          </tr>
+          <tr>
+            <td>Current Draw per Module</td>
+            <td>~<span class="inline-technical">0.125 A</span></td>
+            <td>At <span class="inline-technical">24 V DC</span> operating point.</td>
+          </tr>
+          <tr>
+            <td>System Inrush Current</td>
+            <td>Managed</td>
+            <td>Soft-start integration to protect power circuits.</td>
+          </tr>
+          <tr>
+            <td>Surge Protection</td>
+            <td>Integrated</td>
+            <td>Multi-stage protection in Power Pack.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s3-2">3.1.2 Optical and Photometric Performance</h3>
+
+    <p>The optical objective is to deliver uniform illumination that meets international perimeter illumination standards while optimizing for electronic surveillance.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Optical and photometric performance specifications">
+        <thead>
+          <tr>
+            <th scope="col">Photometric Metric</th>
+            <th scope="col">Specification</th>
+            <th scope="col">Engineering Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Maintained Illuminance</td>
+            <td>&gt;<span class="inline-technical">10 Lux</span></td>
+            <td>At <span class="inline-technical">4 m</span> spacing; meets street lighting specifications.</td>
+          </tr>
+          <tr>
+            <td>Critical Asset Illuminance</td>
+            <td>&gt;<span class="inline-technical">20 Lux</span></td>
+            <td>At <span class="inline-technical">2 m</span> spacing; for critical asset zones.</td>
+          </tr>
+          <tr>
+            <td>Uniformity Ratio (U)</td>
+            <td><span class="inline-technical">0.4 – 0.6</span></td>
+            <td>Eliminates high-contrast shadow zones.</td>
+          </tr>
+          <tr>
+            <td>Color Temperature</td>
+            <td><span class="inline-technical">5000 K – 6000 K</span></td>
+            <td>Optimized for CMOS sensor sensitivity.</td>
+          </tr>
+          <tr>
+            <td>Flicker Index</td>
+            <td>&lt;<span class="inline-technical">0.01</span></td>
+            <td>No perceptible flicker; suitable for high-speed video.</td>
+          </tr>
+          <tr>
+            <td>Beam Pattern</td>
+            <td>Linear / Wide</td>
+            <td>Designed to follow the fence geometry.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="engineering-callout" role="note" aria-label="Engineering consideration: Luminous efficacy over time">
+      <div class="callout-label">Engineering Consideration — Luminous Efficacy over Time</div>
+      <p>The LEDs in the Perion system maintain high luminous flux throughout their lifecycle. The <span class="inline-technical">100,000 Hours</span> (L70) rating means the system will still provide <span class="inline-technical">70 %</span> of its initial brightness after two decades of use, ensuring compliance with minimum lux requirements.</p>
+    </div>
+
+    <h3 id="h3-s3-3">3.1.3 Mechanical and Environmental Specifications</h3>
+
+    <p>The durability of the Perion system is required for mining and industrial applications where exposure to corrosive elements and high-pressure cleaning is common.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Mechanical and environmental specifications">
+        <thead>
+          <tr>
+            <th scope="col">Mechanical Property</th>
+            <th scope="col">Rating / Specification</th>
+            <th scope="col">Engineering Standard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ingress Protection</td>
+            <td><span class="inline-technical">IP69K</span></td>
+            <td>Highest rating for dust and high-pressure water.</td>
+          </tr>
+          <tr>
+            <td>Impact Resistance</td>
+            <td>High</td>
+            <td>Industrial-grade polymer housing.</td>
+          </tr>
+          <tr>
+            <td>Housing Material</td>
+            <td>UV-Stable Polymer</td>
+            <td>Resistant to solar degradation and embrittlement.</td>
+          </tr>
+          <tr>
+            <td>Operating Temperature</td>
+            <td><span class="inline-technical">-20 °C</span> to <span class="inline-technical">+60 °C</span></td>
+            <td>Tested for extreme climatic variations.</td>
+          </tr>
+          <tr>
+            <td>Cable Jacket</td>
+            <td>Rodent-Repellent</td>
+            <td>Non-toxic formulation to deter animal damage.</td>
+          </tr>
+          <tr>
+            <td>Installation Method</td>
+            <td>Quick Connect</td>
+            <td>Insulation-displacement connection.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: IP rating comparison matrix">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: IP-RATING-COMPARISON-MATRIX]</div>
+      <p class="ph-caption">Technical matrix comparing IP65, IP67, IP68, and IP69K. This table highlights Perion's capability to withstand high-temperature, high-pressure washdowns (IP69K), a requirement in heavy industrial and mining contexts.</p>
+    </div>
+
+    <h3 id="h3-s3-4">3.1.4 Specification Snapshot Summary</h3>
+
+    <div class="spec-snapshot" role="region" aria-label="Specification snapshot summary">
+      <h3>Specification Snapshot</h3>
+      <ul>
+        <li><strong>Technology:</strong>&nbsp; Linear, low-voltage (<span class="inline-technical">24 V DC</span>) LED perimeter illumination.</li>
+        <li><strong>Performance:</strong>&nbsp; &gt;<span class="inline-technical">10 Lux</span> at <span class="inline-technical">4 m</span> spacing; &gt;<span class="inline-technical">20 Lux</span> at <span class="inline-technical">2 m</span> spacing.</li>
+        <li><strong>Efficiency:</strong>&nbsp; <span class="inline-technical">80 %</span> reduction in energy consumption vs. HV systems.</li>
+        <li><strong>Durability:</strong>&nbsp; <span class="inline-technical">IP69K</span> rating; <span class="inline-technical">100,000 Hours</span> (L70) rated lifespan; UV and rodent resistant.</li>
+        <li><strong>Perimeter-Lock:</strong>&nbsp; Integrated Perimeter-Lock cable-continuity sensor via dry-contact relay.</li>
+      </ul>
+    </div>
+
+    <h3 id="h3-s3-5">3.1.5 FAQ: Technical Specifications</h3>
+
+    <div class="faq-section" aria-label="FAQ: Technical Specifications">
+      <h3>Frequently Asked Questions — Technical Specifications</h3>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Why is the IP69K rating important for perimeter illumination?</p>
+        <p class="faq-a">Standard outdoor lighting is typically <span class="inline-technical">IP65</span> or <span class="inline-technical">IP66</span>, which protects against rain. In industrial or mining environments, equipment is cleaned with high-pressure washers. <span class="inline-technical">IP69K</span> ensures that high-pressure, high-temperature water jets will not penetrate the LED module, preventing internal corrosion and failure.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Does the system require a master electrician for installation?</p>
+        <p class="faq-a">Because the system operates on <span class="inline-technical">24 V DC</span> Safety Extra-Low Voltage (SELV), the lighting runs themselves generally do not require a master electrician. The connection of the Power Pack to the <span class="inline-technical">220 V AC</span> mains must be performed by a qualified professional according to local regulations.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Can the system be used in saline or coastal environments?</p>
+        <p class="faq-a">Yes. The industrial polymers used in the modules and the gas-tight nature of the Quick Connect technology provide resistance to salt-spray corrosion, which typically degrades traditional metal-housed floodlights.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4.1 SYSTEM DESIGN RULES AND ENGINEERING CALCULATIONS
+       ============================================================ -->
+  <section id="s4" aria-labelledby="h2-s4">
+    <h2 id="h2-s4">4.1 System Design Rules and Engineering Calculations</h2>
+
+    <p>Design authority for the Perion system rests on maintaining electrical stability and photometric uniformity over the length of the perimeter. This section details the logic required to design a high-performance lighting layout.</p>
+
+    <h3 id="h3-s4-1">4.1.1 Voltage Drop Logic and Calculations</h3>
+
+    <p>In <span class="inline-technical">24 V DC</span> systems, voltage drop is the primary constraint governing maximum run lengths. To ensure that the LED modules at the end of a run operate at their designed efficiency and brightness, the system must be engineered to minimize resistive losses.</p>
+
+    <p>The standard formula for calculating voltage drop in the Perion system is:</p>
+
+    <div class="formula-block" role="math" aria-label="Voltage drop formula: Delta V equals 2 times L times I times R divided by 1000">
+      ΔV = 2 × L × I × (R / 1000)
+    </div>
+
+    <p>Where:</p>
+    <ul class="formula-legend">
+      <li><strong>ΔV</strong> — Voltage drop in Volts (V).</li>
+      <li><strong>L</strong> — One-way cable length in meters (m).</li>
+      <li><strong>I</strong> — Current in Amperes (A).</li>
+      <li><strong>R</strong> — Conductor resistance in Ohms per kilometer (Ω/km).</li>
+    </ul>
+
+    <div class="formula-constraints" role="note" aria-label="Voltage drop engineering constraints">
+      <h4>Engineering Constraints</h4>
+      <ul>
+        <li>Maximum Allowable Drop: <span class="inline-technical">10 %</span> (<span class="inline-technical">2.4 V</span> drop from <span class="inline-technical">24 V</span> nominal).</li>
+        <li>Design Target: <span class="inline-technical">7 %</span> (to provide a buffer for environmental factors and connection resistance).</li>
+        <li>Typical Current Draw: Each <span class="inline-technical">3 W</span> module draws approximately <span class="inline-technical">0.125 A</span> at <span class="inline-technical">24 V</span>.</li>
+      </ul>
+    </div>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: Voltage gradient diagram for 600 m perimeter">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: VOLTAGE-GRADIENT-DIAGRAM-600M]</div>
+      <p class="ph-caption">Technical diagram showing the voltage gradient along a <span class="inline-technical">600 m</span> perimeter. Illustrates the comparative benefits of a single-feed vs. a dual-feed (loop) topology in maintaining voltage above the <span class="inline-technical">21.6 V</span> threshold.</p>
+    </div>
+
+    <h3 id="h3-s4-2">4.1.2 Dual-Feed Topology and Redundancy Strategies</h3>
+
+    <p>For perimeters where a single feed exceeds the <span class="inline-technical">10 %</span> voltage drop limit, a dual-feed topology is specified. By providing power from both ends of the cable or splitting the run into multiple sectors, the total resistance is halved, and voltage stability is maintained across the entire length. This strategy is required for achieving the maintained illuminance target of <span class="inline-technical">10 Lux</span> on runs approaching <span class="inline-technical">1,000 m</span>.</p>
+
+    <h3 id="h3-s4-3">4.1.3 Spacing, Lux Levels, and Uniformity</h3>
+
+    <p>The spacing of LED modules is the primary lever for adjusting lux levels to match the site's risk profile. Standardizing these spacings allows for repeatable audits and consistent performance.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Module spacing vs illuminance and application">
+        <thead>
+          <tr>
+            <th scope="col">Spacing (m)</th>
+            <th scope="col">Illuminance (Lux)</th>
+            <th scope="col">Target Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="inline-technical">2.0 m</span></td>
+            <td>&gt;<span class="inline-technical">20 Lux</span></td>
+            <td>Critical Infrastructure.</td>
+          </tr>
+          <tr>
+            <td><span class="inline-technical">4.0 m</span></td>
+            <td>&gt;<span class="inline-technical">10 Lux</span></td>
+            <td>Standard Industrial / Logistics.</td>
+          </tr>
+          <tr>
+            <td><span class="inline-technical">6.0 m</span></td>
+            <td><span class="inline-technical">6 – 8 Lux</span></td>
+            <td>Agricultural Boundaries.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="engineering-callout" role="note" aria-label="Engineering consideration: Uniformity vs intensity">
+      <div class="callout-label">Engineering Consideration — Uniformity vs. Intensity</div>
+      <p>A system with high intensity but poor uniformity creates blind spots. Perion's linear distribution achieves a Uniformity Ratio (U) of <span class="inline-technical">0.4 – 0.6</span>, ensuring that there are no dark zones between luminaires.</p>
+    </div>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: Lux uniformity grid at 4 m module spacing">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: LUX-UNIFORMITY-GRID-4M-SPACING]</div>
+      <p class="ph-caption">Plan-view measurement grid demonstrating the uniformity achieved with <span class="inline-technical">4 m</span> module spacing. The diagram shows how the overlapping <span class="inline-technical">3 W</span> beams create a consistent <span class="inline-technical">10 Lux</span> floor along the fence line.</p>
+    </div>
+
+    <h3 id="h3-s4-4">4.1.4 FAQ: Design Rules</h3>
+
+    <div class="faq-section" aria-label="FAQ: Design Rules">
+      <h3>Frequently Asked Questions — Design Rules</h3>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: How do I handle corners and gates in my design?</p>
+        <p class="faq-a">For corners, it is recommended to reduce spacing (e.g., to <span class="inline-technical">2 m</span>) to compensate for the change in geometry and ensure no shadows are cast. For gates, additional modules can be added to the gate leaves themselves, as the low-voltage cable is flexible and durable enough to handle standard gate operation.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Can I use a single Power Pack for a 1.2 km perimeter?</p>
+        <p class="faq-a">A single Power Pack is rated for up to <span class="inline-technical">1,000 m</span>. For a <span class="inline-technical">1.2 km</span> perimeter, engineering best practice dictates using two Power Packs to segment the perimeter into two <span class="inline-technical">600 m</span> runs. This ensures voltage compliance and provides redundancy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5.1 CCTV INTEGRATION AND ILLUMINATION OPTIMIZATION
+       ============================================================ -->
+  <section id="s5" aria-labelledby="h2-s5">
+    <h2 id="h2-s5">5.1 CCTV Integration and Illumination Optimization</h2>
+
+    <p>The Perion system is engineered to provide the optimal environment for electronic monitoring, human recognition, and AI-driven video analytics.</p>
+
+    <h3 id="h3-s5-1">5.1.1 Optimizing the CCTV Signal-to-Noise Ratio (SNR)</h3>
+
+    <p>Digital camera sensors struggle with high-contrast scenes. When a traditional floodlight creates a hot spot, the camera's auto-iris closes to protect the sensor, which turns the surrounding unlit areas into pitch black. This is the iris clamp effect. Perion eliminates this by providing uniform, low-glare illumination that allows the camera sensor to operate at a consistent exposure level, maximizing the signal-to-noise ratio and reducing the graininess typical of low-light video.</p>
+
+    <h3 id="h3-s5-2">5.1.2 Support for AI and Video Analytics (YOLOv8)</h3>
+
+    <p>AI classification algorithms, such as those using YOLOv8, require clear edge detection and consistent pixel contrast to identify human or vehicular targets accurately. High-uniformity lighting (Uniformity Ratio <span class="inline-technical">0.4 – 0.6</span>) ensures that target features remain visible as they move across the camera's field of view, reducing false negatives and maintaining a high confidence score for the analytic software.</p>
+
+    <h3 id="h3-s5-3">5.1.3 Field of View (FOV) and Mounting Heights</h3>
+
+    <p>The mounting height and orientation of the lighting are critical for maximizing the effectiveness of the monitoring system. Lighting should be installed parallel to the fence line, facing inward toward the monitored area to illuminate the approach and provide a clear silhouette for cameras.</p>
+
+    <ul class="detail-list" aria-label="Mounting height and shadow management specifications">
+      <li><strong>Recommended Mounting Height:</strong> <span class="inline-technical">2.5 m</span> to <span class="inline-technical">3.0 m</span>.</li>
+      <li><strong>Shadow Management:</strong> The linear architecture uses overlapping beam patterns to eliminate point-source shadowing, ensuring that an intruder cannot hide behind vertical fence posts or other structural elements.</li>
+    </ul>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: CCTV field of view and illumination synergy diagram">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: CCTV-FOV-ILLUMINATION-SYNERGY]</div>
+      <p class="ph-caption">Diagram illustrating the synergy between a camera's field of view and the linear illumination zone. Highlights the absence of glare and the consistency of light levels throughout the detection area.</p>
+    </div>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: Fence cross-section with mounting detail">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: FENCE-CROSS-SECTION-MOUNTING-DETAIL]</div>
+      <p class="ph-caption">Detailed cross-section of a high-security fence showing the mounting positions for the illumination cable and LED modules. The diagram illustrates the beam angle designed to illuminate the fence fabric and the immediate ground area.</p>
+    </div>
+
+    <h3 id="h3-s5-4">5.1.4 Perimeter-Lock Cable-Continuity Monitoring</h3>
+
+    <p>The Perion system functions as both an illuminator and a sensor. The illumination cable is monitored for continuity by the Power Pack. If the cable is cut or power is disabled, the system immediately detects the break and triggers a dry-contact relay. This relay can be integrated into the site's alarm panel, Video Management System (VMS), or Security Management System (SMS) to trigger an immediate response.</p>
+
+    <h3 id="h3-s5-5">5.1.5 FAQ: CCTV and Integration</h3>
+
+    <div class="faq-section" aria-label="FAQ: CCTV and Integration">
+      <h3>Frequently Asked Questions — CCTV and Integration</h3>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Does Perion work with Infrared (IR) cameras?</p>
+        <p class="faq-a">Yes. Perion is designed to provide white light that often keeps cameras in Day Mode longer. This allows for color recognition of clothing and vehicles, which is superior to black-and-white IR footage for investigative purposes.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Can I integrate the Perimeter-Lock cable-continuity sensor relay with my VMS?</p>
+        <p class="faq-a">Yes. Most VMS platforms accept digital inputs. When the Perion cable is cut, the relay can trigger the VMS to zoom a PTZ camera to that specific sector and alert the operator.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6.1 PERFORMANCE DATA AND COMPARATIVE ANALYSIS
+       ============================================================ -->
+  <section id="s6" aria-labelledby="h2-s6">
+    <h2 id="h2-s6">6.1 Performance Data and Comparative Analysis</h2>
+
+    <p>Engineering procurement decisions must be supported by financial and operational data. This section compares the Perion linear model against traditional high-voltage (HV) pole-mounted lighting.</p>
+
+    <h3 id="h3-s6-1">6.1.1 Infrastructure and Civil Works Comparison</h3>
+
+    <div class="table-wrapper">
+      <table aria-label="Infrastructure comparison: Traditional HV pole lighting vs Perion linear illumination">
+        <thead>
+          <tr>
+            <th scope="col">Infrastructure Component</th>
+            <th scope="col">Traditional HV Pole Lighting</th>
+            <th scope="col">Perion Linear Illumination</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Poles &amp; Masts</td>
+            <td>Required (Steel/Concrete)</td>
+            <td>Not Required (Fence-mounted).</td>
+          </tr>
+          <tr>
+            <td>Foundations</td>
+            <td>Concrete bases required</td>
+            <td>Not Required.</td>
+          </tr>
+          <tr>
+            <td>Trenching</td>
+            <td>Deep trenching for HV cables</td>
+            <td>None (Surface-mounted cable).</td>
+          </tr>
+          <tr>
+            <td>Cabling</td>
+            <td>SWA Armoured Cable</td>
+            <td>Flexible Low-Voltage Cable.</td>
+          </tr>
+          <tr>
+            <td>Safety</td>
+            <td>High-Voltage risks</td>
+            <td>SELV <span class="inline-technical">24 V DC</span> (Inherently Safe).</td>
+          </tr>
+          <tr>
+            <td>Installation Speed</td>
+            <td>Weeks (due to civil works)</td>
+            <td>Days (up to <span class="inline-technical">500 m</span> per day).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s6-2">6.1.2 Total Cost of Ownership (TCO) Analysis</h3>
+
+    <p>For a standard <span class="inline-technical">600 m</span> perimeter project, the financial advantages of the Perion system are driven by the elimination of heavy infrastructure and lower energy consumption.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Total cost of ownership comparison for 600 m perimeter project">
+        <thead>
+          <tr>
+            <th scope="col">Financial Metric</th>
+            <th scope="col">Perion (<span class="inline-technical">600 m</span> Project)</th>
+            <th scope="col">Traditional HV (<span class="inline-technical">600 m</span> Project)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Power Consumption</td>
+            <td><span class="inline-technical">625 W</span></td>
+            <td><span class="inline-technical">3,000 W</span></td>
+          </tr>
+          <tr>
+            <td>Energy Reduction</td>
+            <td><span class="inline-technical">80 %</span> Lower</td>
+            <td>Baseline</td>
+          </tr>
+          <tr>
+            <td>Project Cost (Total)</td>
+            <td>~$6,515</td>
+            <td>~$112,982</td>
+          </tr>
+          <tr>
+            <td>Cost per Meter</td>
+            <td>~$10.85</td>
+            <td>~$188.30</td>
+          </tr>
+          <tr>
+            <td>Maintenance Access</td>
+            <td>Ground Level</td>
+            <td>High-lift / Cherry Picker</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: 5-year cumulative cost comparison graph">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: TCO-5YEAR-COST-COMPARISON-GRAPH]</div>
+      <p class="ph-caption">5-year cumulative cost comparison graph illustrating the CAPEX and OPEX savings of Perion. Demonstrates that the traditional HV system's higher energy and maintenance costs produce an exponentially widening gap in total cost of ownership.</p>
+    </div>
+
+    <h3 id="h3-s6-3">6.1.3 Environmental Resilience and Reliability</h3>
+
+    <p>The longevity of the Perion system is a product of its low-voltage operation and the selection of high-grade materials that resist the most common environmental failure modes.</p>
+
+    <ul class="detail-list" aria-label="Environmental resilience and reliability specifications">
+      <li><strong>LED Service Life:</strong> <span class="inline-technical">100,000 Hours</span> (L70), significantly exceeding the <span class="inline-technical">20,000</span>–<span class="inline-technical">50,000 hours</span> of standard industrial LEDs.</li>
+      <li><strong>UV and Rodent Protection:</strong> Proprietary cable jacketing prevents the solar degradation and biological damage that often plague outdoor electrical infrastructure.</li>
+      <li><strong>IP69K Rating:</strong> The highest level of ingress protection ensures the system is immune to moisture and dust, even under high-pressure cleaning.</li>
+    </ul>
+
+    <h3 id="h3-s6-4">6.1.4 FAQ: Performance and Efficiency</h3>
+
+    <div class="faq-section" aria-label="FAQ: Performance and Efficiency">
+      <h3>Frequently Asked Questions — Performance and Efficiency</h3>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: How can 3 W modules provide enough light for a 600 m perimeter?</p>
+        <p class="faq-a">Uniformity, not raw power, determines effective illumination. By distributing the light every <span class="inline-technical">4 m</span>, a continuous curtain of light is created. A <span class="inline-technical">400 W</span> floodlight on a pole creates a bright spot, but most of its energy is wasted illuminating areas that the camera cannot see or that are too far away for effective recognition.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: What is the impact of load-shedding on the system?</p>
+        <p class="faq-a">Because Perion consumes <span class="inline-technical">625 W</span> for <span class="inline-technical">600 m</span>, it is straightforward to back up with small battery banks or solar arrays. This ensures <span class="inline-technical">100 %</span> uptime during power outages, unlike power-hungry HV systems that require massive generators or expensive UPS systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7.1 MAINTENANCE, SERVICE, AND SPARES
+       ============================================================ -->
+  <section id="s7" aria-labelledby="h2-s7">
+    <h2 id="h2-s7">7.1 Maintenance, Service, and Spares</h2>
+
+    <p>The Perion system is designed as long-life infrastructure with a maintenance-free philosophy. There are no lamp cycles to manage, and all components are serviceable from the ground.</p>
+
+    <h3 id="h3-s7-1">7.1.1 Maintenance Cycle Recommendations</h3>
+
+    <p>Transitioning to LED technology and low-voltage DC power eliminates the most common failure points in outdoor lighting (bulbs, ballasts, and high-voltage arcing).</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Maintenance cycle recommendations">
+        <thead>
+          <tr>
+            <th scope="col">Activity</th>
+            <th scope="col">Recommended Frequency</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Visual Inspection</td>
+            <td>Annually</td>
+            <td>Check for physical damage to the fence or cable displacement.</td>
+          </tr>
+          <tr>
+            <td>Cleaning</td>
+            <td>As Required</td>
+            <td>Use low-pressure water to remove dust or mud buildup.</td>
+          </tr>
+          <tr>
+            <td>Crimp Check</td>
+            <td>Every 2 Years</td>
+            <td>Sample check of Quick Connect module integrity.</td>
+          </tr>
+          <tr>
+            <td>Lamp Replacement</td>
+            <td>None</td>
+            <td>Integrated LEDs are rated for &gt;<span class="inline-technical">22 years</span> of service.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: 20-year maintenance comparison matrix">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: 20YEAR-MAINTENANCE-MATRIX]</div>
+      <p class="ph-caption">Comparative matrix of 20-year maintenance activities for Perion vs. traditional HID systems. Highlights the total elimination of bulb and ballast replacements and the shift from hazardous Working at Height to safe Ground-Level inspections.</p>
+    </div>
+
+    <h3 id="h3-s7-2">7.1.2 Serviceability and Field Repair</h3>
+
+    <p>The modular Quick Connect architecture means that localized damage can be repaired in seconds. A single module can be replaced without shutting down the entire <span class="inline-technical">1,000 m</span> run, ensuring continuous operation.</p>
+
+    <h3 id="h3-s7-3">7.1.3 Spare Parts Guidance</h3>
+
+    <p>For critical installations, it is recommended to maintain a small stock of First Line spares on-site.</p>
+
+    <ul class="spares-list" aria-label="Recommended on-site spare parts">
+      <li><strong>LED Modules:</strong> 2–5 % of total quantity.</li>
+      <li><strong>Illumination Cable:</strong> <span class="inline-technical">10</span>–<span class="inline-technical">20 m</span> for patching repairs.</li>
+      <li><strong>Termination Kits:</strong> 1 per system.</li>
+      <li><strong>Power Pack:</strong> 1 per site (optional redundancy for critical areas).</li>
+    </ul>
+
+    <h3 id="h3-s7-4">7.1.4 FAQ: Maintenance and Service</h3>
+
+    <div class="faq-section" aria-label="FAQ: Maintenance and Service">
+      <h3>Frequently Asked Questions — Maintenance and Service</h3>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Do the LED modules dim over time?</p>
+        <p class="faq-a">All LEDs experience some lumen depreciation, but Perion's LEDs are rated for L70 at <span class="inline-technical">100,000 Hours</span>. This means that after <span class="inline-technical">22 years</span> of use, they will still provide at least <span class="inline-technical">70 %</span> of their original brightness, remaining within operational requirements.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: What tools are needed for maintenance?</p>
+        <p class="faq-a">Routine maintenance only requires basic hand tools. For module replacement, the proprietary Quick Connect tool is used to ensure the gas-tight connection is maintained.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8.1 INSTALLATION AND COMMISSIONING
+       ============================================================ -->
+  <section id="s8" aria-labelledby="h2-s8">
+    <h2 id="h2-s8">8.1 Installation and Commissioning</h2>
+
+    <p>This section outlines the auditable procedures required for safe installation and verification of the Perion system.</p>
+
+    <h3 id="h3-s8-1">8.1.1 Safety and Regulatory Compliance</h3>
+
+    <p>Installation must follow local low-voltage electrical codes. Because the system is <span class="inline-technical">24 V DC</span> (SELV), it is inherently safer than AC systems, but installers must observe standard site safety protocols.</p>
+
+    <h3 id="h3-s8-2">8.1.2 Step-by-Step Installation Procedure</h3>
+
+    <ol class="install-steps" aria-label="Step-by-step installation procedure">
+      <li><p><strong>Site Assessment:</strong> Verify perimeter length and identify Power Pack mounting locations near AC mains or solar points.</p></li>
+      <li><p><strong>Power Pack Installation:</strong> Mount the Power Pack in a secure, weather-protected location.</p></li>
+      <li><p><strong>Cable Deployment:</strong> Run the illumination cable along the fence at the specified height (typically <span class="inline-technical">2.5 m</span> – <span class="inline-technical">3.0 m</span>). Secure the cable using UV-rated stainless steel or heavy-duty polymer ties at regular intervals.</p></li>
+      <li><p><strong>Module Attachment:</strong> Using the spacing plan (e.g., <span class="inline-technical">4 m</span>), attach the LED modules to the cable using the Quick Connect crimp technology. Ensure the module is oriented to face the desired detection zone.</p></li>
+      <li><p><strong>Termination:</strong> Apply the <span class="inline-technical">IP69K</span>-rated termination kit to the end of the cable run to seal the circuit.</p></li>
+      <li><p><strong>Integration:</strong> Wire the Power Pack's dry-contact relay into the site's alarm or VMS panel.</p></li>
+    </ol>
+
+    <h3 id="h3-s8-3">8.1.3 Commissioning and Verification Tests</h3>
+
+    <p>To ensure the system meets engineering specifications, the following commissioning tests must be documented:</p>
+
+    <ul class="commissioning-list" aria-label="Commissioning and verification test checklist">
+      <li><strong>Voltage Verification:</strong> Measure DC voltage at the furthest module; it must be ≥<span class="inline-technical">21.6 V</span> (<span class="inline-technical">10 %</span> max drop).</li>
+      <li><strong>Lux Level Audit:</strong> Verify that light levels meet the design target (e.g., &gt;<span class="inline-technical">10 Lux</span> at <span class="inline-technical">4 m</span> spacing).</li>
+      <li><strong>Perimeter-Lock Verification:</strong> Disconnect the cable at a junction to confirm the Power Pack triggers the alarm relay.</li>
+      <li><strong>CCTV Image Audit:</strong> Confirm uniform illumination and lack of glare in the video management system at night.</li>
+    </ul>
+
+    <h3 id="h3-s8-4">8.1.4 FAQ: Installation and Commissioning</h3>
+
+    <div class="faq-section" aria-label="FAQ: Installation and Commissioning">
+      <h3>Frequently Asked Questions — Installation and Commissioning</h3>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Can the cable be shortened in the field?</p>
+        <p class="faq-a">Yes. The illumination cable can be cut to any length up to its maximum rated capacity. The installer simply applies the termination kit to the new end-point to maintain the environmental seal.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: What happens if I accidentally reverse the polarity of the cable?</p>
+        <p class="faq-a">The Perion Power Pack and modules are designed with polarity protection. The system simply will not light up if the polarity is reversed, protecting the electronics from damage until the wiring is corrected.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9.1 COMPLIANCE AND INTERNATIONAL STANDARDS
+       ============================================================ -->
+  <section id="s9" aria-labelledby="h2-s9">
+    <h2 id="h2-s9">9.1 Compliance and International Standards</h2>
+
+    <p>The Perion system is manufactured in an ISO 9001:2015 certified facility and is designed to align with global engineering standards.</p>
+
+    <h3 id="h3-s9-1">9.1.1 Certification and Declaration Alignment</h3>
+
+    <ul class="detail-list" aria-label="Certification and standard alignment list">
+      <li><strong>Ingress Protection:</strong> Independently certified to <span class="inline-technical">IP69K</span> (DIN 40050-9 / ISO 20653).</li>
+      <li><strong>Electrical Safety:</strong> Aligned with CE, UL, CSA, and IEC standards for low-voltage lighting systems.</li>
+      <li><strong>Environmental Standards:</strong> RoHS and REACH compliant, ensuring the system is free from hazardous chemicals.</li>
+      <li><strong>Manufacturing Quality:</strong> Produced in Cape Town, South Africa, and Lititz, USA, with a capacity of <span class="inline-technical">10,000 units</span> per week to support large-scale industrial and mining infrastructure.</li>
+    </ul>
+
+    <h3 id="h3-s9-2">9.1.2 Internal Linking References</h3>
+
+    <ul class="spares-list" aria-label="Internal document references">
+      <li><strong>Project Calculator:</strong> For site-specific Bill of Materials (BOM) generation, refer to the Perion Project Calculator v4.xlsx.</li>
+      <li><strong>Design Portal:</strong> For CAD files, IES photometric data, and detailed wiring schematics, access the Perion Engineering Portal.</li>
+      <li><strong>Level 1 Documents:</strong> For executive overviews and commercial positioning, refer to the Level 1 — Customer-Facing Documents.</li>
+    </ul>
+
+    <h3 id="h3-s9-3">9.1.3 FAQ: Compliance</h3>
+
+    <div class="faq-section" aria-label="FAQ: Compliance">
+      <h3>Frequently Asked Questions — Compliance</h3>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Is the system suitable for hazardous environments (Ex/ATEX)?</p>
+        <p class="faq-a">The standard Perion system is rated <span class="inline-technical">IP69K</span> but is not currently ATEX-certified for explosive atmospheres. For projects requiring ATEX compliance, contact the engineering team for specialized housing options.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Q: Does the system meet Dark Sky requirements for light pollution?</p>
+        <p class="faq-a">Yes. Because the light is distributed at a low wattage and mounted at a low height facing downward/inward, the upward light spill is negligible compared to high-mast floodlighting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10.1 CONCLUSIONS AND FINAL ENGINEERING RECOMMENDATIONS
+       ============================================================ -->
+  <section id="s10" aria-labelledby="h2-s10">
+    <h2 id="h2-s10">10.1 Conclusions and Final Engineering Recommendations</h2>
+
+    <p>The technical analysis of the Perion Linear Perimeter Illumination Infrastructure confirms its effectiveness as a high-performance, cost-efficient, and resilient illumination infrastructure solution. By shifting the illumination model from high-voltage point-sources to low-voltage linear distribution, Perion addresses the fundamental limitations of traditional lighting in modern monitoring contexts.</p>
+
+    <p>For consulting engineers and specifiers, the following recommendations are provided based on the engineering data:</p>
+
+    <ol class="rec-list" aria-label="Final engineering recommendations">
+      <li><p><strong>Uniformity over Intensity:</strong> Prioritize the uniformity ratio (U) when designing perimeter illumination. High intensity is counter-productive if it creates high-contrast shadows that affect CCTV sensors.</p></li>
+      <li><p><strong>Leverage SELV Safety:</strong> Utilize the <span class="inline-technical">24 V DC</span> architecture to reduce civil costs, speed up deployment, and minimize site safety risks during installation and maintenance.</p></li>
+      <li><p><strong>Perimeter-Lock Integration:</strong> Treat the lighting as a sensor. Ensure that the Perimeter-Lock cable-continuity sensor relay is fully integrated into the site's alarm and video management ecosystems to provide real-time alerts upon physical interference.</p></li>
+      <li><p><strong>Design for Longevity:</strong> Adhere to the <span class="inline-technical">10 %</span> voltage drop limit and utilize dual-feed topologies on long runs to maximize the <span class="inline-technical">100,000 Hours</span> (L70) service life of the LED modules.</p></li>
+    </ol>
+
+    <p>The Perion system provides a technically irrefutable alternative for perimeter illumination, delivering operational outcomes with an <span class="inline-technical">80 %</span> reduction in energy usage and an order-of-magnitude reduction in total project cost. Its <span class="inline-technical">IP69K</span> rating and rodent-repellent infrastructure make it the specification of record for critical infrastructure protection in the world's most demanding environments.</p>
+  </section>
+
+  <!-- ============================================================
+       UNRESOLVED IMAGE ASSETS — FULL REGISTRY
+       ============================================================ -->
+  <section aria-labelledby="h2-assets">
+    <h2 id="h2-assets">Unresolved Visual Asset Registry</h2>
+    <p>The following image assets were referenced in the source document but have no confirmed mapping to captioned diagram positions. The design team must supply physical photography or production SVG diagrams to replace each placeholder.</p>
+
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image1.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image1.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image2.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image2.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image3.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image3.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image4.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image4.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image5.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image5.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image6.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image6.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image7.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image7.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image8.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image8.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image9.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image9.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image10.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image10.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+    <div class="asset-placeholder" role="figure" aria-label="Missing asset: image11.png">
+      <div class="ph-eyebrow">Missing Asset — Design Team Action Required</div>
+      <div class="ph-id">[MISSING ASSET: image11.png]</div>
+      <p class="ph-caption">Source document image reference. Assign to appropriate section upon receipt of production asset.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WORKS CITED
+       ============================================================ -->
+  <section class="works-cited" aria-labelledby="h2-works">
+    <h2 id="h2-works">Works Cited</h2>
+    <ol>
+      <li>Level 2.1: Critique and Enhancement Prompt — <a href="https://drive.google.com/open?id=1_hQ3aati15KAx3oifNqvjy4bqL0r63XivfEXgjigH1Q" target="_blank" rel="noopener noreferrer">Google Drive</a></li>
+      <li>LEVEL 2 — TECHNICAL &amp; ENGINEERING DOCUMENTS — <a href="https://drive.google.com/open?id=1wZc1l1RahMIuHHJ4bX5r-plzK5hSFedImCguGQR-ptk" target="_blank" rel="noopener noreferrer">Google Drive</a></li>
+      <li>Technical Data Sheet – Detailed — <a href="https://drive.google.com/open?id=1LxPgJ0LLRkEhn2Rzj2eIjRgIhmlyvKGh8M-JEeqo0TM" target="_blank" rel="noopener noreferrer">Google Drive</a></li>
+      <li>FULL TECHNICAL SPECIFICATIONS — <a href="https://drive.google.com/open?id=1bvRSO9F9-PMB_zmAVaVA1Ki3AISJVbRGdtaFAacRfOw" target="_blank" rel="noopener noreferrer">Google Drive</a></li>
+      <li>LEVEL 1 — CUSTOMER-FACING DOCUMENTS — <a href="https://drive.google.com/open?id=1FpKC1gXvuKZLFu22R9p_PcFtpS5-8J2jsTJ78CUxL9A" target="_blank" rel="noopener noreferrer">Google Drive</a></li>
+    </ol>
+  </section>
+
+</div><!-- /.page-wrapper -->
+</main>
+
+<!-- ================================================================
+     DOCUMENT FOOTER
+     ================================================================ -->
+<footer class="doc-footer" role="contentinfo">
+  <strong>Perion Linear Perimeter Illumination Infrastructure</strong> — Level 2 Engineering Specification and Technical Authority<br>
+  Governed by Level 6 Protocols &nbsp;·&nbsp; Release Date: February 26, 2026 &nbsp;·&nbsp; Perion Visual Design Framework v1.0<br>
+  All references to "Security lighting", "Fence lights", "DIY kit", "VeltSentry", and "Scrap-to-Security" have been permanently purged per Category Sovereignty Protocol.<br>
+  Tamper detection terminology enforced: Perimeter-Lock cable-continuity sensor.
+</footer>
+
+</body>
+</html>

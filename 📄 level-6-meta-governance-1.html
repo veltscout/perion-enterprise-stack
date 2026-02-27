@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level 6 — Enterprise Documentation Control Framework | Perion Lighting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       PERION VISUAL DESIGN FRAMEWORK — CSS VARIABLE AUTHORITY
+       Level 6 — Enterprise Documentation Control Framework
+       Governed by Level 6 Protocols | PRN-L6-GOV-001-v1.0
+       ============================================================ */
+    :root {
+      --perion-midnight: #0A1D33;
+      --perion-graphite: #2B2E34;
+      --perion-amber:    #F2A900;
+      --perion-grey:     #F5F5F7;
+      --perion-white:    #FFFFFF;
+
+      --font-primary: 'Inter', sans-serif;
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --text-3xl:  1.875rem;
+      --text-4xl:  2.25rem;
+
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+
+      --content-max: 1100px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      color: var(--perion-graphite);
+      background-color: var(--perion-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .page-wrapper {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+
+    /* ============================================================
+       DOCUMENT HEADER — AUTHORITY ZONE
+       ============================================================ */
+    .doc-header {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      padding: var(--space-10) var(--space-8) var(--space-8);
+      border-bottom: 5px solid var(--perion-amber);
+    }
+
+    .doc-header__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .doc-header__top-bar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .brand-block__name {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--perion-white);
+      line-height: 1;
+    }
+
+    .brand-block__sub {
+      font-size: var(--text-xs);
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-top: var(--space-2);
+    }
+
+    .level-badge {
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: var(--space-2) var(--space-5);
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    .doc-header__title {
+      font-size: var(--text-4xl);
+      font-weight: 800;
+      color: var(--perion-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .doc-header__subtitle {
+      font-size: var(--text-base);
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.03em;
+      max-width: 70ch;
+    }
+
+    /* Mandate Strip */
+    .mandate-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .mandate-strip__item {
+      background-color: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: var(--space-3) var(--space-4);
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .mandate-strip__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-1);
+    }
+
+    .mandate-strip__value {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.8);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ============================================================
+       ABSTRACT / PREAMBLE BLOCK
+       ============================================================ */
+    .doc-abstract {
+      background-color: var(--perion-grey);
+      border-left: 5px solid var(--perion-midnight);
+      padding: var(--space-8);
+      margin: var(--space-10) 0;
+    }
+
+    .doc-abstract__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-3);
+    }
+
+    .doc-abstract p {
+      color: var(--perion-graphite);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      max-width: 75ch;
+      margin-bottom: 0;
+    }
+
+    /* ============================================================
+       SECTION HEADINGS
+       ============================================================ */
+    h1 {
+      font-size: var(--text-4xl);
+      font-weight: 800;
+      color: var(--perion-midnight);
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--perion-midnight);
+      line-height: 1.25;
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: 2px solid var(--perion-amber);
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--perion-midnight);
+      line-height: 1.3;
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-8);
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--perion-midnight);
+      margin-bottom: var(--space-3);
+      margin-top: var(--space-6);
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================================================
+       BODY TEXT
+       ============================================================ */
+    p {
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      max-width: 75ch;
+      margin-bottom: var(--space-4);
+      font-size: var(--text-base);
+    }
+
+    /* ============================================================
+       INLINE TECHNICAL TAG
+       ============================================================ */
+    .inline-technical {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--perion-midnight);
+      font-size: 0.95em;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       SECTION LABEL
+       ============================================================ */
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    /* ============================================================
+       SECTION DIVIDER
+       ============================================================ */
+    .section-divider {
+      height: 1px;
+      background-color: var(--perion-grey);
+      margin: var(--space-12) 0;
+    }
+
+    /* ============================================================
+       MAIN CONTENT AREA
+       ============================================================ */
+    main {
+      padding: var(--space-12) 0;
+    }
+
+    section {
+      margin-bottom: var(--space-16);
+    }
+
+    /* ============================================================
+       TABLE GOVERNANCE
+       ============================================================ */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: var(--space-6) 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-variant-numeric: tabular-nums;
+    }
+
+    thead tr {
+      background-color: var(--perion-midnight);
+    }
+
+    th {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      font-weight: 600;
+      text-align: center;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-xs);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    td {
+      color: var(--perion-graphite);
+      text-align: left;
+      padding: var(--space-3) var(--space-4);
+      border: 1px solid #dde1e7;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: var(--perion-grey);
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: var(--perion-white);
+    }
+
+    tbody tr:hover {
+      background-color: #eaecef;
+    }
+
+    td:first-child {
+      font-weight: 500;
+      color: var(--perion-midnight);
+    }
+
+    /* ============================================================
+       RACI BADGE CELLS
+       ============================================================ */
+    .raci-A {
+      font-weight: 800;
+      color: var(--perion-midnight);
+      text-align: center;
+    }
+
+    .raci-R {
+      font-weight: 700;
+      color: #1a6b3a;
+      text-align: center;
+    }
+
+    .raci-C {
+      font-weight: 500;
+      color: var(--perion-graphite);
+      text-align: center;
+    }
+
+    .raci-I {
+      font-weight: 400;
+      color: #888;
+      text-align: center;
+    }
+
+    td.raci-A, td.raci-R, td.raci-C, td.raci-I {
+      font-weight: inherit;
+      color: inherit;
+    }
+
+    /* ============================================================
+       CALLOUT / WARNING BLOCKS
+       ============================================================ */
+    .callout {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: var(--space-5) var(--space-6);
+      margin: var(--space-6) 0;
+    }
+
+    .callout__title {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-3);
+    }
+
+    .callout p {
+      max-width: none;
+      margin-bottom: 0;
+      font-size: var(--text-sm);
+    }
+
+    /* ============================================================
+       AUTHORITY CALLOUT — DARK VARIANT
+       ============================================================ */
+    .callout--authority {
+      background-color: var(--perion-midnight);
+      border-left: 4px solid var(--perion-amber);
+      padding: var(--space-6) var(--space-8);
+      margin: var(--space-8) 0;
+    }
+
+    .callout--authority .callout__title {
+      color: var(--perion-amber);
+    }
+
+    .callout--authority p {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      max-width: none;
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    /* ============================================================
+       LIFECYCLE STAGE FLOW
+       ============================================================ */
+    .lifecycle-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0;
+      margin: var(--space-6) 0;
+      border: 1px solid #dde1e7;
+    }
+
+    .lifecycle-stage {
+      padding: var(--space-4);
+      border-right: 1px solid #dde1e7;
+      text-align: center;
+    }
+
+    .lifecycle-stage:last-child {
+      border-right: none;
+    }
+
+    .lifecycle-stage__number {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-2);
+    }
+
+    .lifecycle-stage__name {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: var(--space-2);
+    }
+
+    .lifecycle-stage__owner {
+      font-size: var(--text-xs);
+      color: var(--perion-graphite);
+    }
+
+    /* ============================================================
+       FOLDER STRUCTURE BLOCK
+       ============================================================ */
+    .folder-structure {
+      background-color: var(--perion-midnight);
+      padding: var(--space-6) var(--space-8);
+      margin: var(--space-6) 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-sm);
+    }
+
+    .folder-structure__line {
+      color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+      display: block;
+    }
+
+    .folder-structure__dir {
+      color: var(--perion-amber);
+      font-weight: 700;
+    }
+
+    .folder-structure__comment {
+      color: rgba(255,255,255,0.4);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       GOVERNANCE STEP LIST
+       ============================================================ */
+    .gov-steps {
+      list-style: none;
+      padding-left: 0;
+      margin: var(--space-4) 0;
+    }
+
+    .gov-steps li {
+      padding: var(--space-4) var(--space-4) var(--space-4) 3rem;
+      margin-bottom: var(--space-2);
+      background-color: var(--perion-grey);
+      border-left: 3px solid var(--perion-midnight);
+      position: relative;
+      counter-increment: gov-step;
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+    }
+
+    .gov-steps {
+      counter-reset: gov-step;
+    }
+
+    .gov-steps li::before {
+      content: counter(gov-step);
+      position: absolute;
+      left: var(--space-3);
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 800;
+      font-size: var(--text-lg);
+      color: var(--perion-amber);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ============================================================
+       BULLET LISTS
+       ============================================================ */
+    ul {
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    li {
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      margin-bottom: var(--space-2);
+      font-size: var(--text-base);
+    }
+
+    li strong {
+      color: var(--perion-midnight);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       RACI LEGEND
+       ============================================================ */
+    .raci-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+      padding: var(--space-4);
+      background-color: var(--perion-grey);
+      border-top: 3px solid var(--perion-midnight);
+    }
+
+    .raci-legend__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+    }
+
+    .raci-legend__code {
+      font-weight: 800;
+      font-size: var(--text-base);
+      color: var(--perion-midnight);
+      min-width: 1.5rem;
+    }
+
+    .raci-legend__desc {
+      color: var(--perion-graphite);
+    }
+
+    /* ============================================================
+       VERSION SCHEME BLOCK
+       ============================================================ */
+    .version-scheme {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+    }
+
+    .version-scheme__item {
+      border: 1px solid #dde1e7;
+      padding: var(--space-4);
+      border-top: 3px solid var(--perion-amber);
+    }
+
+    .version-scheme__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      margin-bottom: var(--space-2);
+    }
+
+    .version-scheme__desc {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       ASSET PLACEHOLDER
+       ============================================================ */
+    .asset-placeholder {
+      border: 2px dashed var(--perion-midnight);
+      background-color: var(--perion-grey);
+      padding: var(--space-10) var(--space-8);
+      text-align: center;
+      margin: var(--space-8) 0;
+    }
+
+    .asset-placeholder__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      background-color: var(--perion-midnight);
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+
+    .asset-placeholder__description {
+      font-size: var(--text-sm);
+      color: var(--perion-midnight);
+      font-weight: 500;
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       LEVEL HIERARCHY VISUAL
+       ============================================================ */
+    .level-hierarchy {
+      border: 1px solid #dde1e7;
+      overflow: hidden;
+      margin: var(--space-6) 0;
+    }
+
+    .level-hierarchy__row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 1fr;
+      border-bottom: 1px solid #dde1e7;
+    }
+
+    .level-hierarchy__row:last-child {
+      border-bottom: none;
+    }
+
+    .level-hierarchy__row--header {
+      background-color: var(--perion-midnight);
+    }
+
+    .level-hierarchy__cell {
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      border-right: 1px solid #dde1e7;
+      line-height: 1.5;
+    }
+
+    .level-hierarchy__cell:last-child {
+      border-right: none;
+    }
+
+    .level-hierarchy__row--header .level-hierarchy__cell {
+      color: var(--perion-white);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-align: center;
+      border-right-color: rgba(255,255,255,0.08);
+    }
+
+    .level-hierarchy__badge {
+      font-weight: 800;
+      font-size: var(--text-base);
+      color: var(--perion-midnight);
+      text-align: center;
+    }
+
+    .level-hierarchy__row:nth-child(even):not(.level-hierarchy__row--header) {
+      background-color: var(--perion-grey);
+    }
+
+    /* ============================================================
+       CONFIDENTIALITY BANNER
+       ============================================================ */
+    .confidentiality-banner {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: var(--space-4) var(--space-6);
+      margin: var(--space-8) 0;
+    }
+
+    .confidentiality-banner p {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      max-width: none;
+      margin-bottom: 0;
+    }
+
+    .confidentiality-banner strong {
+      color: var(--perion-midnight);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       DOCUMENT FOOTER
+       ============================================================ */
+    .doc-footer {
+      background-color: var(--perion-midnight);
+      color: rgba(255,255,255,0.6);
+      padding: var(--space-10) var(--space-8);
+      border-top: 5px solid var(--perion-amber);
+    }
+
+    .doc-footer__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .doc-footer__block strong {
+      color: var(--perion-amber);
+      display: block;
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .doc-footer__block p,
+    .doc-footer__block span {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      display: block;
+      max-width: none;
+      margin-bottom: 0;
+    }
+
+    .doc-footer__sig {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: var(--space-3);
+      margin-top: var(--space-3);
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 768px) {
+      .doc-header__top-bar { flex-direction: column; }
+      .doc-header__title { font-size: var(--text-2xl); }
+      .mandate-strip { flex-direction: column; }
+      .doc-footer__inner { grid-template-columns: 1fr; }
+      .level-hierarchy__row { grid-template-columns: 60px 1fr; }
+      .level-hierarchy__cell:nth-child(3),
+      .level-hierarchy__cell:nth-child(4) { display: none; }
+      .lifecycle-flow { grid-template-columns: repeat(2, 1fr); }
+      .page-wrapper { padding: 0 var(--space-4); }
+    }
+
+    @media print {
+      .doc-header { break-after: page; }
+      h2 { break-before: auto; }
+      table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       DOCUMENT HEADER — LEVEL 6 AUTHORITY ZONE
+       ============================================================ -->
+  <header class="doc-header" role="banner">
+    <div class="doc-header__inner page-wrapper">
+
+      <div class="doc-header__top-bar">
+        <div class="brand-block">
+          <div class="brand-block__name">Perion Lighting</div>
+          <div class="brand-block__sub">A Sunbird Lighting Company</div>
+        </div>
+        <div class="level-badge">Level 6 — Meta / Governance</div>
+      </div>
+
+      <h1 class="doc-header__title">Enterprise Documentation Control Framework</h1>
+      <p class="doc-header__subtitle">Meta / Governance Authority — The authoritative layer governing creation, validation, storage, and distribution of all technical and commercial artifacts within the Perion Documentation System.</p>
+
+      <div class="mandate-strip" role="contentinfo">
+        <div class="mandate-strip__item">
+          <div class="mandate-strip__label">Governance Level</div>
+          <div class="mandate-strip__value">Level 6 — Meta / Governance</div>
+        </div>
+        <div class="mandate-strip__item">
+          <div class="mandate-strip__label">Release Date</div>
+          <div class="mandate-strip__value">February 26, 2026</div>
+        </div>
+        <div class="mandate-strip__item">
+          <div class="mandate-strip__label">Document Status</div>
+          <div class="mandate-strip__value">Approved — Controlled Copy</div>
+        </div>
+        <div class="mandate-strip__item">
+          <div class="mandate-strip__label">Classification</div>
+          <div class="mandate-strip__value">Commercial-in-Confidence</div>
+        </div>
+        <div class="mandate-strip__item">
+          <div class="mandate-strip__label">Archive Retention</div>
+          <div class="mandate-strip__value"><span class="inline-technical">7 Years</span> — Legal Defensibility</div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN DOCUMENT BODY
+       ============================================================ -->
+  <main id="main-content">
+    <div class="page-wrapper">
+
+      <!-- ========================================================
+           PREAMBLE / FRAMEWORK ABSTRACT
+           ======================================================== -->
+      <div class="doc-abstract" role="note" aria-label="Framework abstract">
+        <div class="doc-abstract__label">Framework Abstract</div>
+        <p>
+          This document establishes a comprehensive governance hierarchy designed to protect the accuracy and consistency of Perion Lighting's technical and commercial records. By implementing a six-level control framework, the organization ensures that engineering specifications remain the "technical truth" and are never diluted by marketing or regional adaptations. The system introduces a mandatory "Tender Freeze" protocol, which locks verified documentation to provide a legally defensible and unalterable foundation during active bidding cycles. Ultimately, this framework centralizes accountability and version control, mandating that only specific authorized leaders can approve changes to the company's definitive master archive.
+        </p>
+      </div>
+
+      <!-- Governance Preamble -->
+      <section aria-labelledby="heading-preamble">
+        <p>
+          The transition from a basic governance structure to a robust enterprise documentation control framework is a mandatory evolution for organizations operating within complex engineering, procurement, and high-security environments. This framework, established as Level 6 (Meta / Governance), serves as the authoritative layer that governs the creation, validation, storage, and distribution of all technical and commercial artifacts within the system. By establishing a canonical layout authority and strict level separation logic, the framework ensures that "Technical Truth" is preserved across the entire documentation stack, preventing the phenomenon of "document drift" which frequently compromises the integrity of technical specifications during marketing distillation or multi-regional expansion. This report outlines the mandatory rules, structural hierarchies, and digital control environments required to maintain an audit-defensible and legally robust documentation ecosystem.
+        </p>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 1 — GOVERNANCE SYSTEM ARCHITECTURE
+           ======================================================== -->
+      <section aria-labelledby="heading-architecture">
+        <span class="section-label">Section 1</span>
+        <h2 id="heading-architecture">Governance System Architecture</h2>
+
+        <p>
+          The governance system is architected as a six-level vertical hierarchy. Each level maintains a distinct functional boundary and audience, ensuring that technical engineering data is never conflated with commercial narratives or branding guidelines. This architecture is designed to facilitate a unidirectional flow of content validation while allowing for a structured escalation path for deviations or disputes.
+        </p>
+
+        <!-- 1.1 Visual Hierarchy -->
+        <h3 id="heading-hierarchy">1.1 Visual Hierarchy and Level Definitions</h3>
+
+        <p>
+          The hierarchical architecture ensures that every document is anchored to its functional purpose. The separation logic prevents content from "crossing levels," which is essential for maintaining the integrity of technical specifications during procurement cycles.
+        </p>
+
+        <div class="table-wrapper">
+          <table aria-label="Six-level documentation hierarchy">
+            <thead>
+              <tr>
+                <th scope="col">Level</th>
+                <th scope="col">Functional Identity</th>
+                <th scope="col">Governing Mandate</th>
+                <th scope="col">Primary Audience</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Level 1</td>
+                <td>Customer-Facing PDS</td>
+                <td>Value proposition and market positioning.</td>
+                <td>Customers, Distributors</td>
+              </tr>
+              <tr>
+                <td>Level 2</td>
+                <td>Technical TDS</td>
+                <td>Single source of technical and engineering truth.</td>
+                <td>Engineers, Technical Buyers</td>
+              </tr>
+              <tr>
+                <td>Level 3</td>
+                <td>Procurement &amp; BOM</td>
+                <td>Commercial execution and ordering logic.</td>
+                <td>Procurement, Operations</td>
+              </tr>
+              <tr>
+                <td>Level 4</td>
+                <td>Compliance &amp; Certs</td>
+                <td>Evidence layer and regulatory declarations.</td>
+                <td>Auditors, Tender Boards</td>
+              </tr>
+              <tr>
+                <td>Level 5</td>
+                <td>Brand &amp; Design</td>
+                <td>Visual system and layout control.</td>
+                <td>Designers, Marketing</td>
+              </tr>
+              <tr>
+                <td>Level 6</td>
+                <td>Governance Authority</td>
+                <td>Meta-control and structural authority.</td>
+                <td>Executive Board, Auditors</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 1.2 Content Flow -->
+        <h3 id="heading-content-flow">1.2 Content Flow and Escalation Path</h3>
+
+        <p>
+          The content flow is governed by a technical-first logic. Engineering specifications defined at Level 2 provide the "Technical Truth" which informs the market-ready narratives at Level 1. Conversely, procurement logic at Level 3 must adhere to the constraints defined in Level 2. The escalation path for any deviation from this hierarchy is vertical. If a marketing requirement at Level 1 conflicts with an engineering specification at Level 2, the dispute must be escalated to the Level 6 Governance Authority for resolution. Unauthorized modifications to the canonical layout at any level are prohibited and trigger an immediate "Invalidation Notice" from the Level 6 board.
+        </p>
+
+        <div class="callout" role="note" aria-label="Content flow governance note">
+          <div class="callout__title">Content Flow — Technical-First Logic</div>
+          <p>
+            The flow of content begins at the technical authority layer (Level 2). Any specification change at this level triggers a mandatory assessment of the downstream levels, particularly Level 3 (Procurement) and Level 4 (Compliance). This ensures that the physical hardware listed in the Bill of Materials (BOM) remains in absolute alignment with the engineering certifications and the customer-facing data sheets.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 2 — RACI MATRIX
+           ======================================================== -->
+      <section aria-labelledby="heading-raci">
+        <span class="section-label">Section 2</span>
+        <h2 id="heading-raci">RACI Matrix (Mandatory Decision Authority)</h2>
+
+        <p>
+          The management of an enterprise-grade documentation stack requires the formal assignment of decision authority. This is achieved through a RACI matrix (Responsible, Accountable, Consulted, Informed), which defines the roles of Product Management, Engineering, Marketing, Operations, and the Executive Board across the document lifecycle.
+        </p>
+
+        <!-- 2.1 Formal RACI Matrix -->
+        <h3 id="heading-raci-matrix">2.1 Formal RACI Matrix</h3>
+
+        <p>
+          The following matrix establishes the mandatory roles for documentation control. In this framework, "Accountability" is restricted to a single role per task to ensure clarity of ownership.
+        </p>
+
+        <div class="table-wrapper">
+          <table aria-label="RACI matrix for documentation control">
+            <thead>
+              <tr>
+                <th scope="col">Task / Activity</th>
+                <th scope="col">Product Management</th>
+                <th scope="col">Engineering</th>
+                <th scope="col">Marketing</th>
+                <th scope="col">Operations</th>
+                <th scope="col">Executive</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Content Creation</td>
+                <td class="raci-A">A</td>
+                <td class="raci-C">C</td>
+                <td class="raci-C">C</td>
+                <td class="raci-I">I</td>
+                <td class="raci-I">I</td>
+              </tr>
+              <tr>
+                <td>Technical Validation</td>
+                <td class="raci-C">C</td>
+                <td class="raci-A">A</td>
+                <td class="raci-I">I</td>
+                <td class="raci-C">C</td>
+                <td class="raci-I">I</td>
+              </tr>
+              <tr>
+                <td>Compliance Approval</td>
+                <td class="raci-I">I</td>
+                <td class="raci-R">R</td>
+                <td class="raci-I">I</td>
+                <td class="raci-C">C</td>
+                <td class="raci-A">A</td>
+              </tr>
+              <tr>
+                <td>Final Release Auth</td>
+                <td class="raci-C">C</td>
+                <td class="raci-C">C</td>
+                <td class="raci-C">C</td>
+                <td class="raci-A">A</td>
+                <td class="raci-C">C</td>
+              </tr>
+              <tr>
+                <td>Archive Control</td>
+                <td class="raci-I">I</td>
+                <td class="raci-I">I</td>
+                <td class="raci-I">I</td>
+                <td class="raci-A">A</td>
+                <td class="raci-I">I</td>
+              </tr>
+              <tr>
+                <td>Structural Revision</td>
+                <td class="raci-C">C</td>
+                <td class="raci-C">C</td>
+                <td class="raci-C">C</td>
+                <td class="raci-R">R</td>
+                <td class="raci-A">A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- RACI Legend -->
+        <div class="raci-legend" role="note" aria-label="RACI legend">
+          <div class="raci-legend__item">
+            <span class="raci-legend__code">R</span>
+            <span class="raci-legend__desc">Responsible — The entity that performs the work to complete the task.</span>
+          </div>
+          <div class="raci-legend__item">
+            <span class="raci-legend__code">A</span>
+            <span class="raci-legend__desc">Accountable — The entity with the final decision authority and "veto" power.</span>
+          </div>
+          <div class="raci-legend__item">
+            <span class="raci-legend__code">C</span>
+            <span class="raci-legend__desc">Consulted — Subject matter experts whose input is required before the task is finalized.</span>
+          </div>
+          <div class="raci-legend__item">
+            <span class="raci-legend__code">I</span>
+            <span class="raci-legend__desc">Informed — Stakeholders who are notified of the task's completion or the decision's outcome.</span>
+          </div>
+        </div>
+
+        <!-- 2.2 Clarification -->
+        <h3 id="heading-raci-clarification">2.2 Clarification of Final Decision Authority</h3>
+
+        <p>
+          Final decision authority for all technical specifications rests with the Engineering lead, while final release authorization for "Tender-Grade" documents rests with Operations. In the event of an irreconcilable conflict between departments, the Executive layer (CEO) serves as the ultimate arbiter, specifically for documents that carry legal or regulatory liability, such as Compliance Appendices.
+        </p>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 3 — ESCALATION & DISPUTE PROTOCOL
+           ======================================================== -->
+      <section aria-labelledby="heading-escalation">
+        <span class="section-label">Section 3</span>
+        <h2 id="heading-escalation">Escalation &amp; Dispute Protocol</h2>
+
+        <p>
+          Disputes regarding document content or structural deviations must be resolved through a formal protocol to prevent the degradation of technical standards. The Level 6 Meta-Governance Board serves as the review board for all such escalations.
+        </p>
+
+        <!-- 3.1 Engineering vs Marketing -->
+        <h3 id="heading-eng-mkt-conflict">3.1 Engineering vs. Marketing Conflict Resolution</h3>
+
+        <p>
+          A common point of friction exists between the engineering requirement for technical accuracy and the marketing desire for simplified messaging. The protocol mandates that the Technical Data Sheet (TDS) at Level 2 is the primary authority. Marketing narratives at Level 1 may simplify information but must never contradict the engineering thresholds defined in Level 2. Any attempt to soften technical constraints for marketing purposes constitutes a violation of governance and shall be rejected by the Engineering lead during the review phase.
+        </p>
+
+        <!-- 3.2 Compliance Dispute -->
+        <h3 id="heading-compliance-dispute">3.2 Compliance Dispute Escalation</h3>
+
+        <p>
+          Disputes regarding compliance status (Level 4) often occur when product updates move faster than third-party laboratory certifications. In such cases, the document status must remain in "REVIEW" or "DRAFT" and cannot be promoted to "FINAL" for external distribution. If a sales lead requires the document for a tender, the escalation path requires the CEO to sign a formal "Manufacturer's Declaration" to bridge the evidence gap, provided the engineering data supports the claim.
+        </p>
+
+        <!-- 3.3 Distributor Deviation -->
+        <h3 id="heading-distributor-deviation">3.3 Distributor Deviation and Unauthorized Circulation</h3>
+
+        <p>
+          Distributors are prohibited from modifying any Perion Lighting document. Any deviation discovered in a regional market triggers an immediate "Unauthorized Document Circulation Response". This involves:
+        </p>
+
+        <ol class="gov-steps" aria-label="Unauthorized circulation response steps">
+          <li>Immediate notification to the distributor to cease distribution of the non-approved version.</li>
+          <li>The issuance of the current "Controlled Release" version to all affected parties.</li>
+          <li>A formal audit of the distributor's regional documentation portal.</li>
+        </ol>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 4 — AUDIT & REVIEW CADENCE
+           ======================================================== -->
+      <section aria-labelledby="heading-audit">
+        <span class="section-label">Section 4</span>
+        <h2 id="heading-audit">Audit &amp; Review Cadence</h2>
+
+        <p>
+          Enterprise governance is not a static state but a continuous process of verification. The framework mandates a scheduled audit cadence to ensure all documentation remains current, compliant, and accurate.
+        </p>
+
+        <!-- 4.1 Scheduled Review Cycles -->
+        <h3 id="heading-review-cycles">4.1 Scheduled Review Cycles</h3>
+
+        <p>
+          The following review cycles are mandatory for the maintenance of the "Audit-Grade" status of the documentation stack:
+        </p>
+
+        <ol class="gov-steps" aria-label="Mandatory review cycle schedule">
+          <li>
+            <strong>Annual Full Documentation Review:</strong> A comprehensive audit of every document in the /Perion_Documentation master repository. This review verifies that the structural integrity of the six levels is maintained and that no "structural drift" has occurred.
+          </li>
+          <li>
+            <strong>Quarterly Compliance Review:</strong> A targeted audit of Level 4 documents. This cycle ensures that ISO certifications, laboratory test reports (e.g., <span class="inline-technical">IP69K</span>), and EMC safety declarations are valid and that renewal processes have been initiated for any certificates nearing expiry.
+          </li>
+        </ol>
+
+        <!-- 4.2 Trigger Events -->
+        <h3 id="heading-trigger-events">4.2 Trigger Events for Forced Revision</h3>
+
+        <p>
+          In addition to scheduled reviews, certain events mandate an immediate "Forced Revision" of the documentation:
+        </p>
+
+        <ol class="gov-steps" aria-label="Forced revision trigger events">
+          <li>
+            <strong>Technical/Engineering Changes:</strong> Any change to hardware, such as a shift in LED binning or a change in the cable's UV-resistance compound, requires a major version update to Level 2 and Level 3 documents.
+          </li>
+          <li>
+            <strong>Regulatory Updates:</strong> Changes in international safety or environmental standards (e.g., RoHS/REACH updates) mandate a revision of Level 4 compliance declarations.
+          </li>
+          <li>
+            <strong>Distributor Inquiries/Legal Challenges:</strong> If a technical specification is formally challenged in a legal or procurement setting, the document must undergo an immediate verification audit by the Engineering and Compliance teams.
+          </li>
+        </ol>
+
+        <!-- 4.3 Expiry Policy -->
+        <h3 id="heading-expiry">4.3 Expiry Policy for Outdated Certifications</h3>
+
+        <p>
+          Certifications that have reached their expiration date are considered "invalidating artifacts." The governance rule mandates that any document relying on an expired certification must be moved to "REVIEW" status and watermarked as "EXPIRED – NOT FOR TENDER SUBMISSION". It is the responsibility of Operations to track expiry dates in the Master Index and trigger the renewal process at least <span class="inline-technical">90 Days</span> prior to expiry.
+        </p>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 5 — DIGITAL CONTROL ENVIRONMENT
+           ======================================================== -->
+      <section aria-labelledby="heading-digital">
+        <span class="section-label">Section 5</span>
+        <h2 id="heading-digital">Digital Control Environment</h2>
+
+        <p>
+          The digital environment where the "Single Source of Truth" is housed must be managed with the same level of rigor as the documents themselves. Control over access, storage, and archival is central to maintaining an audit-defensible system.
+        </p>
+
+        <!-- 5.1 Master File Storage -->
+        <h3 id="heading-storage">5.1 Master File Storage and Access Hierarchy</h3>
+
+        <p>
+          The canonical master files must be stored in a centralized, secured location, specifically the /Perion_Documentation root folder. The subfolder structure is strictly defined to mirror the document hierarchy:
+        </p>
+
+        <div class="folder-structure" role="figure" aria-label="Master file storage structure">
+          <code>
+            <span class="folder-structure__line"><span class="folder-structure__dir">/Perion_Documentation</span> <span class="folder-structure__comment">— Root: Single Source of Truth</span></span>
+            <span class="folder-structure__line">  <span class="folder-structure__dir">/PDS</span>        <span class="folder-structure__comment">— Level 1: Customer-facing sheets</span></span>
+            <span class="folder-structure__line">  <span class="folder-structure__dir">/TDS</span>        <span class="folder-structure__comment">— Level 2: Technical engineering sheets</span></span>
+            <span class="folder-structure__line">  <span class="folder-structure__dir">/Procurement</span> <span class="folder-structure__comment">— Level 3: Ordering and BOM guides</span></span>
+            <span class="folder-structure__line">  <span class="folder-structure__dir">/Compliance</span>  <span class="folder-structure__comment">— Level 4: Certifications and declarations</span></span>
+            <span class="folder-structure__line">  <span class="folder-structure__dir">/Brand</span>       <span class="folder-structure__comment">— Level 5: Design assets</span></span>
+            <span class="folder-structure__line">  <span class="folder-structure__dir">/Archive</span>     <span class="folder-structure__comment">— Superseded and obsolete documents</span></span>
+          </code>
+        </div>
+
+        <p>
+          Access control follows a Role-Based Access Control (RBAC) model. Only the "Accountable" role for a specific level has editing rights, while all other stakeholders are restricted to "Read-Only" access for "FINAL" versions.
+        </p>
+
+        <!-- 5.2 Version Locking -->
+        <h3 id="heading-version-locking">5.2 Version Locking and Backup Policy</h3>
+
+        <p>
+          Once a document is approved as "FINAL," it must be version-locked to prevent accidental modification. Any further changes require the initiation of a new version (e.g., from v1.0 to v1.1 or v2.0).
+        </p>
+
+        <div class="version-scheme" aria-label="Version scheme and backup policy">
+          <div class="version-scheme__item">
+            <div class="version-scheme__label">Backup Policy</div>
+            <div class="version-scheme__desc">The entire documentation repository must be backed up daily to a secure, off-site location to ensure disaster recovery capability.</div>
+          </div>
+          <div class="version-scheme__item">
+            <div class="version-scheme__label">Archive Retention</div>
+            <div class="version-scheme__desc">All documentation, particularly technical specifications and compliance evidence, must be retained for a minimum of <span class="inline-technical">7 Years</span>. This retention period is mandatory to meet legal and audit requirements in the mining and security infrastructure sectors where long-term liability is a factor.</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 6 — TENDER FREEZE & SUBMISSION PROTOCOL
+           ======================================================== -->
+      <section aria-labelledby="heading-tender">
+        <span class="section-label">Section 6</span>
+        <h2 id="heading-tender">Tender Freeze &amp; Submission Protocol</h2>
+
+        <p>
+          In the context of government and large-scale enterprise procurement, the stability of technical claims is paramount. The "Tender Freeze" protocol prevents the loss of credibility that occurs when technical specifications change mid-submission.
+        </p>
+
+        <!-- 6.1 The Freeze Rule -->
+        <h3 id="heading-freeze-rule">6.1 The Freeze Rule and Revision Prohibition</h3>
+
+        <p>
+          A "Tender Freeze" is a state where the active version of a document is locked and cannot be updated, regardless of any internal revisions, until the tender adjudication period is over.
+        </p>
+
+        <div class="table-wrapper">
+          <table aria-label="Tender freeze rules">
+            <thead>
+              <tr>
+                <th scope="col">Freeze Rule</th>
+                <th scope="col">Specification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Prohibition of Mid-Tender Revision</td>
+                <td>Revisions to submitted documents are prohibited once the tender deadline has passed, unless formally requested by the tender board for clarification.</td>
+              </tr>
+              <tr>
+                <td>Version Stamping</td>
+                <td>Every document submitted must be stamped with a unique submission-specific version identifier (e.g., PRN-TDS-V1.0-TENDER-2026-REF01) to ensure the adjudicators are reviewing the exact canonical version intended for that bid.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 6.2 Formal Supersession Rules -->
+        <h3 id="heading-supersession">6.2 Formal Supersession Rules</h3>
+
+        <p>
+          When a new version of a document is released after a tender freeze is lifted, it must follow formal supersession rules. The new version must explicitly state which version it replaces. The superseded version is then moved to the /Archive folder to prevent its accidental use in future tenders.
+        </p>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 7 — DOCUMENT LIFECYCLE FLOW
+           ======================================================== -->
+      <section aria-labelledby="heading-lifecycle">
+        <span class="section-label">Section 7</span>
+        <h2 id="heading-lifecycle">Document Lifecycle Flow</h2>
+
+        <p>
+          The document lifecycle is a structured progression from an internal idea to an archived piece of historical evidence. Each stage has defined responsibilities and mandatory gates.
+        </p>
+
+        <!-- 7.1 Lifecycle Stages -->
+        <h3 id="heading-lifecycle-stages">7.1 Lifecycle Stages</h3>
+
+        <div class="table-wrapper">
+          <table aria-label="Document lifecycle stages">
+            <thead>
+              <tr>
+                <th scope="col">Stage</th>
+                <th scope="col">Responsibility</th>
+                <th scope="col">Primary Action / Gate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Draft</td>
+                <td>Product Management</td>
+                <td>Initial content creation and technical drafting.</td>
+              </tr>
+              <tr>
+                <td>Review</td>
+                <td>Engineering / Marketing</td>
+                <td>Technical and brand validation sweep.</td>
+              </tr>
+              <tr>
+                <td>Approved</td>
+                <td>Executive Sign-Off</td>
+                <td>Legal and compliance final authorization.</td>
+              </tr>
+              <tr>
+                <td>Released</td>
+                <td>Operations</td>
+                <td>Version locking and master storage placement.</td>
+              </tr>
+              <tr>
+                <td>Active</td>
+                <td>Sales / Tenders</td>
+                <td>Distribution to customers and external partners.</td>
+              </tr>
+              <tr>
+                <td>Superseded</td>
+                <td>Operations</td>
+                <td>Removal from active folders and archive tagging.</td>
+              </tr>
+              <tr>
+                <td>Archived</td>
+                <td>Operations</td>
+                <td>Long-term <span class="inline-technical">7-Year</span> storage for legal defensibility.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 7.2 Gate Responsibilities -->
+        <h3 id="heading-gate-responsibilities">7.2 Gate Responsibilities</h3>
+
+        <p>
+          Promotion from Review to Approved is the most critical gate in the lifecycle. It requires a "Change-Impact Sweep" to ensure that the data being approved does not conflict with other levels. For example, if a Level 2 TDS update increases the power consumption of a linear perimeter illumination unit, the Level 3 Ordering Guide must be checked to ensure the Power Pack SKUs are still compatible.
+        </p>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 8 — LEGAL PROTECTION CLAUSE
+           ======================================================== -->
+      <section aria-labelledby="heading-legal">
+        <span class="section-label">Section 8</span>
+        <h2 id="heading-legal">Legal Protection Clause</h2>
+
+        <p>
+          The authority of these documents is anchored in their controlled nature. To protect the organization from liability arising from unauthorized modifications, the following statement must be included in all controlled documents:
+        </p>
+
+        <div class="callout--authority" role="note" aria-label="Mandatory legal protection clause">
+          <div class="callout__title">Mandatory Controlled Document Statement</div>
+          <p>
+            "This is a Controlled Document. Unauthorized modification, duplication, or distribution invalidates the document's authority and voids all technical, safety, and performance warranties associated with the Perion Linear Perimeter Illumination Infrastructure. All technical specifications are subject to the Level 6 Meta-Governance Framework. Only documents retrieved from the official Perion Master File Storage are considered 'Final' and 'Audit-Defensible'."
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 9 — STRUCTURAL ENFORCEMENT & LAYOUT AUTHORITY
+           ======================================================== -->
+      <section aria-labelledby="heading-structural">
+        <span class="section-label">Section 9</span>
+        <h2 id="heading-structural">Structural Enforcement and Layout Authority</h2>
+
+        <p>
+          The canonical layout is the "visual container" for technical truth. It is ordered exactly as technical buyers and auditors expect: Overview → Engineering → Procurement → Compliance.
+        </p>
+
+        <!-- 9.1 Mandatory Section Order -->
+        <h3 id="heading-section-order">9.1 Mandatory Section Order</h3>
+
+        <p>
+          To maintain consistency across multi-regional versions, the section order defined in the "Master PDS/TDS Layout Structure" is mandatory:
+        </p>
+
+        <ol class="gov-steps" aria-label="Mandatory section order">
+          <li><strong>System Overview:</strong> Market positioning and high-level value.</li>
+          <li><strong>Engineering Specifications:</strong> Electrical, environmental, and mechanical thresholds.</li>
+          <li><strong>Procurement Logic:</strong> SKUs, ordering tables, and BOM instructions.</li>
+          <li><strong>Compliance Annexures:</strong> ISO certificates, lab test reports, and signatures.</li>
+        </ol>
+
+        <!-- 9.2 Rule of Level Separation -->
+        <h3 id="heading-level-separation">9.2 Rule of Level Separation</h3>
+
+        <p>
+          Content must never cross levels. For example, detailed laboratory test data (Level 4) must not be embedded in the Customer-Facing PDS (Level 1). Instead, Level 1 documents should reference the existence of Level 4 certificates, maintaining a clean and professional information hierarchy. This separation ensures that each audience receives the appropriate density of information while maintaining a clear path back to the "Evidence Layer" for those who require it.
+        </p>
+
+        <div class="callout" role="note" aria-label="Level separation enforcement note">
+          <div class="callout__title">Level Separation — Enforcement Rule</div>
+          <p>
+            Any attempt to embed raw laboratory test data (Level 4) into a Customer-Facing PDS (Level 1) constitutes a governance violation and triggers an immediate "Invalidation Notice" from the Level 6 Meta-Governance Board. Level 1 documents must utilize reference-only logic — acknowledging the existence of certifications without exposing the detailed engineering thresholds that define the system's performance.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 10 — SUMMARY OF GOVERNANCE COMPLIANCE
+           ======================================================== -->
+      <section aria-labelledby="heading-summary">
+        <span class="section-label">Section 10</span>
+        <h2 id="heading-summary">Summary of Governance Compliance</h2>
+
+        <p>
+          The implementation of this Enterprise Documentation Control Framework transitions the organization from ad-hoc document creation to a professional, audit-ready state. By adhering to the mandatory RACI matrix, the digital control environment, and the tender freeze protocols, the organization ensures that its technical documentation is not only accurate but also legally defensible and scalable for international operations. This framework is the governing authority for all Perion Lighting artifacts and is to be enforced without exception.
+        </p>
+
+        <div class="table-wrapper">
+          <table aria-label="Governance compliance summary">
+            <thead>
+              <tr>
+                <th scope="col">Governance Pillar</th>
+                <th scope="col">Protocol</th>
+                <th scope="col">Enforcement Authority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Technical Truth Preservation</td>
+                <td>Level 2 TDS as primary authority; marketing may not contradict engineering thresholds.</td>
+                <td>Engineering Lead</td>
+              </tr>
+              <tr>
+                <td>RACI Decision Control</td>
+                <td>Single accountable role per task; no dual accountability permitted.</td>
+                <td>Level 6 Meta-Governance Board</td>
+              </tr>
+              <tr>
+                <td>Tender Freeze</td>
+                <td>Active version locked for duration of tender adjudication period.</td>
+                <td>Operations &amp; CEO</td>
+              </tr>
+              <tr>
+                <td>Digital Control</td>
+                <td>RBAC model; FINAL documents read-only to all non-accountable roles.</td>
+                <td>Operations</td>
+              </tr>
+              <tr>
+                <td>Certification Expiry</td>
+                <td>Renewal initiated minimum <span class="inline-technical">90 Days</span> prior to expiry; expired certs trigger REVIEW status.</td>
+                <td>Operations</td>
+              </tr>
+              <tr>
+                <td>Archive Retention</td>
+                <td>Minimum <span class="inline-technical">7-Year</span> retention for all technical specifications and compliance evidence.</td>
+                <td>Operations</td>
+              </tr>
+              <tr>
+                <td>Distributor Compliance</td>
+                <td>Zero modification rights; unauthorized circulation triggers immediate "Invalidation Notice."</td>
+                <td>Level 6 Meta-Governance Board</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           WORKS CITED
+           ======================================================== -->
+      <section aria-labelledby="heading-references">
+        <span class="section-label">Reference Documents</span>
+        <h2 id="heading-references">Works Cited</h2>
+
+        <div class="table-wrapper">
+          <table aria-label="Referenced documents">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Document Title</th>
+                <th scope="col">Source Reference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Level 6 — Final Audit Critique</td>
+                <td>drive.google.com — Internal governance repository</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Level 6 — Meta / Governance</td>
+                <td>drive.google.com — Internal governance repository</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           EXECUTIVE SIGNATURE & APPROVAL
+           ======================================================== -->
+      <section aria-labelledby="heading-approval">
+        <span class="section-label">Executive Authorization</span>
+        <h2 id="heading-approval">Approved for Executive Signature</h2>
+
+        <div class="callout" role="note" aria-label="Executive approval block">
+          <div class="callout__title">Signatory Authority — Level 6 Meta-Governance</div>
+          <p>
+            Senior Editorial Director &amp; Level 6 Meta-Governance Authority<br />
+            Perion Lighting
+          </p>
+        </div>
+
+        <div class="table-wrapper">
+          <table aria-label="Executive signature block">
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Signatory Role</td>
+                <td>Senior Editorial Director &amp; Level 6 Meta-Governance Authority</td>
+              </tr>
+              <tr>
+                <td>Organization</td>
+                <td>Perion Lighting — A Sunbird Lighting Company</td>
+              </tr>
+              <tr>
+                <td>Signature Line</td>
+                <td>_______________________________________________</td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>_______________________________________________</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- ============================================================
+       DOCUMENT FOOTER — GOVERNANCE METADATA ZONE
+       ============================================================ -->
+  <footer class="doc-footer" role="contentinfo">
+    <div class="doc-footer__inner page-wrapper">
+
+      <div class="doc-footer__block">
+        <strong>Document Authority</strong>
+        <span>Document ID: PRN-L6-GOV-001-v1.0</span>
+        <span>Revision: 1.0</span>
+        <span>Status: Approved — Controlled Copy</span>
+        <span>Release Date: February 26, 2026</span>
+        <span>Classification: Commercial-in-Confidence</span>
+      </div>
+
+      <div class="doc-footer__block">
+        <strong>Retention &amp; Control</strong>
+        <span>Archive Retention: <span class="inline-technical">7 Years</span> — Legal Defensibility</span>
+        <span>Backup Cadence: Daily — Off-site Secure Location</span>
+        <span>Certification Renewal Trigger: <span class="inline-technical">90 Days</span> Prior to Expiry</span>
+        <span>RBAC Model: Enforced — Read-Only for Non-Accountable Roles</span>
+      </div>
+
+      <div class="doc-footer__block">
+        <strong>Legal &amp; Contact</strong>
+        <span>Manufacturer: Perion Lighting — A Sunbird Lighting Company</span>
+        <span>Manufacturing: Cape Town, South Africa · Lititz, Pennsylvania, USA</span>
+        <span>Web: www.perionlighting.com</span>
+        <span>Governed by: Level 6 Protocols — Perion Documentation System</span>
+        <p class="doc-footer__sig">Unauthorized modification, duplication, or distribution invalidates this document's authority and voids all associated warranties. Only documents retrieved from official Perion Master File Storage are considered 'Final' and 'Audit-Defensible'.</p>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perion Enterprise Documentation Control Framework — Master Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       PERION VISUAL DESIGN FRAMEWORK — CSS VARIABLE GOVERNANCE
+       3-COLOR LAW: ENFORCED. NO GRADIENTS. NO SHADOWS. NO OVERLAYS.
+       ================================================================ */
+    :root {
+      --perion-midnight: #0A1D33;
+      --perion-graphite: #2B2E34;
+      --perion-amber:    #F2A900;
+      --perion-grey:     #F5F5F7;
+      --perion-white:    #FFFFFF;
+    }
+
+    /* ================================================================
+       RESET
+       ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ================================================================
+       BASE
+       ================================================================ */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--perion-white);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ================================================================
+       LAYOUT
+       ================================================================ */
+    .page-wrapper {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* ================================================================
+       TENDER FREEZE BANNER
+       ================================================================ */
+    .tender-freeze-bar {
+      background-color: var(--perion-amber);
+      padding: 0.55rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .tf-icon {
+      width: 14px;
+      height: 14px;
+      background-color: var(--perion-midnight);
+      flex-shrink: 0;
+    }
+    .tender-freeze-bar span {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+    }
+
+    /* ================================================================
+       DOCUMENT HEADER
+       ================================================================ */
+    .doc-header {
+      background-color: var(--perion-midnight);
+      border-bottom: 5px solid var(--perion-amber);
+      padding: 3.75rem 0 3rem;
+    }
+    .doc-header .gov-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      border: 1px solid var(--perion-amber);
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+    .doc-header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--perion-white);
+      line-height: 1.15;
+      max-width: 68ch;
+      margin-bottom: 0.6rem;
+    }
+    .doc-header .doc-subtitle {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      max-width: 70ch;
+      margin-bottom: 2rem;
+    }
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .meta-strip-cell {
+      padding: 0 2rem 0 0;
+      margin-right: 2rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .meta-strip-cell:last-child { border-right: none; }
+    .meta-strip-cell .ml {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .meta-strip-cell .mv {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      font-variant-numeric: tabular-nums;
+    }
+    .mv-freeze {
+      color: var(--perion-amber) !important;
+    }
+
+    /* ================================================================
+       SECTION HEADINGS
+       ================================================================ */
+    main { padding: 0 0 1rem; }
+    section { margin-bottom: 4rem; }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--perion-midnight);
+      border-bottom: 2px solid var(--perion-amber);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ================================================================
+       BODY TEXT
+       ================================================================ */
+    p {
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      max-width: 75ch;
+      margin-bottom: 1rem;
+    }
+
+    /* ================================================================
+       INLINE TECHNICAL — ISO 80000-1
+       ================================================================ */
+    .inline-technical {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--perion-midnight);
+      white-space: nowrap;
+      font-size: 0.95em;
+    }
+
+    /* ================================================================
+       TABLE GOVERNANCE
+       ================================================================ */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      border: 1px solid #D4D4D7;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+    }
+    thead th {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      text-align: center;
+      font-weight: 700;
+      padding: 0.85rem 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    thead th:last-child { border-right: none; }
+    tbody td {
+      text-align: left;
+      color: var(--perion-graphite);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #E4E4E6;
+      border-right: 1px solid #E4E4E6;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    tbody td:last-child { border-right: none; }
+    tbody tr:nth-child(even) td { background-color: var(--perion-grey); }
+    .td-level {
+      font-weight: 700;
+      color: var(--perion-midnight);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ================================================================
+       EXECUTIVE OVERVIEW CALLOUT
+       ================================================================ */
+    .exec-callout {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+      max-width: 75ch;
+    }
+    .exec-callout .ec-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.5rem;
+    }
+    .exec-callout p { margin-bottom: 0; max-width: 100%; }
+
+    /* ================================================================
+       DOCUMENT DIRECTORY — LEVEL CARDS
+       ================================================================ */
+    .dir-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border: 1px solid #D4D4D7;
+      margin: 1.75rem 0;
+    }
+    .dir-card {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      border-bottom: 1px solid #D4D4D7;
+      text-decoration: none;
+      color: inherit;
+      transition: background-color 0.12s ease;
+    }
+    .dir-card:last-child { border-bottom: none; }
+    .dir-card:hover { background-color: var(--perion-grey); }
+    .dir-card:hover .dc-arrow { color: var(--perion-amber); }
+    .dir-card:focus {
+      outline: 2px solid var(--perion-amber);
+      outline-offset: -2px;
+    }
+
+    /* Level badge column */
+    .dc-level-col {
+      background-color: var(--perion-midnight);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 0.5rem;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .dc-level-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--perion-white);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .dc-level-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.3rem;
+    }
+    /* Amber accent for Level 6 (governance apex) */
+    .dc-card-l6 .dc-level-col { border-left: 4px solid var(--perion-amber); }
+    .dc-card-l6 .dc-level-num { color: var(--perion-amber); }
+
+    /* Content column */
+    .dc-body {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .dc-identity {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.3rem;
+    }
+    .dc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .dc-purpose {
+      font-size: 0.835rem;
+      color: var(--perion-graphite);
+      line-height: 1.55;
+      max-width: 70ch;
+    }
+    .dc-filename {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.72rem;
+      color: rgba(43,46,52,0.5);
+      margin-top: 0.6rem;
+      display: block;
+    }
+    .dc-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+    .dc-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid #D4D4D7;
+      color: var(--perion-graphite);
+      font-variant-numeric: tabular-nums;
+    }
+    .dc-tag-audience {
+      border-color: var(--perion-midnight);
+      color: var(--perion-midnight);
+    }
+
+    /* Arrow column */
+    .dc-arrow-col {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem 1.5rem 1.5rem 0.5rem;
+      flex-shrink: 0;
+    }
+    .dc-arrow {
+      color: #C0C0C4;
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1;
+      transition: color 0.12s ease;
+    }
+
+    /* ================================================================
+       GOVERNANCE FLOW DIAGRAM (CSS-ONLY)
+       ================================================================ */
+    .flow-diagram {
+      margin: 1.75rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 640px;
+    }
+    .flow-row {
+      display: flex;
+      align-items: stretch;
+    }
+    .flow-node {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      padding: 0.65rem 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .flow-node-num {
+      font-size: 0.65rem;
+      color: var(--perion-amber);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .flow-connector {
+      width: 2px;
+      background-color: var(--perion-amber);
+      margin-left: 1.75rem;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .flow-node-anchor {
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+    }
+    .flow-node-anchor .flow-node-num { color: var(--perion-midnight); }
+
+    /* ================================================================
+       CONTROLLED DOCUMENT NOTICE
+       ================================================================ */
+    .controlled-notice {
+      background-color: var(--perion-midnight);
+      padding: 1.75rem 2rem;
+      margin: 3rem 0 0;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      max-width: 75ch;
+    }
+    .cn-icon {
+      width: 20px;
+      height: 20px;
+      background-color: var(--perion-amber);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+    .cn-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .cn-text {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      max-width: 100%;
+      margin: 0;
+    }
+
+    /* ================================================================
+       DOCUMENT FOOTER
+       ================================================================ */
+    .doc-footer {
+      background-color: var(--perion-midnight);
+      color: rgba(255,255,255,0.38);
+      padding: 1.75rem 2.5rem;
+      font-size: 0.7rem;
+      text-align: center;
+      margin-top: 5rem;
+      border-top: 5px solid var(--perion-amber);
+      line-height: 1.8;
+    }
+    .doc-footer strong { color: rgba(255,255,255,0.72); }
+    .footer-divider {
+      display: inline-block;
+      padding: 0 0.5rem;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ================================================================
+       PRINT
+       ================================================================ */
+    @media print {
+      .doc-header, thead th, .dc-level-col,
+      .controlled-notice, .doc-footer {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .dir-card { page-break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 800px) {
+      .doc-header h1 { font-size: 1.55rem; }
+      .page-wrapper { padding: 0 1.25rem; }
+      .meta-strip { gap: 1rem; }
+      .meta-strip-cell { border-right: none; margin-right: 0; padding-right: 0; }
+      .dir-card { grid-template-columns: 64px 1fr 40px; }
+      .dc-level-num { font-size: 1.15rem; }
+      .dc-title { font-size: 0.9rem; }
+    }
+    @media (max-width: 520px) {
+      .dir-card { grid-template-columns: 56px 1fr; }
+      .dc-arrow-col { display: none; }
+      .dc-body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     TENDER FREEZE BANNER
+     ================================================================ -->
+<div class="tender-freeze-bar" role="alert" aria-label="Document status: Tender Freeze active">
+  <div class="tf-icon" aria-hidden="true"></div>
+  <span>Document Status: FINAL — Tender Freeze Active &nbsp;·&nbsp; Unauthorized modification invalidates all technical warranties</span>
+</div>
+
+<!-- ================================================================
+     DOCUMENT HEADER
+     ================================================================ -->
+<header class="doc-header" role="banner">
+  <div class="page-wrapper">
+    <div class="gov-badge" aria-label="Governance classification">
+      <span>▲</span>
+      <span>Level 6 Governed &nbsp;·&nbsp; Master Directory</span>
+    </div>
+    <h1>Perion Enterprise Documentation Control Framework</h1>
+    <p class="doc-subtitle">Master Directory &amp; Meta-Governance Dashboard — Perion Linear Perimeter Illumination Infrastructure</p>
+
+    <div class="meta-strip" role="region" aria-label="Document control metadata">
+      <div class="meta-strip-cell">
+        <span class="ml">Document Status</span>
+        <span class="mv mv-freeze">FINAL (Tender Freeze)</span>
+      </div>
+      <div class="meta-strip-cell">
+        <span class="ml">Release Date</span>
+        <span class="mv">February 26, 2026</span>
+      </div>
+      <div class="meta-strip-cell">
+        <span class="ml">Operating Mandate</span>
+        <span class="mv">Level 6 Protocols</span>
+      </div>
+      <div class="meta-strip-cell">
+        <span class="ml">Document Levels</span>
+        <span class="mv inline-technical">7 (L0 – L6)</span>
+      </div>
+      <div class="meta-strip-cell">
+        <span class="ml">Classification</span>
+        <span class="mv">Commercial-in-Confidence</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="page-wrapper">
+
+  <!-- ================================================================
+       1.0 EXECUTIVE INFRASTRUCTURE OVERVIEW
+       ================================================================ -->
+  <section id="s1" aria-labelledby="h2-s1">
+    <h2 id="h2-s1">1.0 Executive Infrastructure Overview</h2>
+
+    <p>This centralized dashboard defines the governance, architecture, and specifications for the <strong>Perion Linear Perimeter Illumination Infrastructure</strong>. To protect the accuracy of technical and commercial records, this ecosystem is organized into a strict documentation hierarchy governed by Level 6 protocols.</p>
+
+    <p>This structure ensures that engineering specifications remain the absolute "Technical Truth" and are never compromised or diluted by marketing simplification or regional adaptations.</p>
+
+    <div class="exec-callout" role="note" aria-label="Governance mandate summary">
+      <div class="ec-label">Governance Mandate</div>
+      <p>Content flow originates at the Level 2 technical authority layer. Any modification to engineering specifications at this level triggers a mandatory assessment across all downstream levels. The Level 6 Governance Authority is the non-negotiable institutional instrument that overrides all other documents in the event of conflict. Product category is strictly mandated as "Linear Perimeter Illumination Infrastructure" across the entire documentation stack.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       2.0 DOCUMENTATION HIERARCHY TABLE
+       ================================================================ -->
+  <section id="s2" aria-labelledby="h2-s2">
+    <h2 id="h2-s2">2.0 The Documentation Hierarchy</h2>
+
+    <p>The Perion architecture relies on a vertical hierarchy where each level maintains a distinct functional identity, governing mandate, and primary audience. The hierarchy enforces a unidirectional flow of content validation, preventing the unauthorized crossing of data levels.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Perion documentation hierarchy — all seven levels">
+        <thead>
+          <tr>
+            <th scope="col">Level</th>
+            <th scope="col">Functional Identity</th>
+            <th scope="col">Governing Mandate</th>
+            <th scope="col">Primary Audience</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-level">Level 6</td>
+            <td>Governance Authority</td>
+            <td>Meta-control and structural authority.</td>
+            <td>Executive Board, Auditors</td>
+          </tr>
+          <tr>
+            <td class="td-level">Level 5</td>
+            <td>Brand &amp; Design</td>
+            <td>Visual system and layout control.</td>
+            <td>Designers, Marketing</td>
+          </tr>
+          <tr>
+            <td class="td-level">Level 4</td>
+            <td>Compliance &amp; Certs</td>
+            <td>Evidence layer and regulatory declarations.</td>
+            <td>Auditors, Tender Boards</td>
+          </tr>
+          <tr>
+            <td class="td-level">Level 3</td>
+            <td>Procurement &amp; BOM</td>
+            <td>Commercial execution and ordering logic.</td>
+            <td>Procurement, Operations</td>
+          </tr>
+          <tr>
+            <td class="td-level">Level 2</td>
+            <td>Technical TDS</td>
+            <td>Single source of technical and engineering truth.</td>
+            <td>Engineers, Technical Buyers</td>
+          </tr>
+          <tr>
+            <td class="td-level">Level 1</td>
+            <td>Customer-Facing PDS</td>
+            <td>Value proposition and market positioning.</td>
+            <td>Customers, Distributors</td>
+          </tr>
+          <tr>
+            <td class="td-level">Level 0</td>
+            <td>Visual Design Framework</td>
+            <td>Canonical visual architecture and document archiving.</td>
+            <td>Designers, Marketing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Content Validation Flow</h3>
+    <p>The governance cascade flows downward from Level 6. The diagram below illustrates the unidirectional authority chain. Level 2 is the technical origin point — changes here propagate mandatory review to all downstream levels.</p>
+
+    <div class="flow-diagram" role="img" aria-label="Governance content validation flow from Level 6 down to Level 0">
+      <div class="flow-row">
+        <div class="flow-node flow-node-anchor">
+          <span class="flow-node-num">L6</span>
+          Governance Authority — Apex Override &amp; Meta-Control
+        </div>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-row">
+        <div class="flow-node">
+          <span class="flow-node-num">L5</span>
+          Brand &amp; Design — Visual System Enforcement
+        </div>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-row">
+        <div class="flow-node">
+          <span class="flow-node-num">L4</span>
+          Compliance &amp; Certs — Regulatory Evidence Layer
+        </div>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-row">
+        <div class="flow-node">
+          <span class="flow-node-num">L3</span>
+          Procurement &amp; BOM — Supply Chain Execution
+        </div>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-row">
+        <div class="flow-node" style="border-left: 4px solid var(--perion-amber);">
+          <span class="flow-node-num">L2</span>
+          Technical TDS — Single Source of Technical Truth ◀ Origin
+        </div>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-row">
+        <div class="flow-node">
+          <span class="flow-node-num">L1</span>
+          Customer-Facing PDS — Executive Narrative
+        </div>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-row">
+        <div class="flow-node">
+          <span class="flow-node-num">L0</span>
+          Visual Design Framework — Canonical Visual Architecture
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       3.0 MASTER DOCUMENT DIRECTORY
+       ================================================================ -->
+  <section id="s3" aria-labelledby="h2-s3">
+    <h2 id="h2-s3">3.0 Master Document Directory (Level 6 Down to Level 0)</h2>
+
+    <p>Select any document below to access the finalized, audit-ready file. All documents are Final — Controlled Copies governed by Level 6 protocols. Modification of any document during the active Tender Freeze is strictly prohibited.</p>
+
+    <nav class="dir-grid" aria-label="Master document directory — all seven levels">
+
+      <!-- LEVEL 6 -->
+      <a href="level-6-meta-governance.html" class="dir-card dc-card-l6" aria-label="Level 6 — Enterprise Documentation Control Framework">
+        <div class="dc-level-col" aria-hidden="true">
+          <div class="dc-level-num">6</div>
+          <div class="dc-level-label">Apex</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-identity">Meta-Governance Authority — Apex Override</div>
+          <div class="dc-title">Enterprise Documentation Control Framework</div>
+          <p class="dc-purpose">The foundational, non-negotiable institutional governance instrument. Overrides all other documents in the event of conflict. Establishes the formal RACI matrix, Tender Freeze protocols, and conflict resolution escalation paths. Mandates the product category as "Linear Perimeter Illumination Infrastructure" across the entire documentation stack.</p>
+          <div class="dc-tags">
+            <span class="dc-tag dc-tag-audience">Audience: Executive Board, Auditors</span>
+            <span class="dc-tag">RACI Authority</span>
+            <span class="dc-tag">Tender Freeze Protocol</span>
+          </div>
+          <span class="dc-filename">level-6-meta-governance.html</span>
+        </div>
+        <div class="dc-arrow-col" aria-hidden="true">
+          <span class="dc-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- LEVEL 5 -->
+      <a href="level-5-brand-systems.html" class="dir-card dc-card-l5" aria-label="Level 5 — Brand and Design Systems">
+        <div class="dc-level-col" aria-hidden="true">
+          <div class="dc-level-num">5</div>
+          <div class="dc-level-label">Brand</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-identity">Infrastructure-Grade Standards for PDS and TDS Systems</div>
+          <div class="dc-title">Brand &amp; Design Systems</div>
+          <p class="dc-purpose">Establishes the mandatory framework for the structural and visual execution of the documentation stack. Defines non-negotiable rules via the Paragraph Style Map and Character Style Map, enforcing the 3-Color Law and the <span class="inline-technical">Inline_Technical</span> spacing rules for all engineering metrics.</p>
+          <div class="dc-tags">
+            <span class="dc-tag dc-tag-audience">Audience: Designers, Marketing</span>
+            <span class="dc-tag">3-Color Law</span>
+            <span class="dc-tag">Style Map</span>
+          </div>
+          <span class="dc-filename">level-5-brand-systems.html</span>
+        </div>
+        <div class="dc-arrow-col" aria-hidden="true">
+          <span class="dc-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- LEVEL 4 -->
+      <a href="level-4-compliance.html" class="dir-card dc-card-l4" aria-label="Level 4 — Compliance and Tender Documents">
+        <div class="dc-level-col" aria-hidden="true">
+          <div class="dc-level-num">4</div>
+          <div class="dc-level-label">Compliance</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-identity">Regulatory Evidence &amp; Audit Appendix</div>
+          <div class="dc-title">Compliance &amp; Tender Documents: Evidence Layer</div>
+          <p class="dc-purpose">Provides the Evidence Layer required to support technical claims for regulatory auditors and tender adjudication committees. Centralizes all primary certifications, including the ISO 9001:2015 manufacturing quality certificate, the IEC 60529 <span class="inline-technical">IP69K</span> ingress protection reports, and EMC emissions data.</p>
+          <div class="dc-tags">
+            <span class="dc-tag dc-tag-audience">Audience: Auditors, Tender Boards</span>
+            <span class="dc-tag inline-technical">ISO 9001:2015</span>
+            <span class="dc-tag inline-technical">IP69K</span>
+            <span class="dc-tag">IEC 60529</span>
+          </div>
+          <span class="dc-filename">level-4-compliance.html</span>
+        </div>
+        <div class="dc-arrow-col" aria-hidden="true">
+          <span class="dc-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- LEVEL 3 -->
+      <a href="level-3-procurement.html" class="dir-card dc-card-l3" aria-label="Level 3 — Procurement and Commercial Documents">
+        <div class="dc-level-col" aria-hidden="true">
+          <div class="dc-level-num">3</div>
+          <div class="dc-level-label">Procurement</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-identity">Bill of Materials (BOM) &amp; Ordering Logic</div>
+          <div class="dc-title">Procurement &amp; Commercial Documents: Execution Framework</div>
+          <p class="dc-purpose">Translates abstract engineering intent into actionable physical supply chain execution. Provides the "Procurement Truth" through systematic ordering structures, the <span class="inline-technical">1,000 m</span> power rule logic, and objective financial Total Cost of Ownership (TCO) cost-avoidance data.</p>
+          <div class="dc-tags">
+            <span class="dc-tag dc-tag-audience">Audience: Procurement, Operations</span>
+            <span class="dc-tag">BOM Logic</span>
+            <span class="dc-tag">TCO Analysis</span>
+            <span class="dc-tag inline-technical">1,000 m Power Rule</span>
+          </div>
+          <span class="dc-filename">level-3-procurement.html</span>
+        </div>
+        <div class="dc-arrow-col" aria-hidden="true">
+          <span class="dc-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- LEVEL 2 -->
+      <a href="level-2-tds.html" class="dir-card dc-card-l2" aria-label="Level 2 — Engineering Specification and Technical Authority">
+        <div class="dc-level-col" aria-hidden="true">
+          <div class="dc-level-num">2</div>
+          <div class="dc-level-label">TDS Core</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-identity">The Single Source of Technical Truth (TDS)</div>
+          <div class="dc-title">Engineering Specification and Technical Authority</div>
+          <p class="dc-purpose">The absolute core of the enterprise architecture. Houses all unalterable physical, optical, and electrical engineering data — including the standardized <span class="inline-technical">2.85 A</span> @ <span class="inline-technical">220 V</span> input current, the <span class="inline-technical">100,000 Hours</span> (L70) LED lifespan, and the strict <span class="inline-technical">-20 °C</span> to <span class="inline-technical">+60 °C</span> environmental thresholds.</p>
+          <div class="dc-tags">
+            <span class="dc-tag dc-tag-audience">Audience: Engineers, Technical Buyers</span>
+            <span class="dc-tag inline-technical">24 V DC SELV</span>
+            <span class="dc-tag inline-technical">IP69K</span>
+            <span class="dc-tag inline-technical">100,000 Hours L70</span>
+          </div>
+          <span class="dc-filename">level-2-tds.html</span>
+        </div>
+        <div class="dc-arrow-col" aria-hidden="true">
+          <span class="dc-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- LEVEL 1 -->
+      <a href="level-1-pds.html" class="dir-card dc-card-l1" aria-label="Level 1 — Customer-Facing Product Data Sheet">
+        <div class="dc-level-col" aria-hidden="true">
+          <div class="dc-level-num">1</div>
+          <div class="dc-level-label">PDS</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-identity">Executive Narrative &amp; Value Proposition</div>
+          <div class="dc-title">Customer-Facing Product Data Sheet (PDS)</div>
+          <p class="dc-purpose">Provides a high-level summary for executive decision-makers, estate managers, and distributors. Highlights the system's ability to achieve an <span class="inline-technical">80 %</span> reduction in power consumption and the elimination of heavy civil trenching. Facts derived exclusively from the Level 2 Technical Truth.</p>
+          <div class="dc-tags">
+            <span class="dc-tag dc-tag-audience">Audience: Customers, Distributors</span>
+            <span class="dc-tag inline-technical">80 % Energy Reduction</span>
+            <span class="dc-tag">No Civil Works</span>
+          </div>
+          <span class="dc-filename">level-1-pds.html</span>
+        </div>
+        <div class="dc-arrow-col" aria-hidden="true">
+          <span class="dc-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- LEVEL 0 -->
+      <a href="level-0-visual-framework.html" class="dir-card dc-card-l0" aria-label="Level 0 — Visual Design Framework">
+        <div class="dc-level-col" aria-hidden="true">
+          <div class="dc-level-num">0</div>
+          <div class="dc-level-label">Visual</div>
+        </div>
+        <div class="dc-body">
+          <div class="dc-identity">Master Visual Architecture</div>
+          <div class="dc-title">Visual Design Framework</div>
+          <p class="dc-purpose">Dictates the canonical visual architecture for technical documentation. Provides strict guidelines on standardized image treatments, industrial-grade photography, and the preservation of Technical Truth to prevent the phenomenon of Document Drift.</p>
+          <div class="dc-tags">
+            <span class="dc-tag dc-tag-audience">Audience: Designers, Marketing</span>
+            <span class="dc-tag">Document Drift Prevention</span>
+            <span class="dc-tag">Photography Protocol</span>
+            <span class="dc-tag">PRN-L0-VDF-001-v2.0</span>
+          </div>
+          <span class="dc-filename">level-0-visual-framework.html</span>
+        </div>
+        <div class="dc-arrow-col" aria-hidden="true">
+          <span class="dc-arrow">→</span>
+        </div>
+      </a>
+
+    </nav>
+
+    <!-- CONTROLLED DOCUMENT NOTICE -->
+    <div class="controlled-notice" role="alert" aria-label="Controlled document notice">
+      <div class="cn-icon" aria-hidden="true"></div>
+      <div>
+        <span class="cn-label">Controlled Document Notice</span>
+        <p class="cn-text">This is a Controlled Document. Unauthorized modification invalidates the document's authority and voids all technical warranties associated with the Perion Linear Perimeter Illumination Infrastructure. Reproduction, distribution, or disclosure in whole or in part requires prior written consent from Perion Lighting.</p>
+      </div>
+    </div>
+
+  </section>
+
+</div><!-- /.page-wrapper -->
+</main>
+
+<!-- ================================================================
+     DOCUMENT FOOTER
+     ================================================================ -->
+<footer class="doc-footer" role="contentinfo">
+  <strong>Perion Enterprise Documentation Control Framework</strong>
+  <span class="footer-divider">·</span>
+  Master Directory &amp; Meta-Governance Dashboard
+  <br>
+  Document Status: FINAL (Tender Freeze)
+  <span class="footer-divider">·</span>
+  Release Date: February 26, 2026
+  <span class="footer-divider">·</span>
+  Governed by Level 6 Protocols
+  <span class="footer-divider">·</span>
+  Classification: Commercial-in-Confidence
+  <br>
+  Product category mandated as "Linear Perimeter Illumination Infrastructure" across all seven documentation levels.
+  <span class="footer-divider">·</span>
+  Perimeter-Lock cable-continuity sensor terminology enforced throughout.
+  <br>
+  All references to "Security lighting", "Fence lights", "DIY kit", "VeltSentry", and "Scrap-to-Security" are permanently purged per Category Sovereignty Protocol.
+</footer>
+
+</body>
+</html>

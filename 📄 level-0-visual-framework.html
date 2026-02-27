@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRN-L0-VDF-001-v2.0 — Perion Visual Design Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       PERION VISUAL DESIGN FRAMEWORK — CSS VARIABLE GOVERNANCE
+       3-COLOR LAW ENFORCED. NO GRADIENTS. NO SHADOWS. NO OVERLAYS.
+       ================================================================ */
+    :root {
+      --perion-midnight: #0A1D33;
+      --perion-graphite: #2B2E34;
+      --perion-amber:    #F2A900;
+      --perion-grey:     #F5F5F7;
+      --perion-white:    #FFFFFF;
+    }
+
+    /* ================================================================
+       RESET
+       ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ================================================================
+       BASE TYPOGRAPHY
+       ================================================================ */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--perion-white);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ================================================================
+       LAYOUT
+       ================================================================ */
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* ================================================================
+       DOCUMENT HEADER / COVER ZONE
+       ================================================================ */
+    .doc-header {
+      background-color: var(--perion-midnight);
+      border-bottom: 5px solid var(--perion-amber);
+      padding: 3.5rem 0 2.75rem;
+    }
+    .doc-header .level-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      border: 1px solid var(--perion-amber);
+      padding: 0.25rem 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .doc-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--perion-white);
+      line-height: 1.2;
+      max-width: 70ch;
+      margin-bottom: 0.5rem;
+    }
+    .doc-header .doc-subtitle {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.5rem;
+      max-width: 70ch;
+    }
+    .doc-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+    }
+    .doc-meta-cell {
+      padding: 0.5rem 1rem 0.5rem 0;
+    }
+    .doc-meta-cell .meta-label {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .doc-meta-cell .meta-value {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ================================================================
+       CONFIDENTIALITY BANNER
+       ================================================================ */
+    .conf-banner {
+      background-color: var(--perion-amber);
+      padding: 0.6rem 2.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--perion-midnight);
+      text-transform: uppercase;
+    }
+
+    /* ================================================================
+       TABLE OF CONTENTS
+       ================================================================ */
+    .doc-toc {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: 1.75rem 2rem;
+      margin: 2.75rem 0;
+    }
+    .doc-toc .toc-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .doc-toc ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+      column-count: 2;
+      column-gap: 2.5rem;
+    }
+    .doc-toc li {
+      font-size: 0.84rem;
+      color: var(--perion-graphite);
+      padding: 0.2rem 0;
+    }
+    .doc-toc a {
+      color: var(--perion-midnight);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .doc-toc a:hover { color: var(--perion-amber); text-decoration: underline; }
+    @media (max-width: 640px) { .doc-toc ol { column-count: 1; } }
+
+    /* ================================================================
+       SECTION HEADINGS
+       ================================================================ */
+    main { padding: 1.5rem 0 1rem; }
+    section { margin-bottom: 3.75rem; }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--perion-midnight);
+      border-bottom: 2px solid var(--perion-amber);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.25rem;
+      margin-top: 3rem;
+      scroll-margin-top: 1.5rem;
+    }
+    h3 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: 0.75rem;
+      margin-top: 2rem;
+      scroll-margin-top: 1.5rem;
+    }
+
+    /* ================================================================
+       BODY TEXT
+       ================================================================ */
+    p {
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      max-width: 75ch;
+      margin-bottom: 1rem;
+    }
+
+    /* ================================================================
+       INLINE TECHNICAL — ISO 80000-1
+       ================================================================ */
+    .inline-technical {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--perion-midnight);
+      white-space: nowrap;
+      font-size: 0.95em;
+    }
+
+    /* ================================================================
+       TABLE GOVERNANCE
+       ================================================================ */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      border: 1px solid #D4D4D7;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.865rem;
+      font-variant-numeric: tabular-nums;
+    }
+    thead th {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      text-align: center;
+      font-weight: 700;
+      padding: 0.8rem 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    thead th:last-child { border-right: none; }
+    tbody td {
+      text-align: left;
+      color: var(--perion-graphite);
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #E4E4E6;
+      border-right: 1px solid #E4E4E6;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    tbody td:last-child { border-right: none; }
+    tbody tr:nth-child(even) td { background-color: var(--perion-grey); }
+
+    /* ================================================================
+       CALLOUT / ENGINEERING NOTE
+       ================================================================ */
+    .callout {
+      border: 2px solid var(--perion-amber);
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+      max-width: 75ch;
+    }
+    .callout-label {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.55rem;
+    }
+    .callout p { margin-bottom: 0; max-width: 100%; }
+
+    /* ================================================================
+       DEFINITION LIST (RULES & PROTOCOLS)
+       ================================================================ */
+    .rule-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .rule-list li {
+      padding: 0.55rem 0 0.55rem 1.5rem;
+      border-bottom: 1px solid #E4E4E6;
+      font-size: 0.9rem;
+      color: var(--perion-graphite);
+      position: relative;
+      line-height: 1.6;
+    }
+    .rule-list li:last-child { border-bottom: none; }
+    .rule-list li::before {
+      content: "▸";
+      color: var(--perion-amber);
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+
+    /* ================================================================
+       PROHIBITED LIST
+       ================================================================ */
+    .prohibited-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .prohibited-list li {
+      padding: 0.55rem 0 0.55rem 1.75rem;
+      border-bottom: 1px solid #E4E4E6;
+      font-size: 0.9rem;
+      color: var(--perion-graphite);
+      position: relative;
+      line-height: 1.6;
+    }
+    .prohibited-list li:last-child { border-bottom: none; }
+    .prohibited-list li::before {
+      content: "✕";
+      color: var(--perion-amber);
+      font-weight: 700;
+      font-size: 0.85rem;
+      position: absolute;
+      left: 0.25rem;
+    }
+
+    /* ================================================================
+       SUBTITLE SPECIMENS
+       ================================================================ */
+    .subtitle-specimens {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .subtitle-specimens li {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-midnight);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--perion-graphite);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .subtitle-specimens li .ctx-label {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ================================================================
+       CALLOUTS STRIP (CANONICAL COVER CALLOUTS)
+       ================================================================ */
+    .callout-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      border: 1px solid #D4D4D7;
+      margin: 1.75rem 0;
+    }
+    .callout-strip-item {
+      padding: 1rem 1.25rem;
+      border-right: 1px solid #D4D4D7;
+      border-bottom: 1px solid #D4D4D7;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .callout-strip-item:last-child { border-right: none; }
+    .callout-strip-item .cs-icon {
+      color: var(--perion-amber);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .callout-strip-item .cs-text {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--perion-midnight);
+      line-height: 1.4;
+    }
+
+    /* ================================================================
+       STYLE MAP BLOCK
+       ================================================================ */
+    .style-map-char {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .style-map-char li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #E4E4E6;
+      align-items: flex-start;
+      font-size: 0.875rem;
+    }
+    .style-map-char li:last-child { border-bottom: none; }
+    .smc-name {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--perion-midnight);
+      background-color: var(--perion-grey);
+      padding: 0.2rem 0.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 180px;
+    }
+    .smc-desc { color: var(--perion-graphite); line-height: 1.5; }
+
+    /* ================================================================
+       LINE WEIGHT SPECIMENS
+       ================================================================ */
+    .lw-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .lw-list li {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #E4E4E6;
+    }
+    .lw-list li:last-child { border-bottom: none; }
+    .lw-rule {
+      background-color: var(--perion-midnight);
+      flex-shrink: 0;
+      width: 64px;
+    }
+    .lw-025 { height: 1px; }
+    .lw-050 { height: 2px; }
+    .lw-070 { height: 3px; }
+    .lw-text { font-size: 0.875rem; color: var(--perion-graphite); line-height: 1.5; }
+    .lw-spec {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-right: 0.5rem;
+    }
+
+    /* ================================================================
+       FILE NAMING BLOCK
+       ================================================================ */
+    .file-formula {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 1.25rem 1.75rem;
+      margin: 1.25rem 0;
+      max-width: 60ch;
+    }
+    .file-example {
+      font-size: 0.82rem;
+      color: var(--perion-amber);
+      margin-top: 0.6rem;
+      display: block;
+    }
+
+    /* ================================================================
+       REVISION CONTROL ITEMS
+       ================================================================ */
+    .rev-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      max-width: 75ch;
+    }
+    .rev-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #E4E4E6;
+      font-size: 0.9rem;
+      color: var(--perion-graphite);
+    }
+    .rev-list li:last-child { border-bottom: none; }
+    .rev-tag {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--perion-white);
+      background-color: var(--perion-midnight);
+      padding: 0.2rem 0.55rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-top: 0.1rem;
+    }
+
+    /* ================================================================
+       APPROVAL BLOCK
+       ================================================================ */
+    .approval-block {
+      background-color: var(--perion-midnight);
+      border-top: 4px solid var(--perion-amber);
+      padding: 2rem 2.25rem;
+      margin-top: 3rem;
+    }
+    .approval-block .ab-eyebrow {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.5rem;
+    }
+    .approval-block .ab-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--perion-white);
+      margin-bottom: 0.25rem;
+    }
+    .approval-block .ab-meta {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ================================================================
+       CONFIDENTIALITY STATEMENT
+       ================================================================ */
+    .conf-statement {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+      max-width: 75ch;
+    }
+    .conf-statement .cs-label {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      margin-bottom: 0.5rem;
+    }
+    .conf-statement p { margin: 0; font-size: 0.84rem; max-width: 100%; }
+
+    /* ================================================================
+       DOCUMENT FOOTER
+       ================================================================ */
+    .doc-footer {
+      background-color: var(--perion-midnight);
+      color: rgba(255,255,255,0.4);
+      padding: 1.5rem 2.5rem;
+      font-size: 0.7rem;
+      text-align: center;
+      margin-top: 5rem;
+      border-top: 5px solid var(--perion-amber);
+    }
+    .doc-footer strong { color: rgba(255,255,255,0.75); }
+
+    /* ================================================================
+       PRINT
+       ================================================================ */
+    @media print {
+      .doc-header, thead th, .approval-block,
+      .file-formula { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 720px) {
+      .doc-header h1 { font-size: 1.45rem; }
+      h2 { font-size: 1.05rem; }
+      .page-wrapper { padding: 0 1.25rem; }
+      .doc-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .callout-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     CONFIDENTIALITY BANNER
+     ================================================================ -->
+<div class="conf-banner" role="alert" aria-label="Document classification notice">
+  Commercial-in-Confidence — Restricted Distribution
+</div>
+
+<!-- ================================================================
+     DOCUMENT HEADER
+     ================================================================ -->
+<header class="doc-header" role="banner">
+  <div class="page-wrapper">
+    <div class="level-badge">Level 0 — Visual Design Framework for Technical Documents</div>
+    <h1>Perion Visual Design Framework for Technical Documents</h1>
+    <p class="doc-subtitle">Enterprise Documentation Governance and Visual System Authority — Perion Linear Perimeter Illumination Infrastructure</p>
+    <nav class="doc-meta-grid" aria-label="Document control metadata">
+      <div class="doc-meta-cell">
+        <span class="meta-label">Document ID</span>
+        <span class="meta-value inline-technical">PRN-L0-VDF-001-v2.0</span>
+      </div>
+      <div class="doc-meta-cell">
+        <span class="meta-label">Release Date</span>
+        <span class="meta-value">February 26, 2026</span>
+      </div>
+      <div class="doc-meta-cell">
+        <span class="meta-label">Document Status</span>
+        <span class="meta-value">Final — Controlled Copy</span>
+      </div>
+      <div class="doc-meta-cell">
+        <span class="meta-label">Classification</span>
+        <span class="meta-value">Commercial-in-Confidence</span>
+      </div>
+      <div class="doc-meta-cell">
+        <span class="meta-label">Governed By</span>
+        <span class="meta-value">Level 6 Protocols</span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-wrapper">
+
+  <!-- ================================================================
+       DOCUMENT PREAMBLE
+       ================================================================ -->
+  <section aria-label="Document preamble">
+    <p>This framework establishes an authoritative governance system for technical documentation, transitioning organizational materials from marketing-led narratives to infrastructure-grade industrial standards. By implementing a six-level hierarchy, the protocol ensures the preservation of Technical Truth and prevents document drift, where engineering accuracy is often lost during commercial simplification. The guide dictates a canonical visual architecture for layouts, diagrams, and photography, utilizing standardized styling and metadata to signal institutional stability to high-level procurement boards. These controls serve to mitigate organizational liability and protect sensitive data from improper exposure, ensuring that every artifact remains tender-safe and print-ready.</p>
+
+    <p>Entering the high-security industrial sector requires transitioning from marketing-led documentation to a strict, enterprise-grade governance framework. This transition is codified within the Level 6 Enterprise Documentation Control Framework, which serves as the authoritative layer governing the creation, validation, storage, and distribution of every technical and commercial artifact for the Perion Linear Perimeter Illumination Infrastructure. The fundamental objective of this framework is the preservation of <strong>Technical Truth</strong>, ensuring that specifications remain consistent across the entire documentation stack and preventing the phenomenon of <strong>document drift</strong>. Document drift occurs when the integrity of technical specifications is compromised during distillation for marketing purposes or regional expansions, often leading to technical leakage or organizational liability.</p>
+
+    <p>The visual execution rules presented herein are aligned with Level 5 (Brand &amp; Design) and Level 6 (Governance) mandates, designed to produce documentation that is tender-safe, industrial-grade, and print-ready. By establishing a canonical visual hierarchy, the organization ensures that technical evaluators, procurement boards, and engineers receive information in a predictable, authoritative format that signals institutional stability. This framework provides the specific parameters for cover page architecture, internal document structure, image treatment, diagrammatic standards, and data presentation, ensuring absolute consistency between Product Data Sheets (PDS) and Technical Data Sheets (TDS) while protecting sensitive engineering data from improper exposure.</p>
+  </section>
+
+  <!-- ================================================================
+       TABLE OF CONTENTS
+       ================================================================ -->
+  <nav class="doc-toc" aria-label="Table of contents">
+    <span class="toc-label">Table of Contents</span>
+    <ol>
+      <li><a href="#s1">Enterprise Documentation Governance and Hierarchy</a></li>
+      <li><a href="#s2">Strategic Brand Positioning and Subtitle Strengthening</a></li>
+      <li><a href="#s3">Cover Page Visual Layout Architecture</a></li>
+      <li><a href="#s4">Internal Document Visual Hierarchy</a></li>
+      <li><a href="#s5">Standardized Image Treatment and Photography Guide</a></li>
+      <li><a href="#s6">Diagrammatic and Iconographic Specifications</a></li>
+      <li><a href="#s7">Table Styling and Data Representation Rules</a></li>
+      <li><a href="#s8">Paragraph and Character Style Maps</a></li>
+      <li><a href="#s9">Visual System Guide (One-Page Execution Specification)</a></li>
+      <li><a href="#s10">Document Control and File Governance</a></li>
+    </ol>
+  </nav>
+
+  <!-- ================================================================
+       1. ENTERPRISE DOCUMENTATION GOVERNANCE AND HIERARCHY
+       ================================================================ -->
+  <section id="s1" aria-labelledby="h2-s1">
+    <h2 id="h2-s1">1. Enterprise Documentation Governance and Hierarchy</h2>
+
+    <p>The architecture of the documentation system is structured as a six-level vertical hierarchy, where each level maintains a distinct functional identity and target audience. This separation logic is a mandatory evolution for organizations operating in complex procurement and high-security environments, where technical engineering data must never be conflated with commercial narratives or branding guidelines.</p>
+
+    <h3 id="h3-s1-1">1.1 The Six-Level Documentation Hierarchy</h3>
+
+    <p>The hierarchical architecture ensures that every document is anchored to its functional purpose, facilitating a unidirectional flow of content validation while preventing the unauthorized crossing of data levels.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Six-level documentation hierarchy">
+        <thead>
+          <tr>
+            <th scope="col">Level</th>
+            <th scope="col">Functional Identity</th>
+            <th scope="col">Governing Mandate</th>
+            <th scope="col">Primary Audience</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="inline-technical">Level 1</span></td>
+            <td>Customer-Facing PDS</td>
+            <td>Value proposition and market positioning.</td>
+            <td>Customers, Distributors</td>
+          </tr>
+          <tr>
+            <td><span class="inline-technical">Level 2</span></td>
+            <td>Technical TDS</td>
+            <td>Single source of technical and engineering truth.</td>
+            <td>Engineers, Technical Buyers</td>
+          </tr>
+          <tr>
+            <td><span class="inline-technical">Level 3</span></td>
+            <td>Procurement &amp; BOM</td>
+            <td>Commercial execution and ordering logic.</td>
+            <td>Procurement, Operations</td>
+          </tr>
+          <tr>
+            <td><span class="inline-technical">Level 4</span></td>
+            <td>Compliance &amp; Certs</td>
+            <td>Evidence layer and regulatory declarations.</td>
+            <td>Auditors, Tender Boards</td>
+          </tr>
+          <tr>
+            <td><span class="inline-technical">Level 5</span></td>
+            <td>Brand &amp; Design</td>
+            <td>Visual system and layout control.</td>
+            <td>Designers, Marketing</td>
+          </tr>
+          <tr>
+            <td><span class="inline-technical">Level 6</span></td>
+            <td>Governance Authority</td>
+            <td>Meta-control and structural authority.</td>
+            <td>Executive Board, Auditors</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Content flow originates at the Level 2 technical authority layer. Any modification to engineering specifications at this level triggers a mandatory assessment of the downstream levels, particularly Level 3 (Procurement) and Level 4 (Compliance). This ensures that the physical hardware listed in the Bill of Materials remains in absolute alignment with engineering certifications and customer-facing materials, providing a legally robust documentation ecosystem for the Perion Linear Perimeter Illumination Infrastructure.</p>
+
+    <h3 id="h3-s1-2">1.2 The RACI Matrix and Decision Authority</h3>
+
+    <p>Decision authority within the documentation lifecycle is formalized through a RACI matrix (Responsible, Accountable, Consulted, Informed), which defines the roles of Product Management, Engineering, Marketing, Operations, and the Executive Board.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="RACI decision authority matrix">
+        <thead>
+          <tr>
+            <th scope="col">Task / Activity</th>
+            <th scope="col">Product Management</th>
+            <th scope="col">Engineering</th>
+            <th scope="col">Marketing</th>
+            <th scope="col">Operations</th>
+            <th scope="col">Executive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Content Creation</td>
+            <td>A</td>
+            <td>C</td>
+            <td>C</td>
+            <td>I</td>
+            <td>I</td>
+          </tr>
+          <tr>
+            <td>Technical Validation</td>
+            <td>C</td>
+            <td>A</td>
+            <td>I</td>
+            <td>C</td>
+            <td>I</td>
+          </tr>
+          <tr>
+            <td>Compliance Approval</td>
+            <td>I</td>
+            <td>R</td>
+            <td>I</td>
+            <td>C</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Final Release Auth</td>
+            <td>C</td>
+            <td>C</td>
+            <td>C</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <td>Structural Revision</td>
+            <td>C</td>
+            <td>C</td>
+            <td>C</td>
+            <td>R</td>
+            <td>A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>In this framework, accountability is restricted to a single role per task to ensure clarity of ownership. Final decision authority for all technical specifications rests with the Engineering lead, while final release authorization for tender-grade documents rests with Operations. In the event of irreconcilable conflict, the Executive layer serves as the ultimate arbiter, specifically for documents carrying legal or regulatory liability.</p>
+
+    <h3 id="h3-s1-3">1.3 Prevention of Technical Leakage and Document Drift</h3>
+
+    <p>Technical leakage is defined as the improper exposure of sensitive engineering data or the compromise of technical integrity during the simplification of information for commercial use. Within the infrastructure domain, such leakage can lead to resource bleed — the loss of value due to inefficiency or failing infrastructure. The Level 6 governance framework strictly prohibits the embedding of raw laboratory test data from Level 4 into Level 1 customer-facing sheets.</p>
+
+    <p>Instead, Level 1 documents must utilize reference-only logic, acknowledging the existence of certifications without exposing the detailed engineering thresholds that define the system's performance. This technical-first validation ensures that marketing narratives may simplify information for readability but must never contradict the engineering truths defined in Level 2.</p>
+  </section>
+
+  <!-- ================================================================
+       2. STRATEGIC BRAND POSITIONING AND SUBTITLE STRENGTHENING
+       ================================================================ -->
+  <section id="s2" aria-labelledby="h2-s2">
+    <h2 id="h2-s2">2. Strategic Brand Positioning and Subtitle Strengthening</h2>
+
+    <p>The visual and textual positioning of the Perion Linear Perimeter Illumination Infrastructure must frame the system as perimeter infrastructure. This strategic reframe is essential for engaging executive decision-makers and consulting engineers who view the perimeter as an infrastructure asset rather than a simple expense.</p>
+
+    <h3 id="h3-s2-1">2.1 Perimeter Infrastructure Positioning Pillars</h3>
+
+    <p>The narrative positioning of the system is built upon four pillars of financial and tactical intelligence, which inform all visual and textual headers within the PDS and TDS documents.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Perimeter infrastructure positioning pillars">
+        <thead>
+          <tr>
+            <th scope="col">Pillar</th>
+            <th scope="col">Strategic Intent</th>
+            <th scope="col">Subtitle / Heading Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Operational Superiority</td>
+            <td>Focus on the continuous illumination backbone.</td>
+            <td>Continuous Perimeter Illumination Infrastructure</td>
+          </tr>
+          <tr>
+            <td>Tactical Advantage</td>
+            <td>Active deterrence and intelligence layers.</td>
+            <td>Illumination as Active Infrastructure Layer</td>
+          </tr>
+          <tr>
+            <td>Industrial Durability</td>
+            <td>Engineered for unforgiving environments.</td>
+            <td>Infrastructure-Grade Perimeter Illumination</td>
+          </tr>
+          <tr>
+            <td>Execution Assurance</td>
+            <td>Scalability and deployment readiness.</td>
+            <td>Engineered to Deploy. Structured to Scale.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s2-2">2.2 Subtitle Specifications</h3>
+
+    <p>Subtitles must be strengthened to move away from marketing-led softening toward institutional authority. Ad-hoc styling of subtitles is strictly prohibited; they must adhere to the <code>PDS_TDS_Subtitle</code> style, utilizing a moderate scale and medium weight in Perion Graphite.</p>
+
+    <p>Canonical subtitle options by context:</p>
+
+    <ul class="subtitle-specimens" aria-label="Canonical subtitle options by context">
+      <li>
+        <span class="ctx-label">Infrastructure Context</span>
+        Your Perimeter Is Not Lighting. It Is Infrastructure.
+      </li>
+      <li>
+        <span class="ctx-label">Engineering Context</span>
+        Linear, Low-Voltage, Fence-Mounted Illumination Infrastructure.
+      </li>
+      <li>
+        <span class="ctx-label">Strategic Context</span>
+        Distributed Boundary Power Architecture for Resilient Infrastructure Systems.
+      </li>
+      <li>
+        <span class="ctx-label">Compliance Context</span>
+        Engineering Truth &amp; Evidence Layer.
+      </li>
+    </ul>
+
+    <p>These subtitles serve to immediately reposition the product from a fixture to an architectural component of the facility's perimeter backbone.</p>
+  </section>
+
+  <!-- ================================================================
+       3. COVER PAGE VISUAL LAYOUT ARCHITECTURE
+       ================================================================ -->
+  <section id="s3" aria-labelledby="h2-s3">
+    <h2 id="h2-s3">3. Cover Page Visual Layout Architecture</h2>
+
+    <p>The cover page is designed to be tender-safe and print-ready, emphasizing authority and professional identity while removing all technical leakage. It must avoid specific measurements, annotations, or installation cues that could invite premature technical scrutiny.</p>
+
+    <h3 id="h3-s3-1">3.1 Cover Page Zone Definition</h3>
+
+    <p>The layout is divided into four distinct zones, each with a specific mandate and governance rule.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Cover page zone definitions">
+        <thead>
+          <tr>
+            <th scope="col">Zone</th>
+            <th scope="col">Proportion</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Content Constraints</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Header Zone</td>
+            <td>Top <span class="inline-technical">25 – 30 %</span></td>
+            <td>Product ID &amp; Authority</td>
+            <td>Title must be the most visually dominant element. No imagery behind text.</td>
+          </tr>
+          <tr>
+            <td>Hero Zone</td>
+            <td>Middle <span class="inline-technical">35 – 40 %</span></td>
+            <td>Visual Grounding</td>
+            <td>No annotations, no measurements, no wiring visible. Stylized images only.</td>
+          </tr>
+          <tr>
+            <td>Callouts Band</td>
+            <td>Mid-Low Strip</td>
+            <td>Evaluator Scanning</td>
+            <td>5–6 canonical highlights. No qualifiers, no footnotes.</td>
+          </tr>
+          <tr>
+            <td>Footer Zone</td>
+            <td>Bottom <span class="inline-technical">10 – 15 %</span></td>
+            <td>Governance &amp; Metadata</td>
+            <td>Confidentiality statement and document ID metadata.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s3-2">3.2 Visual Execution Rules for the Cover</h3>
+
+    <p>The visual execution must adhere to industrial-grade standards, meaning the aesthetic is institutional and calm. Secondary inset imagery is eliminated to maintain a singular, focused visual message. The background of the Header Zone must be white or very light to ensure high contrast and legibility, adhering to WCAG standards.</p>
+
+    <p>The Hero Visual Zone should feature a stylized perimeter fence image with linear illumination or an abstract linear light motif. This visual grounding must be achieved without technical commitment — meaning no close-ups of mounting hardware or visible power connections that could lead to technical bleed.</p>
+
+    <h3 id="h3-s3-3">3.3 Key Callout Strip Protocol</h3>
+
+    <p>The Callouts Band is designed to address the primary evaluative criteria of a tender board. These callouts are limited to a single line each, utilizing outline-style icons only. The canonical callout set is:</p>
+
+    <div class="callout-strip" role="list" aria-label="Canonical cover callout strip">
+      <div class="callout-strip-item" role="listitem">
+        <span class="cs-icon" aria-hidden="true">◈</span>
+        <span class="cs-text">Continuous linear illumination (≥ <span class="inline-technical">10 Lux</span>)</span>
+      </div>
+      <div class="callout-strip-item" role="listitem">
+        <span class="cs-icon" aria-hidden="true">◈</span>
+        <span class="cs-text"><span class="inline-technical">24 V DC</span> SELV architecture</span>
+      </div>
+      <div class="callout-strip-item" role="listitem">
+        <span class="cs-icon" aria-hidden="true">◈</span>
+        <span class="cs-text">Integrated Perimeter-Lock cable-continuity sensor</span>
+      </div>
+      <div class="callout-strip-item" role="listitem">
+        <span class="cs-icon" aria-hidden="true">◈</span>
+        <span class="cs-text">Solar &amp; grid compatible</span>
+      </div>
+      <div class="callout-strip-item" role="listitem">
+        <span class="cs-icon" aria-hidden="true">◈</span>
+        <span class="cs-text"><span class="inline-technical">IP69K</span> rated</span>
+      </div>
+      <div class="callout-strip-item" role="listitem">
+        <span class="cs-icon" aria-hidden="true">◈</span>
+        <span class="cs-text">5-year warranty</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       4. INTERNAL DOCUMENT VISUAL HIERARCHY
+       ================================================================ -->
+  <section id="s4" aria-labelledby="h2-s4">
+    <h2 id="h2-s4">4. Internal Document Visual Hierarchy</h2>
+
+    <p>Internal document structure follows a predictable logic to ensure that technical buyers can efficiently navigate from high-level summaries to dense engineering data.</p>
+
+    <h3 id="h3-s4-1">4.1 Executive Summary Hierarchy</h3>
+
+    <p>The Executive Summary is positioned as Section 1.0 and utilizes the <code>H1_Section</code> style (Perion Midnight Blue, Bold, Numbered). This section must provide an infrastructure-first overview, framing the system's economic advantage through reduced total cost of ownership (TCO) and civil works. It serves as a performance-driven narrative that precedes the technical specifications.</p>
+
+    <h3 id="h3-s4-2">4.2 Industry Applications Section (Section 2.0)</h3>
+
+    <p>This section bridges high-level intent with specific engineering requirements. It utilizes a multi-column structure to list core verticals such as industrial manufacturing, logistics facilities, agricultural perimeters, and remote utility sites.</p>
+
+    <p>Rules for Industry Application visuals:</p>
+
+    <ul class="rule-list" aria-label="Industry application visual rules">
+      <li><strong>PDS (Level 1):</strong> Icons may be used for vertical identification.</li>
+      <li><strong>TDS (Level 2):</strong> Decorative icons are strictly prohibited. The section must include Application Schematics per Vertical — vector-based technical proof visuals for typical industrial layouts.</li>
+      <li><strong>Engineering Considerations:</strong> Every vertical must include a block addressing mounting height impact, environmental exposure, and voltage drop.</li>
+    </ul>
+
+    <h3 id="h3-s4-3">4.3 Technical Table and Architecture Diagram Hierarchy</h3>
+
+    <p>The technical core of the document (Level 2) requires the highest density of information and the most rigid styling discipline. Architecture diagrams and Lux contour maps must be provided in vector format (EPS or SVG) to ensure line-work remains sharp at all zoom levels. Technical tables must span the full width of the text column and use row banding for any table exceeding five rows to assist with tracking.</p>
+
+    <h3 id="h3-s4-4">4.4 Validation and Compliance Section</h3>
+
+    <p>Section 6.0 of the document stack is dedicated to the Evidence Layer — compliance and certifications. This section uses <code>Body_Text_Compact</code> for dense regulatory declarations. It must remain separate from the PDS narrative to prevent technical leakage into marketing-focused zones. If a product update moves faster than third-party lab certification, this section must remain in REVIEW or DRAFT status.</p>
+  </section>
+
+  <!-- ================================================================
+       5. STANDARDIZED IMAGE TREATMENT AND PHOTOGRAPHY GUIDE
+       ================================================================ -->
+  <section id="s5" aria-labelledby="h2-s5">
+    <h2 id="h2-s5">5. Standardized Image Treatment and Photography Guide</h2>
+
+    <p>To maintain engineering credibility, all photography used in Perion documentation must adhere to industrial, realistic standards. The primary goal is to communicate test scope, provenance, and manufacturing rigor rather than aesthetic appeal.</p>
+
+    <h3 id="h3-s5-1">5.1 Desaturation and Color Neutrality Rules</h3>
+
+    <p>Documentation must be resistant to interpretation, meaning colors should be realistic and neutral to protect the record's credibility. Over-saturated colors are viewed as distortions that might hide material wear, leaks, or rust.</p>
+
+    <p>Photography treatment protocols:</p>
+
+    <ul class="rule-list" aria-label="Photography treatment protocols">
+      <li><strong>Rule of Neutrality:</strong> Realistic color rendering is required. If a component is grey-blue, it must appear grey-blue, with no saturation enhancement.</li>
+      <li><strong>Desaturation for Focus:</strong> In assembly or installation guides, the background may be partially desaturated (<span class="inline-technical">~20 – 30 %</span>) while the target component remains in full color to create a natural call-out effect without artificial markers.</li>
+      <li><strong>Black &amp; White Standards:</strong> For long-term preservation and archival technical records, high-tonal-detail Black and White photography is acceptable as it captures texture more reliably than color.</li>
+    </ul>
+
+    <h3 id="h3-s5-2">5.2 Contrast and Lighting Protocols</h3>
+
+    <p>The objective of industrial lighting is to maximize information density in both shadows and highlights.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Photography contrast and lighting protocol specifications">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Technical Standard</th>
+            <th scope="col">Governance Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lighting Style</td>
+            <td>Flat Lighting (Diffuse)</td>
+            <td>Little to no shadow ensures all parts are visible.</td>
+          </tr>
+          <tr>
+            <td>Contrast</td>
+            <td>Low to Moderate (Global)</td>
+            <td>High contrast hides details in deep blacks or blown-out whites.</td>
+          </tr>
+          <tr>
+            <td>Local Contrast</td>
+            <td>High Clarity</td>
+            <td>Adjustments make textures like corrosion visible.</td>
+          </tr>
+          <tr>
+            <td>Depth of Field</td>
+            <td>High (Deep Focus)</td>
+            <td>Bokeh or blurred backgrounds are prohibited; context is vital.</td>
+          </tr>
+          <tr>
+            <td>Exposure</td>
+            <td>Expose to the Right (ETTR)</td>
+            <td>Ensures maximum shadow detail without clipping.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s5-3">5.3 Prohibited Visual Elements</h3>
+
+    <p>To maintain the infrastructure-grade standard, certain visual cues common in marketing are strictly prohibited in technical documentation:</p>
+
+    <ul class="prohibited-list" aria-label="Prohibited visual elements">
+      <li><strong>No Visible Wiring:</strong> Unless the document is an installation manual, wiring must be concealed to maintain the Infrastructure Backbone aesthetic.</li>
+      <li><strong>No Dramatic Lighting:</strong> Avoid God rays, extreme lens flares, or highly stylized nighttime shots that obscure the uniform light path.</li>
+      <li><strong>No Inset Close-ups:</strong> Secondary imagery on the cover is removed to prevent technical leakage.</li>
+    </ul>
+  </section>
+
+  <!-- ================================================================
+       6. DIAGRAMMATIC AND ICONOGRAPHIC SPECIFICATIONS
+       ================================================================ -->
+  <section id="s6" aria-labelledby="h2-s6">
+    <h2 id="h2-s6">6. Diagrammatic and Iconographic Specifications</h2>
+
+    <p>Technical diagrams are the Technical Truth layer of the documentation. They must follow international drawing standards (ISO 128) to remain legible and professional for engineering evaluators.</p>
+
+    <h3 id="h3-s6-1">6.1 Diagram Line Weight and Hierarchy (ISO 128)</h3>
+
+    <p>Line weights must be used to create visual hierarchy within schematics, preventing the clutter common in unmanaged documentation.</p>
+
+    <ul class="lw-list" aria-label="Diagram line weight specifications per ISO 128">
+      <li>
+        <div class="lw-rule lw-025" role="presentation" aria-hidden="true"></div>
+        <span class="lw-text"><span class="lw-spec inline-technical">0.25 mm</span> — Secondary details, hatching, and dimension lines.</span>
+      </li>
+      <li>
+        <div class="lw-rule lw-050" role="presentation" aria-hidden="true"></div>
+        <span class="lw-text"><span class="lw-spec inline-technical">0.50 mm</span> — Primary components and object outlines.</span>
+      </li>
+      <li>
+        <div class="lw-rule lw-070" role="presentation" aria-hidden="true"></div>
+        <span class="lw-text"><span class="lw-spec inline-technical">0.70 mm</span> — Section boundaries and major structural separators.</span>
+      </li>
+    </ul>
+
+    <div class="callout" role="note" aria-label="Schematic callout requirement">
+      <div class="callout-label">Schematic Callout Requirement</div>
+      <p>All schematics must include callout boxes for ratings such as <span class="inline-technical">IP69K</span>, detailing pressure, temperature, nozzle distance, and duration. Captions must be prefixed with "Caption:" and positioned directly below the visual element.</p>
+    </div>
+
+    <h3 id="h3-s6-2">6.2 Icon Style and Selection Criteria</h3>
+
+    <p>Iconography is governed by ISO 7000/IEC 60417 and ISO 7010. The choice between outline and filled icons is a functional, not aesthetic, decision.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Icon style and selection criteria">
+        <thead>
+          <tr>
+            <th scope="col">Icon Context</th>
+            <th scope="col">Style Rule</th>
+            <th scope="col">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Instructional / Functional</td>
+            <td>Outline (Linear)</td>
+            <td>ISO 7000 standard. Better clarity when scaled down or printed at high density.</td>
+          </tr>
+          <tr>
+            <td>Safety / Alert</td>
+            <td>Filled (Solid)</td>
+            <td>ISO 7010 standard. Solid silhouettes are detected faster in high-stress/low-light environments.</td>
+          </tr>
+          <tr>
+            <td>Consistency</td>
+            <td>Hardware-Matched</td>
+            <td>Icons must match the physical machine buttons to maintain user experience.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" role="note" aria-label="Custom icon 2 px rule">
+      <div class="callout-label">Custom Icon Rule — <span class="inline-technical">2 px</span> Minimum Threshold</div>
+      <p>For custom icons, the <span class="inline-technical">2 px</span> Rule applies: if the icon is smaller than <span class="inline-technical">10 mm</span>, a filled or bold outline is required to prevent visual blobbing.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       7. TABLE STYLING AND DATA REPRESENTATION RULES
+       ================================================================ -->
+  <section id="s7" aria-labelledby="h2-s7">
+    <h2 id="h2-s7">7. Table Styling and Data Representation Rules</h2>
+
+    <p>Tables are the primary mechanism for presenting complex metrics. They must be standardized to ensure that auditors can rapidly verify performance claims without wading through inconsistent formatting.</p>
+
+    <h3 id="h3-s7-1">7.1 Structural Table Rules</h3>
+
+    <p>All tables must be full-width, spanning the entire text column. Centered header alignment is preferred, while cell content must be left-aligned for rapid scanning.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Table style element specifications">
+        <thead>
+          <tr>
+            <th scope="col">Style Element</th>
+            <th scope="col">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Header Background</td>
+            <td>Perion Midnight Blue (<span class="inline-technical">HEX: #0A1D33</span>)</td>
+          </tr>
+          <tr>
+            <td>Header Text</td>
+            <td>White, <code>Table_Header</code> style</td>
+          </tr>
+          <tr>
+            <td>Row Banding</td>
+            <td>Perion Light Grey (<span class="inline-technical">HEX: #F5F5F7</span>) for tables &gt; 5 rows</td>
+          </tr>
+          <tr>
+            <td>Data Density</td>
+            <td>TDS uses exact values; PDS uses rounded precision for evaluation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s7-2">7.2 Technical Value Formatting</h3>
+
+    <p>The application of the <code>Inline_Technical</code> character style is mandatory for every electrical, optical, or environmental variable. This ensures that values such as <span class="inline-technical">24 V DC</span>, ≥ <span class="inline-technical">10 Lux</span>, or <span class="inline-technical">IP69K</span> are visually distinct and audit-ready. Manual bolding of these values is prohibited; formatting must be handled by the character style map to prevent softening of data.</p>
+  </section>
+
+  <!-- ================================================================
+       8. PARAGRAPH AND CHARACTER STYLE MAPS
+       ================================================================ -->
+  <section id="s8" aria-labelledby="h2-s8">
+    <h2 id="h2-s8">8. Paragraph and Character Style Maps</h2>
+
+    <p>The Style Map is the governance mechanism for structural flow and legibility. It ensures that documents are consistent regardless of the regional office or department producing them.</p>
+
+    <h3 id="h3-s8-1">8.1 Paragraph Style Map (Structural Authority)</h3>
+
+    <div class="table-wrapper">
+      <table aria-label="Paragraph style map specifications">
+        <thead>
+          <tr>
+            <th scope="col">Style Name</th>
+            <th scope="col">Governing Rule</th>
+            <th scope="col">Formatting Attributes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>PDS_TDS_Title</code></td>
+            <td>Mandatory for cover pages and section divider titles.</td>
+            <td>Large scale, heavyweight, Midnight Blue.</td>
+          </tr>
+          <tr>
+            <td><code>PDS_TDS_Subtitle</code></td>
+            <td>Document identifiers and straplines.</td>
+            <td>Moderate scale, medium weight, Graphite.</td>
+          </tr>
+          <tr>
+            <td><code>H1_Section</code></td>
+            <td>Major numbered headings.</td>
+            <td>Bold, Midnight Blue, start on new baseline.</td>
+          </tr>
+          <tr>
+            <td><code>Body_Text</code></td>
+            <td>Standard narrative.</td>
+            <td>Restricted line length for cognitive ease.</td>
+          </tr>
+          <tr>
+            <td><code>Body_Text_Compact</code></td>
+            <td>Legal and technical appendix.</td>
+            <td>High density, reduced leading.</td>
+          </tr>
+          <tr>
+            <td><code>Callout_Text</code></td>
+            <td>Engineering highlights.</td>
+            <td>Safety Amber highlights permitted.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s8-2">8.2 Character Style Map (Inline Discipline)</h3>
+
+    <ul class="style-map-char" aria-label="Character style map definitions">
+      <li>
+        <span class="smc-name">Bold_Emphasis</span>
+        <span class="smc-desc">Reserved for the first reference to key terms only.</span>
+      </li>
+      <li>
+        <span class="smc-name">Inline_Technical</span>
+        <span class="smc-desc">Mandatory for all technical metrics (Volts, Lux, IP Ratings).</span>
+      </li>
+      <li>
+        <span class="smc-name">Highlight_Value</span>
+        <span class="smc-desc">Reserved for performance differentiators that require immediate attention.</span>
+      </li>
+      <li>
+        <span class="smc-name">Italic_Reference</span>
+        <span class="smc-desc">Applied to ISO standards and regulatory references.</span>
+      </li>
+      <li>
+        <span class="smc-name">Warning_Inline</span>
+        <span class="smc-desc">Strictly for safety-critical terms within narratives.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================================================================
+       9. VISUAL SYSTEM GUIDE (ONE-PAGE EXECUTION SPECIFICATION)
+       ================================================================ -->
+  <section id="s9" aria-labelledby="h2-s9">
+    <h2 id="h2-s9">9. Visual System Guide (One-Page Execution Specification)</h2>
+
+    <p>This section serves as the definitive Visual System Guide for hand-off to designers or InDesign operators.</p>
+
+    <h3 id="h3-s9-1">9.1 Layout &amp; Formatting</h3>
+
+    <ul class="rule-list" aria-label="Layout and formatting specifications">
+      <li><strong>Size:</strong> A4 / US Letter.</li>
+      <li><strong>Margins:</strong> <span class="inline-technical">20 mm</span> (all sides).</li>
+      <li><strong>Typography:</strong> Minimum <span class="inline-technical">10 pt</span> Body Text; <span class="inline-technical">8 pt</span> Technical Compact.</li>
+      <li><strong>Leading:</strong> Minimum <span class="inline-technical">1.2 pt</span> for narrative text.</li>
+      <li><strong>Column Structure:</strong> PDS (Standard); TDS (Dense Grid).</li>
+    </ul>
+
+    <h3 id="h3-s9-2">9.2 Color Palette (The 3-Color Rule)</h3>
+
+    <p>No single page may exceed three primary colors (Midnight Blue, Graphite, and Safety Amber). Safety Amber is explicitly forbidden for decorative use; its presence must always indicate a safety-critical warning, a technical highlight, or an engineering note.</p>
+
+    <div class="table-wrapper">
+      <table aria-label="Perion color palette and functional roles">
+        <thead>
+          <tr>
+            <th scope="col">Color Name</th>
+            <th scope="col">HEX Code</th>
+            <th scope="col">Functional Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Midnight Blue</td>
+            <td><span class="inline-technical">#0A1D33</span></td>
+            <td>Primary Authority: H1 headers, table headers, document titles.</td>
+          </tr>
+          <tr>
+            <td>Graphite Text</td>
+            <td><span class="inline-technical">#2B2E34</span></td>
+            <td>Primary Legibility: Body text, subheadings, technical paragraphs.</td>
+          </tr>
+          <tr>
+            <td>Safety Amber</td>
+            <td><span class="inline-technical">#F2A900</span></td>
+            <td>Meaning-Driven Emphasis: Warnings, highlights, light paths.</td>
+          </tr>
+          <tr>
+            <td>Light Grey</td>
+            <td><span class="inline-technical">#F5F5F7</span></td>
+            <td>Structure: Table banding, background blocks, pullout panels.</td>
+          </tr>
+          <tr>
+            <td>Chalk White</td>
+            <td><span class="inline-technical">#FFFFFF</span></td>
+            <td>Support: Page background and margin zones.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="h3-s9-3">9.3 Cover Page Architecture</h3>
+
+    <ul class="rule-list" aria-label="Cover page architecture rules">
+      <li><strong>No Technical Leakage:</strong> Remove specific technical specifications or wiring from the cover.</li>
+      <li><strong>No Inset Imagery:</strong> Single, high-impact hero image only.</li>
+      <li><strong>Subtitle:</strong> Align with Perimeter Infrastructure (Institutional tone).</li>
+      <li><strong>Metadata Block:</strong> Mandatory Title, Rev, Date, Status, and Confidentiality.</li>
+    </ul>
+
+    <h3 id="h3-s9-4">9.4 Image &amp; Diagram Treatment</h3>
+
+    <ul class="rule-list" aria-label="Image and diagram treatment specifications">
+      <li><strong>Photography:</strong> Industrial realism. Realistic color. Flat lighting. No bokeh.</li>
+      <li><strong>Desaturation:</strong> Background desaturation (<span class="inline-technical">20 – 30 %</span>) permitted for focus.</li>
+      <li><strong>Diagrams:</strong> Vector only. Line weights: <span class="inline-technical">0.25 mm</span> (secondary), <span class="inline-technical">0.50 mm</span> (primary), <span class="inline-technical">0.70 mm</span> (boundary).</li>
+      <li><strong>Icons:</strong> Outline (functional); Filled (safety).</li>
+    </ul>
+
+    <h3 id="h3-s9-5">9.5 Technical Tables</h3>
+
+    <ul class="rule-list" aria-label="Technical table specifications">
+      <li><strong>Width:</strong> Full text column width. No floating tables.</li>
+      <li><strong>Headers:</strong> Midnight Blue background / White text.</li>
+      <li><strong>Alignment:</strong> Left-aligned data; Centered headers.</li>
+      <li><strong>Banding:</strong> Light Grey for tables exceeding 5 rows.</li>
+    </ul>
+  </section>
+
+  <!-- ================================================================
+       10. DOCUMENT CONTROL AND FILE GOVERNANCE
+       ================================================================ -->
+  <section id="s10" aria-labelledby="h2-s10">
+    <h2 id="h2-s10">10. Document Control and File Governance</h2>
+
+    <p>The Perion Version Control Protocol is a non-negotiable layer designed to prevent the circulation of obsolete information.</p>
+
+    <h3 id="h3-s10-1">10.1 File Naming Structure</h3>
+
+    <p>Every controlled document must follow the mandatory naming formula:</p>
+
+    <div class="file-formula" role="region" aria-label="Mandatory file naming formula">
+      PRN-[Level]-[Type]-[Version].pdf
+      <span class="file-example">Example: PRN-L0-VDF-001-v2.0-FINAL.pdf</span>
+    </div>
+
+    <h3 id="h3-s10-2">10.2 Revision and Status Controls</h3>
+
+    <ul class="rev-list" aria-label="Revision and status control definitions">
+      <li>
+        <span class="rev-tag">vX.0</span>
+        <span>Major Version — Triggered by hardware changes, structural layout shifts, or compliance updates.</span>
+      </li>
+      <li>
+        <span class="rev-tag">v0.Y</span>
+        <span>Minor Version — Triggered by editorial corrections or formatting clarifications.</span>
+      </li>
+      <li>
+        <span class="rev-tag">FREEZE</span>
+        <span>Tender Freeze — It is strictly forbidden to update a technical document during a live tender submission window.</span>
+      </li>
+    </ul>
+
+    <div class="conf-statement" role="note" aria-label="Mandatory confidentiality statement">
+      <div class="cs-label">Mandatory Confidentiality Statement — All Controlled Documents</div>
+      <p>This document contains commercial and technical information proprietary to Perion Lighting. It is provided for evaluation, tender, and procurement purposes only and may not be reproduced, distributed, or disclosed in whole or in part without prior written consent from Perion Lighting.</p>
+    </div>
+
+    <h3 id="h3-s10-3">10.3 Accessibility and Retention</h3>
+
+    <p>Documents must pass WCAG contrast ratios to ensure accessibility for all stakeholders. Technical specifications and compliance evidence must be retained for a minimum of <span class="inline-technical">7 years</span> in the centralized Level 6 root folder (<code>/Perion_Documentation</code>) to ensure legal defensibility.</p>
+
+    <p>This consolidated Visual Design Execution Framework ensures that the Perion Linear Perimeter Illumination Infrastructure is presented as an infrastructure-grade asset, protected by rigorous governance and visualized with professional authority. By adhering to these standards, the organization mitigates the risk of technical leakage, preserves the integrity of its Technical Truth, and provides tender-safe documentation that meets the highest industrial standards.</p>
+
+    <!-- ============================================================
+         APPROVAL BLOCK
+         ============================================================ -->
+    <div class="approval-block" role="region" aria-label="Document approval authority">
+      <div class="ab-eyebrow">Approved for Release</div>
+      <div class="ab-title">Senior Editorial Director &amp; Level 6 Meta-Governance Authority</div>
+      <div class="ab-meta">Perion Lighting &nbsp;·&nbsp; February 26, 2026 &nbsp;·&nbsp; Document ID: <span class="inline-technical">PRN-L0-VDF-001-v2.0</span></div>
+    </div>
+  </section>
+
+</div><!-- /.page-wrapper -->
+</main>
+
+<!-- ================================================================
+     DOCUMENT FOOTER
+     ================================================================ -->
+<footer class="doc-footer" role="contentinfo">
+  <strong>PRN-L0-VDF-001-v2.0 — Perion Visual Design Framework for Technical Documents</strong><br>
+  Level 0 · Governed by Level 6 Protocols · Release Date: February 26, 2026 · Status: Final — Controlled Copy<br>
+  This document contains commercial and technical information proprietary to Perion Lighting.
+  It may not be reproduced or disclosed without prior written consent from Perion Lighting.<br>
+  Perion Visual Design Framework v2.0 · Category Sovereignty Enforced · Perimeter-Lock cable-continuity sensor terminology enforced throughout.
+</footer>
+
+</body>
+</html>

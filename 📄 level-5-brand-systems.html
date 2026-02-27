@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level 5 — Brand &amp; Design Systems | Perion Lighting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       PERION VISUAL DESIGN FRAMEWORK — CSS VARIABLE AUTHORITY
+       Level 5 — Brand & Design Systems
+       Document ID: PRN-L5-BDS-001-v1.0
+       Governed by Level 6 Protocols
+       ============================================================ */
+    :root {
+      --perion-midnight: #0A1D33;
+      --perion-graphite: #2B2E34;
+      --perion-amber:    #F2A900;
+      --perion-grey:     #F5F5F7;
+      --perion-white:    #FFFFFF;
+
+      --font-primary: 'Inter', sans-serif;
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --text-3xl:  1.875rem;
+      --text-4xl:  2.25rem;
+
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+
+      --content-max: 1100px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      color: var(--perion-graphite);
+      background-color: var(--perion-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .page-wrapper {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 var(--space-8);
+    }
+
+    /* ============================================================
+       DOCUMENT HEADER
+       ============================================================ */
+    .doc-header {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      padding: var(--space-10) var(--space-8) var(--space-8);
+      border-bottom: 5px solid var(--perion-amber);
+    }
+
+    .doc-header__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .doc-header__top-bar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .brand-block__name {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--perion-white);
+      line-height: 1;
+    }
+
+    .brand-block__sub {
+      font-size: var(--text-xs);
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-top: var(--space-2);
+    }
+
+    .level-badge {
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: var(--space-2) var(--space-5);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .doc-header__title {
+      font-size: var(--text-4xl);
+      font-weight: 800;
+      color: var(--perion-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .doc-header__subtitle {
+      font-size: var(--text-base);
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.02em;
+      max-width: 72ch;
+    }
+
+    .doc-header__meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .meta-chip {
+      background-color: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.04em;
+    }
+
+    .meta-chip strong {
+      color: var(--perion-amber);
+      font-weight: 700;
+      margin-right: var(--space-1);
+    }
+
+    /* ============================================================
+       GOVERNANCE PREAMBLE BANNER
+       ============================================================ */
+    .gov-preamble {
+      background-color: var(--perion-grey);
+      border-left: 5px solid var(--perion-midnight);
+      padding: var(--space-8);
+      margin: var(--space-10) 0;
+    }
+
+    .gov-preamble__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .gov-preamble p {
+      color: var(--perion-graphite);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      max-width: 75ch;
+      margin-bottom: var(--space-3);
+    }
+
+    .gov-preamble p:last-child { margin-bottom: 0; }
+
+    /* ============================================================
+       HEADINGS
+       ============================================================ */
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--perion-midnight);
+      line-height: 1.25;
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: 2px solid var(--perion-amber);
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--perion-midnight);
+      line-height: 1.3;
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-8);
+    }
+
+    /* ============================================================
+       BODY TEXT
+       ============================================================ */
+    p {
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      max-width: 75ch;
+      margin-bottom: var(--space-4);
+      font-size: var(--text-base);
+    }
+
+    /* ============================================================
+       SECTION LABEL
+       ============================================================ */
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    /* ============================================================
+       SECTION DIVIDER
+       ============================================================ */
+    .section-divider {
+      height: 1px;
+      background-color: var(--perion-grey);
+      margin: var(--space-12) 0;
+    }
+
+    main { padding: var(--space-12) 0; }
+    section { margin-bottom: var(--space-16); }
+
+    /* ============================================================
+       INLINE TECHNICAL TAG
+       ============================================================ */
+    .inline-technical {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--perion-midnight);
+      font-size: 0.95em;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       TABLE GOVERNANCE
+       ============================================================ */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: var(--space-6) 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-variant-numeric: tabular-nums;
+    }
+
+    thead tr { background-color: var(--perion-midnight); }
+
+    th {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      font-weight: 600;
+      text-align: center;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-xs);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    td {
+      color: var(--perion-graphite);
+      text-align: left;
+      padding: var(--space-3) var(--space-4);
+      border: 1px solid #dde1e7;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    tbody tr:nth-child(even) { background-color: var(--perion-grey); }
+    tbody tr:nth-child(odd)  { background-color: var(--perion-white); }
+    tbody tr:hover           { background-color: #eaecef; }
+    td:first-child           { font-weight: 500; color: var(--perion-midnight); }
+
+    /* ============================================================
+       COLOR SWATCH GRID — SECTION 5
+       ============================================================ */
+    .color-palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+    }
+
+    .color-swatch {
+      border: 1px solid #dde1e7;
+      overflow: hidden;
+    }
+
+    .color-swatch__chip {
+      height: 72px;
+      width: 100%;
+      display: block;
+    }
+
+    .color-swatch__info {
+      padding: var(--space-3) var(--space-4);
+      background-color: var(--perion-white);
+      border-top: 1px solid #dde1e7;
+    }
+
+    .color-swatch__name {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: var(--space-1);
+    }
+
+    .color-swatch__hex {
+      font-size: var(--text-xs);
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--perion-graphite);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: var(--space-1);
+    }
+
+    .color-swatch__pantone {
+      font-size: var(--text-xs);
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .color-swatch__role {
+      font-size: var(--text-xs);
+      color: var(--perion-graphite);
+      margin-top: var(--space-2);
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--perion-grey);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       3-COLOR RULE CALLOUT
+       ============================================================ */
+    .rule-block {
+      background-color: var(--perion-midnight);
+      padding: var(--space-6) var(--space-8);
+      margin: var(--space-6) 0;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-5);
+    }
+
+    .rule-block__badge {
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: var(--space-2) var(--space-3);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .rule-block p {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      max-width: none;
+      margin-bottom: 0;
+    }
+
+    /* ============================================================
+       STYLE MAP DEMO BLOCKS — SECTION 2 & 3
+       ============================================================ */
+    .style-demo {
+      border: 1px solid #dde1e7;
+      margin: var(--space-6) 0;
+      overflow: hidden;
+    }
+
+    .style-demo__header {
+      background-color: var(--perion-midnight);
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+    }
+
+    .style-demo__body {
+      padding: var(--space-5);
+      background-color: var(--perion-white);
+    }
+
+    .style-demo__item {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--perion-grey);
+    }
+
+    .style-demo__item:last-child { border-bottom: none; }
+
+    .style-demo__tag {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--perion-amber);
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .style-demo__preview {
+      color: var(--perion-graphite);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+
+    /* Typography preview renders */
+    .style-preview--title    { font-size: 1.5rem; font-weight: 800; color: var(--perion-midnight); text-transform: uppercase; letter-spacing: -0.01em; }
+    .style-preview--subtitle { font-size: 1rem; font-weight: 500; color: var(--perion-graphite); letter-spacing: 0.03em; }
+    .style-preview--h1       { font-size: 1.125rem; font-weight: 700; color: var(--perion-midnight); }
+    .style-preview--h2       { font-size: 1rem; font-weight: 600; color: var(--perion-midnight); }
+    .style-preview--h3       { font-size: 0.9rem; font-weight: 600; color: var(--perion-midnight); }
+    .style-preview--body     { font-size: 0.875rem; font-weight: 400; color: var(--perion-graphite); max-width: 55ch; line-height: 1.6; }
+    .style-preview--compact  { font-size: 0.75rem; font-weight: 400; color: var(--perion-graphite); line-height: 1.4; }
+    .style-preview--callout  { font-size: 0.875rem; font-weight: 600; color: var(--perion-midnight); background-color: #fff8e8; border-left: 3px solid var(--perion-amber); padding: 4px 8px; }
+    .style-preview--footer   { font-size: 0.7rem; font-weight: 300; color: #666; letter-spacing: 0.04em; }
+    .style-preview--bullet   { font-size: 0.875rem; font-weight: 400; color: var(--perion-graphite); }
+    .style-preview--numbered { font-size: 0.875rem; font-weight: 400; color: var(--perion-graphite); }
+
+    /* Character style previews */
+    .style-preview--bold-em   { font-weight: 700; color: var(--perion-midnight); font-size: 0.875rem; }
+    .style-preview--inline-t  { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--perion-midnight); font-size: 0.875rem; letter-spacing: 0.01em; }
+    .style-preview--highlight { background-color: var(--perion-amber); color: var(--perion-midnight); font-weight: 700; font-size: 0.875rem; padding: 0 4px; }
+    .style-preview--italic-r  { font-style: italic; color: var(--perion-graphite); font-size: 0.875rem; }
+    .style-preview--warning   { font-weight: 700; color: var(--perion-amber); font-size: 0.875rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ============================================================
+       PDS vs TDS COMPARISON GRID — SECTION 4
+       ============================================================ */
+    .variant-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+    }
+
+    .variant-card {
+      border-top: 4px solid var(--perion-midnight);
+      padding: var(--space-6);
+      background-color: var(--perion-grey);
+    }
+
+    .variant-card--tds {
+      border-top-color: var(--perion-amber);
+    }
+
+    .variant-card__label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      margin-bottom: var(--space-4);
+    }
+
+    .variant-card--tds .variant-card__label {
+      color: var(--perion-midnight);
+    }
+
+    .variant-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .variant-card li {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .variant-card li:last-child { border-bottom: none; }
+
+    .variant-card li::before {
+      content: '·';
+      color: var(--perion-amber);
+      font-weight: 800;
+      margin-right: var(--space-2);
+    }
+
+    /* ============================================================
+       LAYOUT GRID DIAGRAM — SECTION 6
+       ============================================================ */
+    .layout-zone-diagram {
+      border: 2px solid var(--perion-midnight);
+      margin: var(--space-6) 0;
+      overflow: hidden;
+    }
+
+    .layout-zone {
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      border-bottom: 1px solid #dde1e7;
+    }
+
+    .layout-zone:last-child { border-bottom: none; }
+
+    .layout-zone--header { background-color: var(--perion-midnight); }
+    .layout-zone--hero   { background-color: #1a3a5c; }
+    .layout-zone--title  { background-color: var(--perion-grey); }
+    .layout-zone--body   { background-color: var(--perion-white); }
+    .layout-zone--footer { background-color: var(--perion-midnight); }
+
+    .layout-zone__id {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      min-width: 70px;
+    }
+
+    .layout-zone__name {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      min-width: 120px;
+    }
+
+    .layout-zone--header .layout-zone__name,
+    .layout-zone--hero   .layout-zone__name,
+    .layout-zone--footer .layout-zone__name { color: var(--perion-white); }
+
+    .layout-zone--title .layout-zone__name,
+    .layout-zone--body  .layout-zone__name  { color: var(--perion-midnight); }
+
+    .layout-zone__rule {
+      font-size: var(--text-xs);
+      line-height: 1.5;
+    }
+
+    .layout-zone--header .layout-zone__rule,
+    .layout-zone--hero   .layout-zone__rule,
+    .layout-zone--footer .layout-zone__rule { color: rgba(255,255,255,0.7); }
+
+    .layout-zone--title .layout-zone__rule,
+    .layout-zone--body  .layout-zone__rule  { color: var(--perion-graphite); }
+
+    /* ============================================================
+       ICON USAGE TABLE — SECTION 7
+       ============================================================ */
+    .icon-rule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+    }
+
+    .icon-rule-card {
+      padding: var(--space-5);
+      border: 1px solid #dde1e7;
+    }
+
+    .icon-rule-card--allowed {
+      border-top: 3px solid #1a6b3a;
+    }
+
+    .icon-rule-card--prohibited {
+      border-top: 3px solid var(--perion-amber);
+    }
+
+    .icon-rule-card__status {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .icon-rule-card--allowed   .icon-rule-card__status { color: #1a6b3a; }
+    .icon-rule-card--prohibited .icon-rule-card__status { color: var(--perion-amber); }
+
+    .icon-rule-card__doc {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--perion-midnight);
+      margin-bottom: var(--space-3);
+    }
+
+    .icon-rule-card p {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      max-width: none;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       DIAGRAM STANDARDS — SECTION 8
+       ============================================================ */
+    .line-weight-chart {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin: var(--space-6) 0;
+      padding: var(--space-5);
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-midnight);
+    }
+
+    .line-weight-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+    }
+
+    .line-weight-row__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-variant-numeric: tabular-nums;
+      color: var(--perion-midnight);
+      min-width: 55px;
+    }
+
+    .line-weight-row__bar {
+      flex: 1;
+      max-width: 300px;
+      background-color: var(--perion-midnight);
+    }
+
+    .line-weight-row__desc {
+      font-size: var(--text-xs);
+      color: var(--perion-graphite);
+    }
+
+    /* ============================================================
+       FILE NAMING CODE BLOCK — SECTION 9
+       ============================================================ */
+    .code-block {
+      background-color: var(--perion-midnight);
+      padding: var(--space-6) var(--space-8);
+      margin: var(--space-6) 0;
+      overflow-x: auto;
+    }
+
+    .code-block__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .code-block code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: var(--text-sm);
+      color: var(--perion-white);
+      line-height: 2;
+      display: block;
+    }
+
+    .code-block .code-formula { color: rgba(255,255,255,0.55); font-style: italic; }
+    .code-block .code-example { color: var(--perion-amber); font-weight: 700; }
+
+    /* ============================================================
+       VERSION SCHEME GRID — SECTION 9
+       ============================================================ */
+    .version-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+
+    .version-card {
+      border: 1px solid #dde1e7;
+      border-top: 3px solid var(--perion-amber);
+      padding: var(--space-4);
+    }
+
+    .version-card__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      font-family: 'Courier New', Courier, monospace;
+      margin-bottom: var(--space-2);
+    }
+
+    .version-card__desc {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       APPROVAL GATES GRID — SECTION 11
+       ============================================================ */
+    .approval-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+    }
+
+    .approval-card {
+      background-color: var(--perion-grey);
+      border-top: 3px solid var(--perion-midnight);
+      padding: var(--space-5);
+    }
+
+    .approval-card__role {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+      margin-bottom: var(--space-3);
+    }
+
+    .approval-card__title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-2);
+    }
+
+    .approval-card p {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      max-width: none;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       PAGE MOCKUP ZONES — SECTION 12
+       ============================================================ */
+    .page-mockup {
+      border: 2px solid var(--perion-midnight);
+      margin: var(--space-6) 0;
+      overflow: hidden;
+    }
+
+    .page-mockup__title {
+      background-color: var(--perion-midnight);
+      color: var(--perion-amber);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: var(--space-3) var(--space-5);
+    }
+
+    .page-mockup__zone {
+      padding: var(--space-4) var(--space-5);
+      border-bottom: 1px dashed #ccc;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: var(--space-4);
+      align-items: center;
+    }
+
+    .page-mockup__zone:last-child { border-bottom: none; }
+
+    .page-mockup__zone-id {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+    }
+
+    .page-mockup__zone-rule {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.5;
+    }
+
+    .page-mockup__zone-rule strong {
+      color: var(--perion-midnight);
+      font-weight: 600;
+    }
+
+    .page-mockup__zone--header { background-color: #f0f4f8; }
+    .page-mockup__zone--hero   { background-color: #e0e8f0; }
+    .page-mockup__zone--title  { background-color: var(--perion-white); }
+    .page-mockup__zone--body   { background-color: var(--perion-white); }
+    .page-mockup__zone--footer { background-color: #f0f4f8; }
+
+    /* ============================================================
+       LIVE EXAMPLE TABLE — SECTION 12.3
+       ============================================================ */
+    .live-example-header {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      background-color: var(--perion-midnight);
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Warning inline example */
+    .warning-inline-example {
+      background-color: #fff8e8;
+      border-left: 4px solid var(--perion-amber);
+      padding: var(--space-4) var(--space-5);
+      margin: var(--space-6) 0;
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+
+    .warning-inline-example__trigger {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .warning-inline-example__text {
+      color: var(--perion-graphite);
+    }
+
+    .warning-inline-example__text strong {
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--perion-midnight);
+    }
+
+    /* ============================================================
+       REJECTION CRITERIA LIST — SECTION 13
+       ============================================================ */
+    .rejection-list {
+      list-style: none;
+      padding-left: 0;
+      margin: var(--space-5) 0;
+    }
+
+    .rejection-list li {
+      padding: var(--space-4);
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      margin-bottom: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+    }
+
+    .rejection-list li strong {
+      color: var(--perion-midnight);
+      font-weight: 700;
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+
+    /* ============================================================
+       CALLOUT / NOTE BLOCK
+       ============================================================ */
+    .callout {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: var(--space-5) var(--space-6);
+      margin: var(--space-6) 0;
+    }
+
+    .callout__title {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: var(--space-3);
+    }
+
+    .callout p {
+      max-width: none;
+      margin-bottom: 0;
+      font-size: var(--text-sm);
+    }
+
+    /* ============================================================
+       DARK AUTHORITY CALLOUT
+       ============================================================ */
+    .callout--authority {
+      background-color: var(--perion-midnight);
+      border-left: 4px solid var(--perion-amber);
+      padding: var(--space-6) var(--space-8);
+      margin: var(--space-8) 0;
+    }
+
+    .callout--authority .callout__title { color: var(--perion-amber); }
+
+    .callout--authority p {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      max-width: none;
+      margin-bottom: 0;
+    }
+
+    /* ============================================================
+       WORKS CITED
+       ============================================================ */
+    .works-cited-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: var(--space-4);
+    }
+
+    .works-cited-list li {
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--perion-grey);
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: var(--space-3);
+      align-items: baseline;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .works-cited-list li:last-child { border-bottom: none; }
+
+    .works-cited-list__num {
+      font-weight: 700;
+      color: var(--perion-amber);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .works-cited-list a {
+      color: var(--perion-midnight);
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    /* ============================================================
+       DOCUMENT FOOTER
+       ============================================================ */
+    .doc-footer {
+      background-color: var(--perion-midnight);
+      border-top: 5px solid var(--perion-amber);
+      padding: var(--space-10) var(--space-8);
+      margin-top: var(--space-16);
+    }
+
+    .doc-footer__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .doc-footer__block strong {
+      color: var(--perion-amber);
+      display: block;
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .doc-footer__block span {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      display: block;
+    }
+
+    .doc-footer__block p {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: none;
+      margin-bottom: 0;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 860px) {
+      .variant-compare   { grid-template-columns: 1fr; }
+      .icon-rule-grid    { grid-template-columns: 1fr; }
+      .doc-footer__inner { grid-template-columns: 1fr; }
+      .page-mockup__zone { grid-template-columns: 60px 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .doc-header__top-bar { flex-direction: column; }
+      .doc-header__title   { font-size: var(--text-2xl); }
+      .color-palette-grid  { grid-template-columns: repeat(2, 1fr); }
+      .approval-grid       { grid-template-columns: 1fr; }
+      .page-wrapper        { padding: 0 var(--space-4); }
+    }
+
+    @media print {
+      .doc-header  { break-after: page; }
+      table        { break-inside: avoid; }
+      h2           { break-before: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       DOCUMENT HEADER
+       ============================================================ -->
+  <header class="doc-header" role="banner">
+    <div class="doc-header__inner page-wrapper">
+
+      <div class="doc-header__top-bar">
+        <div class="brand-block">
+          <div class="brand-block__name">Perion Lighting</div>
+          <div class="brand-block__sub">A Sunbird Lighting Company</div>
+        </div>
+        <div class="level-badge">Level 5 — Brand &amp; Design Systems</div>
+      </div>
+
+      <h1 class="doc-header__title">Brand &amp; Design Systems</h1>
+      <p class="doc-header__subtitle">Infrastructure-Grade Standards for PDS and TDS Systems — The authoritative framework for the structural, typographic, and visual execution of all Product Data Sheets, Technical Data Sheets, and auxiliary compliance documentation.</p>
+
+      <div class="doc-header__meta-bar" role="contentinfo">
+        <div class="meta-chip"><strong>Document ID:</strong>PRN-L5-BDS-001-v1.0</div>
+        <div class="meta-chip"><strong>Release Date:</strong>February 26, 2026</div>
+        <div class="meta-chip"><strong>Status:</strong>Controlled Copy — Final</div>
+        <div class="meta-chip"><strong>Classification:</strong>Commercial-in-Confidence</div>
+        <div class="meta-chip"><strong>Governed By:</strong>Level 6 Protocols</div>
+        <div class="meta-chip"><strong>Minimum Body Font:</strong><span class="inline-technical">10 pt</span></div>
+        <div class="meta-chip"><strong>Minimum Compact Font:</strong><span class="inline-technical">8 pt</span></div>
+        <div class="meta-chip"><strong>Min Leading:</strong><span class="inline-technical">120 %</span></div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+    <div class="page-wrapper">
+
+      <!-- GOVERNANCE PREAMBLE -->
+      <div class="gov-preamble" role="note" aria-label="Document preamble and governance statement">
+        <span class="gov-preamble__label">Document Preamble — Governed by Level 6 Protocols</span>
+        <p>
+          The Perion Brand and Documentation Governance Manual establishes the authoritative framework for the structural, typographic, and visual execution of all Product Data Sheets (PDS), Technical Data Sheets (TDS), and auxiliary compliance documentation. Within the Linear Perimeter Illumination Infrastructure environment, documentation serves as a primary vehicle for engineering defensibility and regulatory compliance.
+        </p>
+        <p>
+          The documentation stack is categorized into six hierarchical levels, ranging from Level 1 (Customer-Facing Overview) to Level 6 (Meta-Governance and Authority). This manual serves as the Level 5 layer, providing the specific visual and structural controls required to maintain the integrity of the entire documentation ecosystem.
+        </p>
+      </div>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 1 — STYLE SYSTEM OVERVIEW
+           ======================================================== -->
+      <section aria-labelledby="heading-style-system">
+        <span class="section-label">Section 1</span>
+        <h2 id="heading-style-system">Style System Overview</h2>
+
+        <p>
+          The Perion InDesign Style System is the mandatory structural foundation for all official documentation. It defines the typographic, structural, and visual parameters that must be applied to every PDS and TDS.
+        </p>
+
+        <p>
+          Adherence to this style system is a primary metric of document control; manual overrides, local formatting, and ad-hoc styling are categorized as governance failures. The system functions as a "Single Source of Truth," where the paragraph and character style maps prevent stylistic deviations.
+        </p>
+
+        <div class="callout--authority" role="note" aria-label="Style system authority statement">
+          <div class="callout__title">Single Source of Truth — Governance Mandate</div>
+          <p>
+            Manual overrides, local formatting, and ad-hoc styling are categorized as governance failures under the Level 5 framework. The style maps prevent stylistic deviations that would compromise the "Technical Truth" of the documentation stack. Any document exhibiting unauthorized formatting is subject to immediate Withdrawal from Circulation.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 2 — PARAGRAPH STYLE MAP
+           ======================================================== -->
+      <section aria-labelledby="heading-para-style">
+        <span class="section-label">Section 2</span>
+        <h2 id="heading-para-style">Paragraph Style Map</h2>
+
+        <p>
+          The Paragraph Style Map is the primary tool for governing document hierarchy and structural flow.
+        </p>
+
+        <!-- Live style demo -->
+        <div class="style-demo" aria-label="Paragraph style map visual preview">
+          <div class="style-demo__header">Live Style Preview — Paragraph Styles</div>
+          <div class="style-demo__body">
+            <div class="style-demo__item">
+              <span class="style-demo__tag">PDS_TDS_Title</span>
+              <span class="style-preview--title">Perion Linear Perimeter Illumination Infrastructure</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">PDS_TDS_Subtitle</span>
+              <span class="style-preview--subtitle">Technical Data Sheet — Engineering Authority Document</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">H1_Section</span>
+              <span class="style-preview--h1">1. Electrical Specifications</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">H2_Subsection</span>
+              <span class="style-preview--h2">1.1 Power Pack Output Parameters</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">H3_Subsection</span>
+              <span class="style-preview--h3">1.1.1 Voltage Drop Calculation Reference</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Body_Text</span>
+              <span class="style-preview--body">The system operates at 24 V DC SELV and achieves ≥ 10 Lux along the fence line with a uniformity ratio of 0.4 – 0.6.</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Body_Text_Compact</span>
+              <span class="style-preview--compact">This document contains commercial and technical information proprietary to Perion Lighting. It is provided for evaluation and procurement purposes only.</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Bullet_List</span>
+              <span class="style-preview--bullet">· IP69K rated — Dust-tight; high-pressure/high-temp water resistant</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Numbered_List</span>
+              <span class="style-preview--numbered">1. Run illumination cable at 2.5 m mounting height and secure with Perion clips.</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Callout_Text</span>
+              <span class="style-preview--callout">Engineering Note: Maximum allowable voltage drop is 10 % (2.4 V from 24 V nominal).</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Footer_Text</span>
+              <span class="style-preview--footer">PRN-L5-BDS-001-v1.0 · February 26, 2026 · Commercial-in-Confidence · Page 1 of N</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paragraph Style Map Table -->
+        <div class="table-wrapper">
+          <table aria-label="Paragraph style map governance table">
+            <thead>
+              <tr>
+                <th scope="col">Style Name</th>
+                <th scope="col">Purpose and Governance Rule</th>
+                <th scope="col">Formatting Attributes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>PDS_TDS_Title</td>
+                <td>Mandatory for all cover pages and section divider titles; establishes the document's primary identity.</td>
+                <td>Large scale, heavyweight, Title Case or All Caps.</td>
+              </tr>
+              <tr>
+                <td>PDS_TDS_Subtitle</td>
+                <td>Used for document type identifiers (e.g., "Technical Data Sheet") and straplines.</td>
+                <td>Moderate scale, medium weight.</td>
+              </tr>
+              <tr>
+                <td>H1_Section</td>
+                <td>Governs major numbered sections; these must start on a new baseline to prevent visual overlap.</td>
+                <td>Perion Midnight Blue, Bold, Numbered.</td>
+              </tr>
+              <tr>
+                <td>H2_Subsection</td>
+                <td>Governs secondary headings within sections; numbering is sequential and does not reset.</td>
+                <td>Sentence Case or Title Case.</td>
+              </tr>
+              <tr>
+                <td>H3_Subsection</td>
+                <td>Reserved for technical sub-categorization in dense TDS documents.</td>
+                <td>Standard industrial weight.</td>
+              </tr>
+              <tr>
+                <td>Body_Text</td>
+                <td>The standard for all narrative paragraphs; restricted to maximum characters per line for cognitive ease.</td>
+                <td>No first-line indent, defined space-after.</td>
+              </tr>
+              <tr>
+                <td>Body_Text_Compact</td>
+                <td>Reserved for legal declarations, compliance fine print, and technical appendix data.</td>
+                <td>High density, reduced leading.</td>
+              </tr>
+              <tr>
+                <td>Bullet_List</td>
+                <td>Standardizes features and benefits; punctuation is prohibited unless using full sentences.</td>
+                <td>Defined left indent, standard bullet character.</td>
+              </tr>
+              <tr>
+                <td>Numbered_List</td>
+                <td>Mandated for installation sequences and step-by-step commissioning procedures.</td>
+                <td>Sequential numbering, aligned with H2 hierarchy.</td>
+              </tr>
+              <tr>
+                <td>Callout_Text</td>
+                <td>Used for engineering highlights and key design rules; must be placed within approved zones.</td>
+                <td>Safety Amber highlights permitted.</td>
+              </tr>
+              <tr>
+                <td>Footer_Text</td>
+                <td>Governs metadata, including document ID, versioning, and page pagination.</td>
+                <td>Small scale, Graphite Text, light weight.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" role="note" aria-label="Non-negotiable governance note on paragraph styles">
+          <div class="callout__title">Non-Negotiable Application Rule</div>
+          <p>
+            The application of these styles is non-negotiable. Body_Text_Compact must never be used to obfuscate legal or compliance statements, and H1_Section must always lead a major thematic change in the document.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 3 — CHARACTER STYLE MAP
+           ======================================================== -->
+      <section aria-labelledby="heading-char-style">
+        <span class="section-label">Section 3</span>
+        <h2 id="heading-char-style">Character Style Map</h2>
+
+        <p>
+          Character styles are the mechanism for inline formatting discipline, allowing for emphasis without disrupting the underlying paragraph structure. They are used to highlight critical metrics, identify technical notations, and flag safety concerns.
+        </p>
+
+        <h3 id="heading-core-char">3.1. Core Character Styles</h3>
+
+        <!-- Live character style preview -->
+        <div class="style-demo" aria-label="Character style map visual preview">
+          <div class="style-demo__header">Live Style Preview — Character Styles</div>
+          <div class="style-demo__body">
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Bold_Emphasis</span>
+              <span class="style-preview--bold-em">Perimeter-Lock cable-continuity sensor</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Inline_Technical</span>
+              <span class="style-preview--inline-t">24 V DC · IP69K · 100,000 Hours · −20 °C · +60 °C · 10 Lux</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Highlight_Value</span>
+              <span class="style-preview--highlight">80 % Power Reduction</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Italic_Reference</span>
+              <span class="style-preview--italic-r">ISO 9001:2015 · IEC 60529 · EN 55015 · RoHS</span>
+            </div>
+            <div class="style-demo__item">
+              <span class="style-demo__tag">Warning_Inline</span>
+              <span class="style-preview--warning">Warning · Caution · Do Not</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table aria-label="Character style map usage protocols">
+            <thead>
+              <tr>
+                <th scope="col">Style Name</th>
+                <th scope="col">Approved Usage Protocol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bold_Emphasis</td>
+                <td>Reserved for emphasizing key terms on their first reference only.</td>
+              </tr>
+              <tr>
+                <td>Inline_Technical</td>
+                <td>Mandatory for every technical value, parameter, and electrical variable.</td>
+              </tr>
+              <tr>
+                <td>Highlight_Value</td>
+                <td>Reserved for performance differentiators requiring immediate reviewer attention.</td>
+              </tr>
+              <tr>
+                <td>Italic_Reference</td>
+                <td>Applied to document names, ISO standards, and external regulatory references.</td>
+              </tr>
+              <tr>
+                <td>Warning_Inline</td>
+                <td>Strictly reserved for safety-critical terms within procedural narratives.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="heading-tech-format">3.2. Technical Value Formatting Rules</h3>
+
+        <p>
+          The Inline_Technical style is the most critical component of the character style map. Its mandatory application ensures that auditors can rapidly scan a document to identify performance claims. This style must be applied to:
+        </p>
+
+        <div class="table-wrapper">
+          <table aria-label="Technical value formatting categories and examples">
+            <thead>
+              <tr>
+                <th scope="col">Metric Category</th>
+                <th scope="col">Units / Identifiers</th>
+                <th scope="col">Example Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Electrical Metrics</td>
+                <td>Volts (V), Amperes (A), Watts (W)</td>
+                <td><span class="inline-technical">24 V DC</span>, <span class="inline-technical">2.85 A</span>, <span class="inline-technical">625 W</span></td>
+              </tr>
+              <tr>
+                <td>Optical Metrics</td>
+                <td>Lux (lx), Lumens (lm), Efficacy (lm/W)</td>
+                <td><span class="inline-technical">≥ 10 Lux</span>, <span class="inline-technical">120 lm/W</span></td>
+              </tr>
+              <tr>
+                <td>Environmental Ratings</td>
+                <td>Ingress Protection (IP), Temperature (°C), Impact ratings</td>
+                <td><span class="inline-technical">IP69K</span>, <span class="inline-technical">+60 °C</span>, <span class="inline-technical">IK08</span></td>
+              </tr>
+              <tr>
+                <td>Mechanical Identifiers</td>
+                <td>ISO/IEC numbers, part identifiers, cable dimensions</td>
+                <td><span class="inline-technical">IEC 60529</span>, <span class="inline-technical">0.5 mm</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" role="note" aria-label="Manual formatting prohibition notice">
+          <div class="callout__title">Manual Formatting Prohibition</div>
+          <p>
+            Manual bolding or italics are prohibited; any emphasis must be achieved via these predefined styles. Unauthorized formatting constitutes a governance failure and triggers document withdrawal.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 4 — PDS vs TDS STYLE VARIANTS
+           ======================================================== -->
+      <section aria-labelledby="heading-variants">
+        <span class="section-label">Section 4</span>
+        <h2 id="heading-variants">PDS vs. TDS Style Variants</h2>
+
+        <p>
+          The Perion documentation system maintains a strict "Structural Separation" between its commercial and technical documents.
+        </p>
+
+        <h3 id="heading-pds-variant">4.1. The PDS Variant: Executive Narrative</h3>
+
+        <p>
+          The PDS is optimized for decision-makers and procurement officers who require a high-level understanding of system intent and value.
+        </p>
+
+        <h3 id="heading-tds-variant">4.2. The TDS Variant: Engineering Truth</h3>
+
+        <p>
+          The TDS is intended for consulting engineers and technical evaluators. It prioritizes information density and professional neutrality.
+        </p>
+
+        <!-- Side-by-side comparison cards -->
+        <div class="variant-compare" aria-label="PDS versus TDS variant comparison">
+          <div class="variant-card" aria-labelledby="pds-card-label">
+            <div class="variant-card__label" id="pds-card-label">PDS — Product Data Sheet: Executive Narrative</div>
+            <ul>
+              <li><strong>Heading Hierarchy:</strong> Limited to a maximum of two levels (H1 and H2).</li>
+              <li><strong>Typography:</strong> Larger H1 headers with a lighter weight.</li>
+              <li><strong>Whitespace:</strong> Strategic use of whitespace is mandated to facilitate scanning.</li>
+              <li><strong>Tables:</strong> Restricted to "Summary Tables" which utilize rounded numeric precision and simplified units for ease of comparison.</li>
+            </ul>
+          </div>
+          <div class="variant-card variant-card--tds" aria-labelledby="tds-card-label">
+            <div class="variant-card__label" id="tds-card-label">TDS — Technical Data Sheet: Engineering Truth</div>
+            <ul>
+              <li><strong>Heading Hierarchy:</strong> Supports the full hierarchy (H1 through H3+) as required to categorize complex electrical and photometric data.</li>
+              <li><strong>Typography:</strong> H1 headers are smaller but have more visual weight (boldness) to denote a dense, technical atmosphere.</li>
+              <li><strong>Density:</strong> Moderate to high paragraph density is expected; the document is a "Fact Sheet" rather than a brochure.</li>
+              <li><strong>Tables:</strong> Must include "Full Specification Tables" with exact values, comprehensive units, and declared tolerances.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 id="heading-variant-compare">4.3. Comparison of Variant Rules</h3>
+
+        <div class="table-wrapper">
+          <table aria-label="PDS versus TDS attribute comparison">
+            <thead>
+              <tr>
+                <th scope="col">Attribute</th>
+                <th scope="col">PDS (Product Data Sheet)</th>
+                <th scope="col">TDS (Technical Data Sheet)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary Audience</td>
+                <td>Executives / Procurement.</td>
+                <td>Engineers / Auditors.</td>
+              </tr>
+              <tr>
+                <td>Maximum H-Levels</td>
+                <td>2 Levels.</td>
+                <td>Full Hierarchy (3+).</td>
+              </tr>
+              <tr>
+                <td>Iconography</td>
+                <td>Permitted for feature highlights.</td>
+                <td>Strictly Prohibited.</td>
+              </tr>
+              <tr>
+                <td>Numeric Precision</td>
+                <td>Rounded / Summary.</td>
+                <td>Exact / Full Declaration.</td>
+              </tr>
+              <tr>
+                <td>Callout Boxes</td>
+                <td>Allowed for value-prop highlights.</td>
+                <td>Restricted to safety warnings only.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" role="note" aria-label="Performance value cross-level prohibition">
+          <div class="callout__title">Cross-Level Performance Value Prohibition</div>
+          <p>
+            No performance value may be introduced in a PDS that is not already present and verified in the TDS.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 5 — BRAND COLOR SYSTEM
+           ======================================================== -->
+      <section aria-labelledby="heading-colors">
+        <span class="section-label">Section 5</span>
+        <h2 id="heading-colors">Brand Color System (Source of Truth)</h2>
+
+        <p>
+          The Perion color system utilizes a high-contrast palette that ensures legibility in both digital and printed environments. The colors are derived from the official website to maintain a "Single Source of Truth" for brand consistency.
+        </p>
+
+        <h3 id="heading-core-colors">5.1. Core Brand Colors</h3>
+
+        <!-- Color swatches -->
+        <div class="color-palette-grid" aria-label="Perion brand color palette">
+          <div class="color-swatch" aria-label="Midnight Blue color swatch">
+            <span class="color-swatch__chip" style="background-color: #0A1D33;" role="presentation"></span>
+            <div class="color-swatch__info">
+              <div class="color-swatch__name">Midnight Blue</div>
+              <div class="color-swatch__hex">#0A1D33</div>
+              <div class="color-swatch__pantone">PMS 2965 C<br />CMYK: 100 · 85 · 35 · 60.5</div>
+              <div class="color-swatch__role">Primary Authority: H1 headers, table headers, document titles.</div>
+            </div>
+          </div>
+
+          <div class="color-swatch" aria-label="Graphite Text color swatch">
+            <span class="color-swatch__chip" style="background-color: #2B2E34;" role="presentation"></span>
+            <div class="color-swatch__info">
+              <div class="color-swatch__name">Graphite Text</div>
+              <div class="color-swatch__hex">#2B2E34</div>
+              <div class="color-swatch__pantone">PMS Cool Gray 11 C<br />CMYK: 17 · 11 · 0 · 80.5</div>
+              <div class="color-swatch__role">Primary Legibility: Body text, subheadings, technical paragraphs.</div>
+            </div>
+          </div>
+
+          <div class="color-swatch" aria-label="Safety Amber color swatch">
+            <span class="color-swatch__chip" style="background-color: #F2A900;" role="presentation"></span>
+            <div class="color-swatch__info">
+              <div class="color-swatch__name">Safety Amber</div>
+              <div class="color-swatch__hex">#F2A900</div>
+              <div class="color-swatch__pantone">PMS 137 C<br />CMYK: 0 · 30 · 100 · 5.5</div>
+              <div class="color-swatch__role">Meaning-Driven Emphasis: Warnings, highlights, light paths.</div>
+            </div>
+          </div>
+
+          <div class="color-swatch" aria-label="Light Grey color swatch">
+            <span class="color-swatch__chip" style="background-color: #F5F5F7; border-bottom: 1px solid #dde1e7;" role="presentation"></span>
+            <div class="color-swatch__info">
+              <div class="color-swatch__name">Light Grey</div>
+              <div class="color-swatch__hex">#F5F5F7</div>
+              <div class="color-swatch__pantone">Cool Gray 1 C<br />CMYK: 2 · 2 · 1 · 0.5</div>
+              <div class="color-swatch__role">Structure: Table banding, background blocks, pullout panels.</div>
+            </div>
+          </div>
+
+          <div class="color-swatch" aria-label="Chalk White color swatch">
+            <span class="color-swatch__chip" style="background-color: #FFFFFF; border-bottom: 1px solid #dde1e7;" role="presentation"></span>
+            <div class="color-swatch__info">
+              <div class="color-swatch__name">Chalk White</div>
+              <div class="color-swatch__hex">#FFFFFF</div>
+              <div class="color-swatch__pantone">— / 0 · 0 · 0 · 0.5</div>
+              <div class="color-swatch__role">Support: Page background and margin zones.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full color table for reference -->
+        <div class="table-wrapper">
+          <table aria-label="Full brand color system reference table">
+            <thead>
+              <tr>
+                <th scope="col">Color Name</th>
+                <th scope="col">HEX Code</th>
+                <th scope="col">Pantone / CMYK Values</th>
+                <th scope="col">Functional Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Midnight Blue</td>
+                <td><span class="inline-technical">#0A1D33</span></td>
+                <td>PMS 2965 C / 100-85-35-60.5</td>
+                <td>Primary Authority: H1 headers, table headers, document titles.</td>
+              </tr>
+              <tr>
+                <td>Graphite Text</td>
+                <td><span class="inline-technical">#2B2E34</span></td>
+                <td>PMS Cool Gray 11 C / 17-11-0-80.5</td>
+                <td>Primary Legibility: Body text, subheadings, technical paragraphs.</td>
+              </tr>
+              <tr>
+                <td>Safety Amber</td>
+                <td><span class="inline-technical">#F2A900</span></td>
+                <td>PMS 137 C / 0-30-100-5.5</td>
+                <td>Meaning-Driven Emphasis: Warnings, highlights, light paths.</td>
+              </tr>
+              <tr>
+                <td>Light Grey</td>
+                <td><span class="inline-technical">#F5F5F7</span></td>
+                <td>Cool Gray 1 C / 2-2-1-0.5</td>
+                <td>Structure: Table banding, background blocks, pullout panels.</td>
+              </tr>
+              <tr>
+                <td>Chalk White</td>
+                <td><span class="inline-technical">#FFFFFF</span></td>
+                <td>0-0-0-0.5</td>
+                <td>Support: Page background and margin zones.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="heading-color-governance">5.2. Application Governance</h3>
+
+        <div class="rule-block" role="note" aria-label="3-Color Rule — mandatory governance">
+          <div class="rule-block__badge">3-Color Rule</div>
+          <p>
+            Perion documentation follows a strict "3-Color Rule": no single page may exceed three primary colors (Midnight Blue, Graphite, and Safety Amber). Safety Amber is explicitly forbidden for decorative use; its presence must always indicate a safety-critical warning, a technical highlight, or an engineering note. Decorative use of Safety Amber constitutes a governance failure and triggers immediate document withdrawal.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 6 — LAYOUT GRID SYSTEM
+           ======================================================== -->
+      <section aria-labelledby="heading-layout">
+        <span class="section-label">Section 6</span>
+        <h2 id="heading-layout">Layout Grid System</h2>
+
+        <p>
+          The Perion Grid System provides the spatial discipline required for professional document control.
+        </p>
+
+        <h3 id="heading-margins">6.1. Margin Standards and Column Structure</h3>
+
+        <p>All documentation must conform to a standardized A4 page layout.</p>
+
+        <ul aria-label="Margin and column structure rules">
+          <li><strong>Page Margins:</strong> A generous margin profile is mandated to ensure that critical document metadata (Document ID, pagination) in the footer remains clear of the content zone.</li>
+          <li><strong>Column Grid:</strong> A standard multi-column structure is used to manage content density. In PDS variants, columns are wider to support a narrative flow, while TDS variants may utilize a denser grid to accommodate side-by-side technical comparisons.</li>
+          <li><strong>Line Length:</strong> Prose line length is capped at maximum characters; lines exceeding this length are considered a legibility failure.</li>
+        </ul>
+
+        <h3 id="heading-header-footer">6.2. Header and Footer Zones</h3>
+
+        <p>The header and footer are "Governed Zones" that must not be encroached upon by body content.</p>
+
+        <!-- Page zone diagram -->
+        <div class="layout-zone-diagram" role="figure" aria-label="Document zone layout diagram">
+          <div class="layout-zone layout-zone--header">
+            <div class="layout-zone__id">Zone A</div>
+            <div class="layout-zone__name">Header Zone</div>
+            <div class="layout-zone__rule">Reserved exclusively for the Perion and Sunbird logos. No decorative icons, text, or page titles are permitted in the header.</div>
+          </div>
+          <div class="layout-zone layout-zone--hero">
+            <div class="layout-zone__id">Zone B</div>
+            <div class="layout-zone__name">Hero / Tech Title</div>
+            <div class="layout-zone__rule">High-resolution photograph (PDS) or bold H1 section header (TDS). No technical annotations on PDS cover hero.</div>
+          </div>
+          <div class="layout-zone layout-zone--title">
+            <div class="layout-zone__id">Zone C</div>
+            <div class="layout-zone__name">Title / Data Table</div>
+            <div class="layout-zone__rule">PDS_TDS_Title in Midnight Blue (PDS) or full-width specification table with Inline_Technical values (TDS).</div>
+          </div>
+          <div class="layout-zone layout-zone--body">
+            <div class="layout-zone__id">Zone D</div>
+            <div class="layout-zone__name">Body / Schematic</div>
+            <div class="layout-zone__rule">Two-column Body_Text narrative (PDS) or vector-based wiring diagram with ISO-standard line weights and IP69K callout boxes (TDS).</div>
+          </div>
+          <div class="layout-zone layout-zone--footer">
+            <div class="layout-zone__id">Zone E</div>
+            <div class="layout-zone__name">Footer Zone</div>
+            <div class="layout-zone__rule">Contains the "Document Authority Layer": mandatory Document Title, unique Document ID (e.g., PRN-CPL-L4-001), and "Page X of Y" pagination in Footer_Text style.</div>
+          </div>
+        </div>
+
+        <h3 id="heading-table-alignment">6.3. Table Width and Alignment Rules</h3>
+
+        <p>Tables are the backbone of technical documentation and must follow rigid alignment rules to prevent misinterpretation.</p>
+
+        <ul aria-label="Table alignment and styling rules">
+          <li><strong>Width:</strong> All tables must span the full width of the text column; "floating" or partial-width tables are prohibited.</li>
+          <li><strong>Alignment:</strong> Content within cells must be left-aligned for text and key fields to maintain a consistent vertical scan line. Column headers typically use centered alignment.</li>
+          <li><strong>Styling:</strong> Use the Table_Header style for headers (Midnight Blue background, white text) and Table_Cell for data. Row banding using Perion Light Grey is mandatory for tables exceeding five rows to aid in row tracking.</li>
+        </ul>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 7 — ICONOGRAPHY STANDARD
+           ======================================================== -->
+      <section aria-labelledby="heading-iconography">
+        <span class="section-label">Section 7</span>
+        <h2 id="heading-iconography">Iconography Standard</h2>
+
+        <p>
+          Perion's iconography is treated as a functional tool for supporting document hierarchy rather than a decorative element.
+        </p>
+
+        <h3 id="heading-icon-style">7.1. Icon Style and Categories</h3>
+
+        <ul aria-label="Icon style and category rules">
+          <li><strong>Style:</strong> All icons must feature a consistent line weight and stroke style that aligns with Perion's industrial aesthetic. They must be monochrome or utilize Perion brand colors strategically.</li>
+          <li><strong>Approved Categories:</strong> Icons are approved for use as "Visual Cues" to reinforce value propositions (e.g., a "Zero Trenching" shovel icon) or as "Status Indicators" (e.g., ✓ to indicate a completed compliance level).</li>
+          <li><strong>Prohibited Sources:</strong> Ad-hoc, downloaded, or third-party icons from unverified sources are strictly prohibited; all icons must be sourced from the approved internal brand library.</li>
+        </ul>
+
+        <h3 id="heading-icon-pds-tds">7.2. Usage Rules: PDS vs. TDS</h3>
+
+        <div class="icon-rule-grid" aria-label="Icon usage rules by document type">
+          <div class="icon-rule-card icon-rule-card--allowed">
+            <div class="icon-rule-card__status">Allowed</div>
+            <div class="icon-rule-card__doc">PDS — Product Data Sheet</div>
+            <p>Icons may be used strategically on cover pages and feature grids to highlight key system benefits and use cases.</p>
+          </div>
+          <div class="icon-rule-card icon-rule-card--prohibited">
+            <div class="icon-rule-card__status">Strictly Prohibited</div>
+            <div class="icon-rule-card__doc">TDS — Technical Data Sheet</div>
+            <p>To ensure that Technical Data Sheets remain "visually neutral" and "audit-safe," the use of icons or decorative visual cues is explicitly forbidden. Engineering data must stand on its own without visual "softening".</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 8 — IMAGE AND DIAGRAM STANDARDS
+           ======================================================== -->
+      <section aria-labelledby="heading-image">
+        <span class="section-label">Section 8</span>
+        <h2 id="heading-image">Image and Diagram Standards</h2>
+
+        <p>
+          Perion documentation utilizes "Industrial, Realistic" visuals. The goal is to communicate test scope, provenance, and manufacturing rigor.
+        </p>
+
+        <h3 id="heading-resolution">8.1. Resolution and Technical Requirements</h3>
+
+        <div class="table-wrapper">
+          <table aria-label="Image resolution and format requirements">
+            <thead>
+              <tr>
+                <th scope="col">Asset Type</th>
+                <th scope="col">Specification</th>
+                <th scope="col">Governance Rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Print Documentation</td>
+                <td><span class="inline-technical">300 PPI</span> minimum at final output size</td>
+                <td>Mandatory for all physical tender submissions and printed PDS/TDS.</td>
+              </tr>
+              <tr>
+                <td>Digital Assets (PDF / Web)</td>
+                <td><span class="inline-technical">72 PPI</span> minimum; <span class="inline-technical">300 PPI</span> preferred for retina displays</td>
+                <td>Retina-ready preferred for all digital distribution.</td>
+              </tr>
+              <tr>
+                <td>Hero Images</td>
+                <td>High-resolution, realistic night-time photography</td>
+                <td>Must demonstrate continuous, uniform illumination with no dark spots along the Linear Perimeter Illumination Infrastructure line.</td>
+              </tr>
+              <tr>
+                <td>Web Format</td>
+                <td>WebP format (80% quality), minimum dimension <span class="inline-technical">1920 px</span>, file size under <span class="inline-technical">2 MB</span></td>
+                <td>Mandatory for all online distribution.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="heading-vector">8.2. Vector Requirement for Technical Diagrams</h3>
+
+        <p>
+          All engineering schematics, Lux contour maps, and system topology diagrams must be provided in vector format (EPS or SVG).
+        </p>
+
+        <h3 id="heading-line-weights">8.3. Line Weight and Formatting Standards</h3>
+
+        <p>
+          Perion follows international technical drawing standards (ISO 128) to ensure that schematics are legible and professional.
+        </p>
+
+        <!-- Line weight visual chart -->
+        <div class="line-weight-chart" aria-label="ISO 128 line weight hierarchy diagram">
+          <div class="line-weight-row">
+            <span class="line-weight-row__label">0.25 mm</span>
+            <div class="line-weight-row__bar" style="height: 1px;" role="presentation"></div>
+            <span class="line-weight-row__desc">Secondary details, hatching, and dimension lines.</span>
+          </div>
+          <div class="line-weight-row">
+            <span class="line-weight-row__label">0.50 mm</span>
+            <div class="line-weight-row__bar" style="height: 2px;" role="presentation"></div>
+            <span class="line-weight-row__desc">Primary components and object outlines.</span>
+          </div>
+          <div class="line-weight-row">
+            <span class="line-weight-row__label">1.00 mm</span>
+            <div class="line-weight-row__bar" style="height: 4px;" role="presentation"></div>
+            <span class="line-weight-row__desc">Section boundaries and major structural separators.</span>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table aria-label="Diagram line weight standards">
+            <thead>
+              <tr>
+                <th scope="col">Line Weight</th>
+                <th scope="col">Application</th>
+                <th scope="col">ISO 128 Reference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="inline-technical">0.25 mm</span></td>
+                <td>Secondary details, hatching, and dimension lines.</td>
+                <td>ISO 128 — Thin line group</td>
+              </tr>
+              <tr>
+                <td><span class="inline-technical">0.50 mm</span></td>
+                <td>Primary components and object outlines.</td>
+                <td>ISO 128 — Medium line group</td>
+              </tr>
+              <tr>
+                <td><span class="inline-technical">1.00 mm</span></td>
+                <td>Section boundaries and major structural separators.</td>
+                <td>ISO 128 — Thick line group</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" role="note" aria-label="Technical callout and caption rules">
+          <div class="callout__title">Technical Callout &amp; Caption Governance</div>
+          <p>
+            For ratings like <span class="inline-technical">IP69K</span>, diagrams must include callout boxes detailing the test parameters: pressure (<span class="inline-technical">10 000 kPa</span>), temperature (<span class="inline-technical">+60 °C</span>), nozzle distance, and duration. Every diagram must have a caption prefixed with "Caption:" followed by a concise engineering explanation of the visual. Captions must be positioned directly below the visual element.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 9 — FILE NAMING AND VERSION CONTROL
+           ======================================================== -->
+      <section aria-labelledby="heading-versioning">
+        <span class="section-label">Section 9</span>
+        <h2 id="heading-versioning">File Naming and Version Control Protocol</h2>
+
+        <p>
+          The Perion Version Control Protocol is a mandatory governance layer.
+        </p>
+
+        <h3 id="heading-file-naming">9.1. File Naming Structure</h3>
+
+        <p>Every controlled document must follow this mandatory naming formula:</p>
+
+        <div class="code-block" aria-label="File naming formula and example">
+          <span class="code-block__label">Mandatory File Naming Formula</span>
+          <code>
+            <span class="code-formula">[Company]-[Level]-[Product]-[DocType]-[Number]-v[Version].pdf</span>
+          </code>
+          <code>
+            <span class="code-example">Example: PRN-L5-BDS-001-v1.0-FINAL.pdf</span>
+          </code>
+        </div>
+
+        <h3 id="heading-version-numbering">9.2. Version Numbering and Ownership</h3>
+
+        <div class="version-grid" aria-label="Version numbering scheme">
+          <div class="version-card">
+            <div class="version-card__label">vX.0 — Major Version</div>
+            <div class="version-card__desc">Triggered by a technical specification change, a hardware update, a structural layout change, or a compliance status update.</div>
+          </div>
+          <div class="version-card">
+            <div class="version-card__label">v0.Y — Minor Version</div>
+            <div class="version-card__desc">Triggered by editorial corrections, formatting clarifications, or minor branding updates.</div>
+          </div>
+          <div class="version-card">
+            <div class="version-card__label">Ownership Field</div>
+            <div class="version-card__desc">Every document must have a defined "Document Ownership Field" in its internal metadata, listing the department responsible for its content (e.g., Product Management for PDS, Engineering for TDS).</div>
+          </div>
+        </div>
+
+        <h3 id="heading-revision-history">9.3. Revision History and Control Status</h3>
+
+        <p>
+          A "Revision History Block" is mandatory for every authoritative document. It must record the version number, the date of issue, a brief description of the change, and the authorized signatory.
+        </p>
+        <p>Release date for this document: <strong>February 26, 2026</strong>.</p>
+
+        <div class="table-wrapper">
+          <table aria-label="Controlled versus uncontrolled document status definitions">
+            <thead>
+              <tr>
+                <th scope="col">Status Marking</th>
+                <th scope="col">Definition</th>
+                <th scope="col">Governance Implication</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CONTROLLED COPY</td>
+                <td>Maintained within the Perion Quality Management System (QMS).</td>
+                <td>Subject to automated version tracking and mandatory review cycles.</td>
+              </tr>
+              <tr>
+                <td>UNCONTROLLED</td>
+                <td>Used for ad-hoc prints or external samples not subject to automated updates.</td>
+                <td>May not be cited in tender submissions. Must be marked clearly as uncontrolled at all times.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 10 — ACCESSIBILITY AND LEGIBILITY CONTROLS
+           ======================================================== -->
+      <section aria-labelledby="heading-accessibility">
+        <span class="section-label">Section 10</span>
+        <h2 id="heading-accessibility">Accessibility and Legibility Controls</h2>
+
+        <p>
+          As an infrastructure provider, Perion is committed to ensuring its documentation is accessible to all stakeholders, including those using assistive technologies.
+        </p>
+
+        <h3 id="heading-typography-contrast">10.1. Typography and Contrast</h3>
+
+        <div class="table-wrapper">
+          <table aria-label="Typography and contrast requirements">
+            <thead>
+              <tr>
+                <th scope="col">Control</th>
+                <th scope="col">Specification</th>
+                <th scope="col">Governance Rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Minimum Body Font Size</td>
+                <td><span class="inline-technical">10 pt</span></td>
+                <td>Anything smaller is a rejection criterion for official submission.</td>
+              </tr>
+              <tr>
+                <td>Minimum Compact Font Size</td>
+                <td><span class="inline-technical">8 pt</span></td>
+                <td>Reserved for compact technical data only; must not be used for primary narrative.</td>
+              </tr>
+              <tr>
+                <td>Contrast Ratio</td>
+                <td>WCAG 2.1 AA minimum (4.5:1)</td>
+                <td>Midnight Blue on Chalk White and Graphite on Light Grey palettes are specifically chosen to exceed these requirements.</td>
+              </tr>
+              <tr>
+                <td>Line Spacing (Leading)</td>
+                <td><span class="inline-technical">120 %</span> minimum</td>
+                <td>Mandatory for all narrative paragraphs to ensure line-tracking ease for technical readers.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="heading-pdf-tagging">10.2. PDF Export and Tagging Requirements</h3>
+
+        <p>All official PDF exports must be "Tagged" to ensure a logical reading order for screen readers.</p>
+
+        <div class="table-wrapper">
+          <table aria-label="PDF tagging requirements">
+            <thead>
+              <tr>
+                <th scope="col">PDF Element</th>
+                <th scope="col">Required Tag</th>
+                <th scope="col">Governance Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Heading Styles</td>
+                <td>&lt;H1&gt;, &lt;H2&gt;, &lt;H3&gt;</td>
+                <td>Heading styles must map to appropriate HTML-style tags to maintain logical reading hierarchy for screen readers.</td>
+              </tr>
+              <tr>
+                <td>Body Text</td>
+                <td>&lt;P&gt;</td>
+                <td>All narrative paragraphs must be tagged as paragraph elements.</td>
+              </tr>
+              <tr>
+                <td>Decorative Elements</td>
+                <td>Artifact</td>
+                <td>Repeated headers, footers, and border lines must be marked as "Artifacts" so they are ignored by assistive technology.</td>
+              </tr>
+              <tr>
+                <td>Figures &amp; Diagrams</td>
+                <td>Alt-Text (embedded)</td>
+                <td>All figures and diagrams must have descriptive alt-text embedded within the PDF properties to explain their purpose to visually impaired users.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 11 — GOVERNANCE WORKFLOW
+           ======================================================== -->
+      <section aria-labelledby="heading-workflow">
+        <span class="section-label">Section 11</span>
+        <h2 id="heading-workflow">Governance Workflow</h2>
+
+        <p>
+          The Perion Governance Workflow defines the "Approval Gates" through which every document must pass before being marked "FINAL" and released for external use.
+        </p>
+
+        <h3 id="heading-approval-gates">11.1. Approval Gates and Roles</h3>
+
+        <div class="approval-grid" aria-label="Approval gates and role responsibilities">
+          <div class="approval-card">
+            <div class="approval-card__role">Product Management</div>
+            <div class="approval-card__title">Content Ownership</div>
+            <p>Ensures the value narrative and feature sets are accurate.</p>
+          </div>
+          <div class="approval-card">
+            <div class="approval-card__role">Engineering</div>
+            <div class="approval-card__title">Technical Validation</div>
+            <p>Verifies every numeric value, electrical spec, and compliance claim.</p>
+          </div>
+          <div class="approval-card">
+            <div class="approval-card__role">Marketing</div>
+            <div class="approval-card__title">Brand Compliance</div>
+            <p>Ensures adherence to the style maps, color palette, and layout rules.</p>
+          </div>
+          <div class="approval-card">
+            <div class="approval-card__role">Operations</div>
+            <div class="approval-card__title">Release Control</div>
+            <p>Manages the versioning, archiving of old copies, and final distribution.</p>
+          </div>
+        </div>
+
+        <!-- Approval gates table -->
+        <div class="table-wrapper">
+          <table aria-label="Approval gates and role authority">
+            <thead>
+              <tr>
+                <th scope="col">Role</th>
+                <th scope="col">Responsibility and Authority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Product Management</td>
+                <td>Content Ownership: Ensures the value narrative and feature sets are accurate.</td>
+              </tr>
+              <tr>
+                <td>Engineering</td>
+                <td>Technical Validation: Verifies every numeric value, electrical spec, and compliance claim.</td>
+              </tr>
+              <tr>
+                <td>Marketing</td>
+                <td>Brand Compliance: Ensures adherence to the style maps, color palette, and layout rules.</td>
+              </tr>
+              <tr>
+                <td>Operations</td>
+                <td>Release Control: Manages the versioning, archiving of old copies, and final distribution.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="heading-review-deviation">11.2. Review Frequency and Deviation Control</h3>
+
+        <ul aria-label="Review frequency and deviation control rules">
+          <li>
+            <strong>Review Frequency:</strong> All Level 1–4 documents are subject to a mandatory annual review to ensure they reflect the current "Plan of Record" for the system.
+          </li>
+          <li>
+            <strong>Deviation Control:</strong> Any deviation from the "Master PDS/TDS Layout Structure" requires a formal Engineering Change Order (ECO) equivalent and approval from the Level 6 Meta-Governance board.
+          </li>
+          <li>
+            <strong>Audit Compliance Checklist:</strong> Before a document is released for a major tender, it must pass a "Tender-Ready" audit, verifying ISO 9001:2015 cert numbers, <span class="inline-technical">IP69K</span> test lab IDs, and LM-80/TM-21 LED lifetime data.
+          </li>
+        </ul>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 12 — VISUAL MOCKUP EXAMPLES
+           ======================================================== -->
+      <section aria-labelledby="heading-mockups">
+        <span class="section-label">Section 12</span>
+        <h2 id="heading-mockups">Visual Mockup Examples</h2>
+
+        <p>
+          To assist designers and documentation teams, the following visual mockups describe the "Annotated Page Geometry" required for Perion documents.
+        </p>
+
+        <h3 id="heading-pds-layout">12.1. Annotated PDS Page Layout</h3>
+
+        <p>The Product Data Sheet cover page is designed to project an authoritative presence.</p>
+
+        <div class="page-mockup" role="figure" aria-label="Annotated PDS page layout zones">
+          <div class="page-mockup__title">PDS — Product Data Sheet: Annotated Page Geometry</div>
+          <div class="page-mockup__zone page-mockup__zone--header">
+            <div class="page-mockup__zone-id">Zone A<br />Header</div>
+            <div class="page-mockup__zone-rule">Perion and Sunbird logos in the top margins. <strong>No other elements.</strong></div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--hero">
+            <div class="page-mockup__zone-id">Zone B<br />Hero</div>
+            <div class="page-mockup__zone-rule">A high-resolution photograph spanning the top <strong>40 %</strong> of the page, showing the Perion Light Path along a Linear Perimeter Illumination Infrastructure line.</div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--title">
+            <div class="page-mockup__zone-id">Zone C<br />Title</div>
+            <div class="page-mockup__zone-rule">Large <strong>PDS_TDS_Title</strong> in Midnight Blue, left-aligned, immediately below the hero image.</div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--body">
+            <div class="page-mockup__zone-id">Zone D<br />Body</div>
+            <div class="page-mockup__zone-rule">Two-column <strong>Body_Text</strong> describing the system overview and "Zero Trenching" value.</div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--footer">
+            <div class="page-mockup__zone-id">Zone E<br />Footer</div>
+            <div class="page-mockup__zone-rule">Mandatory metadata block in <strong>Footer_Text</strong> style.</div>
+          </div>
+        </div>
+
+        <h3 id="heading-tds-layout">12.2. Annotated TDS Page Layout</h3>
+
+        <p>The Technical Data Sheet emphasizes data density and professional neutrality.</p>
+
+        <div class="page-mockup" role="figure" aria-label="Annotated TDS page layout zones">
+          <div class="page-mockup__title">TDS — Technical Data Sheet: Annotated Page Geometry</div>
+          <div class="page-mockup__zone page-mockup__zone--header">
+            <div class="page-mockup__zone-id">Zone A<br />Header</div>
+            <div class="page-mockup__zone-rule">Identical to PDS — Perion and Sunbird logos only. No decorative elements.</div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--hero">
+            <div class="page-mockup__zone-id">Zone B<br />Tech Title</div>
+            <div class="page-mockup__zone-rule">Smaller, bold H1 header — e.g., <strong>"Section 2.0: Electrical Specifications"</strong>. No photography on internal TDS pages.</div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--title">
+            <div class="page-mockup__zone-id">Zone C<br />Data Table</div>
+            <div class="page-mockup__zone-rule">Full-width specification table using <strong>Midnight Blue headers</strong> and <strong>Light Grey banding</strong>. All values tagged with <strong>Inline_Technical</strong>.</div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--body">
+            <div class="page-mockup__zone-id">Zone D<br />Schematic</div>
+            <div class="page-mockup__zone-rule">A vector-based wiring diagram with ISO-standard line weights and <span class="inline-technical">IP69K</span> callout boxes.</div>
+          </div>
+          <div class="page-mockup__zone page-mockup__zone--footer">
+            <div class="page-mockup__zone-id">Zone E<br />Footer</div>
+            <div class="page-mockup__zone-rule">Identical to PDS — ensuring consistent document tracking across all levels.</div>
+          </div>
+        </div>
+
+        <h3 id="heading-live-examples">12.3. Formatted Table and Callout Examples</h3>
+
+        <!-- Live example label -->
+        <div class="live-example-header" aria-label="Live formatted table example">Live Example — Formatted Specification Table</div>
+
+        <div class="table-wrapper">
+          <table aria-label="Example formatted specification table with inline-technical values">
+            <thead>
+              <tr>
+                <th scope="col">Parameter</th>
+                <th scope="col">Value</th>
+                <th scope="col">Tolerance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Input Voltage</td>
+                <td><span class="inline-technical">24 V DC</span></td>
+                <td>±5 %</td>
+              </tr>
+              <tr>
+                <td>Max Current</td>
+                <td><span class="inline-technical">5 A</span></td>
+                <td>±0.2 A</td>
+              </tr>
+              <tr>
+                <td>Luminous Efficacy</td>
+                <td><span class="inline-technical">120 lm/W</span></td>
+                <td>Minimum</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Warning_Inline live example -->
+        <div class="warning-inline-example" role="note" aria-label="Warning_Inline character style live example">
+          <span class="warning-inline-example__trigger">Warning_Inline Style — Live Example</span>
+          <p class="warning-inline-example__text">
+            <strong>WARNING:</strong> Ensure all Quick Connect™ crimps are validated for mechanical integrity before system power-on. Failure to comply voids the <span class="inline-technical">IP69K</span> warranty.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           SECTION 13 — ENFORCEMENT AND COMPLIANCE STATEMENT
+           ======================================================== -->
+      <section aria-labelledby="heading-enforcement">
+        <span class="section-label">Section 13</span>
+        <h2 id="heading-enforcement">Enforcement and Compliance Statement</h2>
+
+        <p>
+          Adherence to this Brand and Documentation Governance Manual is a mandatory requirement for all Perion personnel, distributors, and partners. The documentation system is a controlled infrastructure asset, and its integrity is essential for maintaining Perion's reputation for industrial excellence.
+        </p>
+
+        <h3 id="heading-rejection">13.1. Rejection Criteria</h3>
+
+        <p>
+          Documents that fail to conform to these standards are subject to immediate "Withdrawal from Circulation". Specific rejection criteria include:
+        </p>
+
+        <ul class="rejection-list" aria-label="Document rejection criteria">
+          <li>
+            <strong>Stylistic Deviation</strong>
+            Use of manual bolding, italics, or non-approved fonts.
+          </li>
+          <li>
+            <strong>Structural Drift</strong>
+            Removing mandatory footer metadata or violating the H1–H2–H3 hierarchy.
+          </li>
+          <li>
+            <strong>Specification Drift</strong>
+            Introducing performance claims in a PDS that is not supported by the TDS.
+          </li>
+          <li>
+            <strong>Accessibility Failure</strong>
+            Exporting untagged PDFs or failing contrast requirements for critical data.
+          </li>
+        </ul>
+
+        <h3 id="heading-legal-audit">13.2. Legal and Audit Defensibility</h3>
+
+        <p>
+          By strictly following these governance layers, Perion ensures that its documentation is audit-safe. Every declaration — from manufacturing quality (ISO 9001) to environmental protection (RoHS/REACH) — is backed by a structured evidence layer in the Level 4 documentation stack.
+        </p>
+
+        <div class="callout--authority" role="note" aria-label="Legal and audit defensibility statement">
+          <div class="callout__title">Audit Defensibility — Level 5 Mandate</div>
+          <p>
+            Every declaration in the documentation stack — from manufacturing quality (ISO 9001) to environmental protection (RoHS/REACH) — is backed by a structured evidence layer in Level 4. Deviations at Level 5 (design and brand) propagate upward to compromise the legal defensibility of Level 4 compliance declarations. This is why adherence to this manual is non-negotiable for all Perion personnel, distributors, and partners.
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ========================================================
+           WORKS CITED
+           ======================================================== -->
+      <section aria-labelledby="heading-references">
+        <span class="section-label">Reference Documents</span>
+        <h2 id="heading-references">Works Cited</h2>
+
+        <ul class="works-cited-list" aria-label="Reference documents and sources">
+          <li>
+            <span class="works-cited-list__num">1</span>
+            <span>LEVEL 6 — META / GOVERNANCE — <a href="https://drive.google.com/open?id=1-bxqdT9PFVkjuM_9WaW5x2LFQGPmx7FTMZuk2RbUSq8" target="_blank" rel="noopener noreferrer">drive.google.com</a></span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">2</span>
+            <span>LEVEL 5 — DESIGN &amp; BRAND SYSTEMS — <a href="https://drive.google.com/open?id=13Vf8_eI3wXx-DLCmnKCjk-3EGcuItMzUBwyOVdVfqnk" target="_blank" rel="noopener noreferrer">drive.google.com</a></span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">3</span>
+            <span>InDesign Paragraph &amp; Character Style Mapping — <a href="https://drive.google.com/open?id=1Wh4adNSD8zfUFSNNkscI_pqccReromJU2QLOdvsPSUQ" target="_blank" rel="noopener noreferrer">drive.google.com</a></span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">4</span>
+            <span>LEVEL 0 — MASTER SYSTEM — <a href="https://drive.google.com/open?id=1Y2PrMiiWe6ixh_Ope9aptDAABR-mTf0souEtugDVBsk" target="_blank" rel="noopener noreferrer">drive.google.com</a></span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">5</span>
+            <span>PERION BRAND COLOR PALETTE — <a href="https://drive.google.com/open?id=13qR5aLRHLC1bcysd8p_B4GYwG-CIZaJg0qCmFH8ksTY" target="_blank" rel="noopener noreferrer">drive.google.com</a></span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">6</span>
+            <span>Technical iconography standards — line weight industrial documentation (web reference, accessed January 1, 1970)</span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">7</span>
+            <span>Standard line weights and resolutions for technical engineering diagrams — print and digital manuals (web reference, accessed January 1, 1970)</span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">8</span>
+            <span>Technical drawing tool — Wikipedia, accessed February 19, 2026 — <a href="https://en.wikipedia.org/wiki/Technical_drawing_tool#Line_weight" target="_blank" rel="noopener noreferrer">en.wikipedia.org</a></span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">9</span>
+            <span>ISO 128 — Technical product documentation (TPD) — General principles of presentation — <a href="https://www.iso.org/standard/21014.html" target="_blank" rel="noopener noreferrer">iso.org</a> (accessed January 1, 1970)</span>
+          </li>
+          <li>
+            <span class="works-cited-list__num">10</span>
+            <span>Create Accessible PDFs — Section508.gov, accessed February 19, 2026 — <a href="https://www.section508.gov/create/pdfs/" target="_blank" rel="noopener noreferrer">section508.gov</a></span>
+          </li>
+        </ul>
+      </section>
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- ============================================================
+       DOCUMENT FOOTER
+       ============================================================ -->
+  <footer class="doc-footer" role="contentinfo">
+    <div class="doc-footer__inner page-wrapper">
+
+      <div class="doc-footer__block">
+        <strong>Document Authority</strong>
+        <span>Document ID: PRN-L5-BDS-001-v1.0</span>
+        <span>Revision: 1.0 — Final</span>
+        <span>Release Date: February 26, 2026</span>
+        <span>Classification: Commercial-in-Confidence</span>
+        <span>Governed by: Level 6 Protocols</span>
+      </div>
+
+      <div class="doc-footer__block">
+        <strong>Typography &amp; Legibility Controls</strong>
+        <span>Min Body Font: <span class="inline-technical">10 pt</span></span>
+        <span>Min Compact Font: <span class="inline-technical">8 pt</span></span>
+        <span>Min Leading: <span class="inline-technical">120 %</span></span>
+        <span>WCAG Contrast: AA minimum (4.5:1)</span>
+        <span>Print Resolution: <span class="inline-technical">300 PPI</span> minimum</span>
+        <span>Web Format: WebP, max <span class="inline-technical">2 MB</span>, min <span class="inline-technical">1920 px</span></span>
+      </div>
+
+      <div class="doc-footer__block">
+        <strong>Manufacturer &amp; Contact</strong>
+        <span>Perion Lighting — A Sunbird Lighting Company</span>
+        <span>Cape Town, South Africa · Lititz, Pennsylvania, USA</span>
+        <span>www.perionlighting.com</span>
+        <p>This is a Controlled Document. Unauthorized modification, duplication, or distribution invalidates the document's authority. Only documents retrieved from official Perion Master File Storage are considered 'Final' and 'Audit-Defensible'.</p>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

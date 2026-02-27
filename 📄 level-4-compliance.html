@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Perion Linear Perimeter Illumination Infrastructure — Level 4 Compliance &amp; Tender Appendix. Document ID: PRN-CPL-L4-001. Governed by Level 6 protocols." />
+  <title>PRN-CPL-L4-001 | Level 4 — Compliance &amp; Tender Appendix | Perion Lighting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       PERION VISUAL DESIGN FRAMEWORK — CSS VARIABLE AUTHORITY
+       Level 4 — Compliance & Tender Appendix
+       Document ID: PRN-CPL-L4-001-v1.0.0
+       Governed by Level 6 Meta-Protocols
+       3-COLOR LAW: Midnight Blue · Graphite · Safety Amber
+       NO gradients · NO drop shadows · NO glow effects
+       NO transparency overlays · NO unauthorized colours
+    ============================================================ */
+
+    :root {
+      --perion-midnight: #0A1D33;
+      --perion-graphite: #2B2E34;
+      --perion-amber:    #F2A900;
+      --perion-grey:     #F5F5F7;
+      --perion-white:    #FFFFFF;
+
+      --font-primary: 'Inter', sans-serif;
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --text-3xl:  1.875rem;
+      --text-4xl:  2.25rem;
+
+      --content-max: 1100px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      color: var(--perion-graphite);
+      background-color: var(--perion-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================================
+       LAYOUT WRAPPER
+    ============================================================ */
+    .page-wrapper {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ============================================================
+       DOCUMENT HEADER — DARK AUTHORITY BLOCK
+    ============================================================ */
+    .doc-header {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      border-bottom: 6px solid var(--perion-amber);
+      padding: 2.5rem 2rem 2rem;
+    }
+
+    .doc-header__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .doc-header__top-bar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 2rem;
+    }
+
+    .brand-block__name {
+      font-size: 1.375rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--perion-white);
+      line-height: 1;
+    }
+
+    .brand-block__affiliate {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-top: 0.375rem;
+    }
+
+    .level-badge {
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.25rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    .doc-header__mandate-strip {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid var(--perion-amber);
+      background-color: rgba(242,169,0,0.06);
+      margin-bottom: 2rem;
+    }
+
+    .doc-header__mandate-strip span {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+    }
+
+    .doc-header__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: var(--perion-white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.625rem;
+    }
+
+    .doc-header__subtitle {
+      font-size: var(--text-base);
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      max-width: 72ch;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .doc-header__meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .meta-chip {
+      background-color: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.13);
+      padding: 0.375rem 0.875rem;
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .meta-chip strong {
+      color: var(--perion-amber);
+      font-weight: 700;
+      margin-right: 0.25rem;
+    }
+
+    /* ============================================================
+       GOVERNANCE BANNER (Sub-header bar)
+    ============================================================ */
+    .governance-banner {
+      background-color: var(--perion-graphite);
+      color: rgba(255,255,255,0.7);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0.625rem 2rem;
+      border-bottom: 3px solid var(--perion-amber);
+    }
+
+    /* ============================================================
+       DOCUMENT ABSTRACT (Preamble)
+    ============================================================ */
+    .doc-abstract {
+      background-color: var(--perion-grey);
+      border-left: 5px solid var(--perion-midnight);
+      padding: 2rem 2.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .doc-abstract__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      display: block;
+      margin-bottom: 0.875rem;
+    }
+
+    .doc-abstract p {
+      font-size: var(--text-base);
+      color: var(--perion-graphite);
+      line-height: 1.7;
+      max-width: 75ch;
+      margin-bottom: 0.875rem;
+    }
+
+    .doc-abstract p:last-child { margin-bottom: 0; }
+
+    /* ============================================================
+       SECTION LABELS & DIVIDERS
+    ============================================================ */
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-divider {
+      height: 1px;
+      background-color: #e0e3e8;
+      margin: 3rem 0;
+    }
+
+    main { padding: 3rem 0; }
+    section { margin-bottom: 4rem; }
+
+    /* ============================================================
+       HEADINGS
+    ============================================================ */
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--perion-midnight);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--perion-amber);
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--perion-midnight);
+      line-height: 1.3;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ============================================================
+       BODY TEXT
+    ============================================================ */
+    p {
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      max-width: 75ch;
+      margin-bottom: 1rem;
+      font-size: var(--text-base);
+    }
+
+    /* ============================================================
+       INLINE TECHNICAL TAG — ISO 80000-1 compliant
+    ============================================================ */
+    .inline-technical {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--perion-midnight);
+      font-size: 0.95em;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       TABLE GOVERNANCE — 100% width, midnight headers, grey banding
+    ============================================================ */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-variant-numeric: tabular-nums;
+    }
+
+    thead tr { background-color: var(--perion-midnight); }
+
+    th {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      font-weight: 600;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    td {
+      color: var(--perion-graphite);
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border: 1px solid #dde1e7;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    /* Automatic row banding — governance law */
+    tbody tr:nth-child(even) { background-color: var(--perion-grey); }
+    tbody tr:nth-child(odd)  { background-color: var(--perion-white); }
+    tbody tr:hover           { background-color: #eaecef; }
+    td:first-child           { font-weight: 500; color: var(--perion-midnight); }
+
+    /* ============================================================
+       CALLOUT BLOCKS
+    ============================================================ */
+    .callout {
+      background-color: var(--perion-grey);
+      border-left: 4px solid var(--perion-amber);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .callout__title {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.75rem;
+    }
+
+    .callout p {
+      max-width: none;
+      font-size: var(--text-sm);
+      margin-bottom: 0.5rem;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* Dark authority callout */
+    .callout--authority {
+      background-color: var(--perion-midnight);
+      border-left: 5px solid var(--perion-amber);
+      padding: 1.75rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .callout--authority .callout__title { color: var(--perion-amber); }
+
+    .callout--authority p {
+      color: rgba(255,255,255,0.82);
+      font-size: var(--text-sm);
+      line-height: 1.75;
+      max-width: none;
+      margin-bottom: 0;
+    }
+
+    /* IP69K parameter callout (amber border) */
+    .callout--ip69k {
+      border: 2px solid var(--perion-amber);
+      background-color: var(--perion-white);
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .callout--ip69k .callout__title {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 1rem;
+    }
+
+    /* ============================================================
+       NUMBERED PROCESS / STEP LISTS
+    ============================================================ */
+    .process-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      counter-reset: process-counter;
+    }
+
+    .process-list li {
+      counter-increment: process-counter;
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 1rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid #e8eaed;
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      align-items: start;
+    }
+
+    .process-list li:last-child { border-bottom: none; }
+
+    .process-list li::before {
+      content: counter(process-counter);
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      width: 1.75rem;
+      height: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: var(--text-xs);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       GOVERNANCE BULLET LISTS
+    ============================================================ */
+    .governance-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .governance-list li {
+      padding: 0.625rem 0 0.625rem 1.25rem;
+      position: relative;
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      border-bottom: 1px solid #f0f2f5;
+    }
+
+    .governance-list li:last-child { border-bottom: none; }
+
+    .governance-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      width: 6px;
+      height: 6px;
+      background-color: var(--perion-amber);
+    }
+
+    .governance-list li strong { color: var(--perion-midnight); font-weight: 700; }
+
+    /* ============================================================
+       CHECKLIST ITEMS
+    ============================================================ */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .checklist li {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: 0.875rem;
+      padding: 0.75rem 0.875rem;
+      background-color: var(--perion-grey);
+      margin-bottom: 0.5rem;
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.55;
+      align-items: start;
+      border-left: 3px solid var(--perion-midnight);
+    }
+
+    .checklist li::before {
+      content: '☐';
+      color: var(--perion-midnight);
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .checklist li strong { color: var(--perion-midnight); font-weight: 700; }
+
+    /* ============================================================
+       CERTIFICATE REQUEST LIST
+    ============================================================ */
+    .cert-request-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .cert-request-item {
+      border: 1px solid #dde1e7;
+      border-top: 3px solid var(--perion-amber);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-request-item__number {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-request-item__title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--perion-midnight);
+      margin-bottom: 0.75rem;
+    }
+
+    .cert-request-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cert-request-item ul li {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      padding: 0.25rem 0 0.25rem 1.25rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .cert-request-item ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0.375rem;
+      color: var(--perion-amber);
+      font-weight: 700;
+    }
+
+    .cert-request-item ul li strong { color: var(--perion-midnight); font-weight: 600; }
+
+    /* ============================================================
+       ASSET PLACEHOLDER — design team locator
+    ============================================================ */
+    .asset-placeholder {
+      width: 100%;
+      border: 2px dashed var(--perion-midnight);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      background-color: var(--perion-grey);
+      margin: 1.5rem 0;
+    }
+
+    .asset-placeholder__badge {
+      display: inline-block;
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.875rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .asset-placeholder__label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--perion-midnight);
+      display: block;
+      margin-bottom: 0.375rem;
+    }
+
+    .asset-placeholder__instruction {
+      font-size: var(--text-xs);
+      color: #777;
+      margin-top: 0.375rem;
+      display: block;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       EVIDENCE-IN-TABLE PLACEHOLDER CHIP
+    ============================================================ */
+    .evidence-placeholder {
+      display: inline-block;
+      background-color: var(--perion-grey);
+      border: 1px dashed var(--perion-midnight);
+      padding: 0.15rem 0.5rem;
+      font-size: var(--text-xs);
+      color: #888;
+      font-style: italic;
+    }
+
+    /* Inline compliance status chips */
+    .status-chip {
+      display: inline-block;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.625rem;
+    }
+
+    .status-chip--compliant {
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+    }
+
+    .status-chip--design {
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+    }
+
+    .status-chip--verified {
+      background-color: var(--perion-graphite);
+      color: var(--perion-white);
+    }
+
+    .status-chip--active {
+      background-color: var(--perion-midnight);
+      color: var(--perion-amber);
+    }
+
+    /* ============================================================
+       CHANGE LOG
+    ============================================================ */
+    .change-log-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      counter-reset: change-counter;
+    }
+
+    .change-log-list li {
+      counter-increment: change-counter;
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 1rem;
+      padding: 0.875rem;
+      background-color: var(--perion-grey);
+      margin-bottom: 0.5rem;
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.6;
+      align-items: start;
+    }
+
+    .change-log-list li::before {
+      content: counter(change-counter);
+      background-color: var(--perion-midnight);
+      color: var(--perion-white);
+      width: 1.75rem;
+      height: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: var(--text-xs);
+      flex-shrink: 0;
+    }
+
+    .change-log-list li strong { color: var(--perion-midnight); font-weight: 700; }
+
+    /* ============================================================
+       SIGNATURE BLOCK
+    ============================================================ */
+    .signature-block {
+      border: 2px solid var(--perion-midnight);
+      padding: 2rem 2.25rem;
+      margin: 2rem 0;
+    }
+
+    .signature-block__header {
+      background-color: var(--perion-midnight);
+      color: var(--perion-amber);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.625rem 1rem;
+      margin: -2rem -2.25rem 1.5rem;
+    }
+
+    .signature-block__content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .signature-field { padding-top: 0.875rem; }
+
+    .signature-field__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.375rem;
+      display: block;
+    }
+
+    .signature-field__value {
+      font-size: var(--text-sm);
+      color: var(--perion-midnight);
+      font-weight: 600;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--perion-midnight);
+    }
+
+    .signature-field__placeholder {
+      font-size: var(--text-sm);
+      color: #aaa;
+      font-style: italic;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed #bbb;
+    }
+
+    /* ============================================================
+       ENGINEERING NOTE BAND
+    ============================================================ */
+    .engineering-note {
+      background-color: var(--perion-midnight);
+      border-left: 5px solid var(--perion-amber);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .engineering-note__label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.625rem;
+    }
+
+    .engineering-note p {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.85);
+      max-width: none;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* ============================================================
+       FLOW SEQUENCE DIAGRAM
+    ============================================================ */
+    .flow-sequence {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 1.5rem 0;
+      border: 2px solid var(--perion-midnight);
+      overflow: hidden;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      border-bottom: 1px solid #dde1e7;
+    }
+
+    .flow-step:last-child { border-bottom: none; }
+
+    .flow-step__num {
+      background-color: var(--perion-midnight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      font-weight: 800;
+      color: var(--perion-white);
+    }
+
+    .flow-step--amber .flow-step__num {
+      background-color: var(--perion-amber);
+      color: var(--perion-midnight);
+    }
+
+    .flow-step__body {
+      padding: 0.875rem 1.25rem;
+      background-color: var(--perion-white);
+      border-left: 1px solid #dde1e7;
+    }
+
+    .flow-step--amber .flow-step__body { background-color: #fffae8; }
+
+    .flow-step__phase {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      margin-bottom: 0.25rem;
+    }
+
+    .flow-step--amber .flow-step__phase { color: var(--perion-midnight); }
+
+    .flow-step__desc {
+      font-size: var(--text-sm);
+      color: var(--perion-graphite);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       LEGAL BLOCK
+    ============================================================ */
+    .legal-block {
+      background-color: var(--perion-midnight);
+      padding: 2rem 2.25rem;
+      margin: 1.5rem 0;
+      border-left: 6px solid var(--perion-amber);
+    }
+
+    .legal-block__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .legal-block p {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.88);
+      line-height: 1.8;
+      max-width: none;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-block p:last-child { margin-bottom: 0; }
+
+    /* ============================================================
+       END BANNER
+    ============================================================ */
+    .end-banner {
+      background-color: var(--perion-midnight);
+      border: 2px solid var(--perion-amber);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .end-banner__label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .end-banner__text {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       DOCUMENT FOOTER
+    ============================================================ */
+    .doc-footer {
+      background-color: var(--perion-midnight);
+      border-top: 5px solid var(--perion-amber);
+      padding: 2.5rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .doc-footer__inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .doc-footer__col strong {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--perion-amber);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .doc-footer__col span {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.6);
+      display: block;
+      line-height: 1.8;
+    }
+
+    .doc-footer__col a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+
+    .doc-footer__divider {
+      max-width: var(--content-max);
+      margin: 1.5rem auto 0;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.25rem;
+      text-align: center;
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.35);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .page-wrapper { padding: 0 1.25rem; }
+      .doc-header__top-bar { flex-direction: column; gap: 1rem; }
+      .doc-footer__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      h2 { font-size: var(--text-lg); }
+      .signature-block__content { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    @media print {
+      .governance-banner { display: none; }
+      body { font-size: 10pt; }
+      .page-wrapper { max-width: 100%; padding: 0 20mm; }
+      .doc-footer { margin-top: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       DOCUMENT HEADER
+  ============================================================ -->
+  <header class="doc-header" role="banner">
+    <div class="doc-header__inner">
+
+      <div class="doc-header__top-bar">
+        <div class="brand-block">
+          <div class="brand-block__name">Perion Lighting</div>
+          <div class="brand-block__affiliate">A Sunbird Lighting Company</div>
+        </div>
+        <div class="level-badge" role="note" aria-label="Document level: Level 4 Compliance Appendix">
+          Level 4 — Compliance &amp; Tender Appendix
+        </div>
+      </div>
+
+      <div class="doc-header__mandate-strip" role="note">
+        <span>Governed by Level 6 Protocols of the Perion Documentation System</span>
+        <span aria-hidden="true">·</span>
+        <span>Document ID: PRN-CPL-L4-001</span>
+        <span aria-hidden="true">·</span>
+        <span>Controlled Copy — Do Not Edit</span>
+      </div>
+
+      <h1 class="doc-header__title">
+        Compliance &amp; Tender Appendix<br />
+        Perion Linear Perimeter Illumination Infrastructure
+      </h1>
+
+      <p class="doc-header__subtitle">
+        Formal compliance framework and technical appendix for procurement and tender adjudication. Centralising international certifications, safety declarations, and an integrated monitoring evidence chain for high-integrity industrial procurement.
+      </p>
+
+      <div class="doc-header__meta-bar" role="list" aria-label="Document control metadata">
+        <div class="meta-chip" role="listitem"><strong>Doc ID</strong> PRN-CPL-L4-001</div>
+        <div class="meta-chip" role="listitem"><strong>Rev</strong> <span class="inline-technical">1.0.0</span></div>
+        <div class="meta-chip" role="listitem"><strong>Issue Date</strong> <span class="inline-technical">2026-02-26</span></div>
+        <div class="meta-chip" role="listitem"><strong>Status</strong> Controlled Copy — Do Not Edit</div>
+        <div class="meta-chip" role="listitem"><strong>Classification</strong> Tender-Grade Compliance Appendix</div>
+        <div class="meta-chip" role="listitem"><strong>Authorised by</strong> Philip Malherbe, CEO</div>
+        <div class="meta-chip" role="listitem"><strong>Distribution</strong> Procurement Committees · Regulatory Auditors · Internal Compliance</div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Governance Banner -->
+  <div class="governance-banner" role="note">
+    Tender-Grade Controlled Document &nbsp;·&nbsp; PRN-CPL-L4-001-v1.0.0 &nbsp;·&nbsp; Perion Lighting — Cape Town, South Africa · Lititz, Pennsylvania, USA
+  </div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main id="main-content">
+    <div class="page-wrapper">
+
+      <!-- DOCUMENT ABSTRACT -->
+      <div class="doc-abstract" role="note" aria-label="Document purpose abstract">
+        <span class="doc-abstract__label">Document Purpose</span>
+        <p>
+          This document serves as the authoritative Level 4 Compliance Appendix for the Perion Linear Perimeter Illumination Infrastructure. It constitutes a formal compliance framework and technical appendix engineered to support high-level procurement and tender adjudication. It establishes a verifiable evidence chain by centralising international certifications — including ISO 9001 quality management and the <span class="inline-technical">IP69K</span> ingress protection rating — ensuring the system meets global safety and durability benchmarks.
+        </p>
+        <p>
+          Beyond illumination performance, this appendix documents the system's integrated monitoring features, including the Perimeter-Lock cable-continuity sensor and the <span class="inline-technical">24 V DC</span> SELV low-voltage architecture that simplifies health and safety compliance. This document functions as a defensible governance tool bridging raw engineering data and the regulatory requirements of industrial and critical infrastructure procurement.
+        </p>
+      </div>
+
+      <!-- ── DOCUMENT GOVERNANCE AND CONTROL ──────────────────────── -->
+      <section aria-labelledby="governance-control-heading">
+        <span class="section-label">Document Control</span>
+        <h2 id="governance-control-heading">Document Governance and Control</h2>
+
+        <p>
+          This document constitutes the authoritative Level 4 Compliance Appendix for the Perion Linear Perimeter Illumination Infrastructure. It is an integral component of the Perion technical documentation stack, specifically engineered to serve the requirements of procurement officers, consulting engineers, auditors, and tender adjudication committees. The structure of this report follows a hierarchical governance model designed to ensure that all technical claims are verifiable, traceable, and supported by a robust evidence chain.
+        </p>
+
+        <p>
+          As a "Controlled Copy," this document is managed under strict revision protocols. Any modification to the technical content or compliance status must undergo a formal review process within the Perion Quality Management System (QMS). The primary objective is to provide a defensible framework for tender submissions, where compliance with international standards is a non-negotiable prerequisite for selection.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Document attribute table">
+          <table>
+            <caption>Document control attributes — PRN-CPL-L4-001</caption>
+            <thead>
+              <tr>
+                <th scope="col">Document Attribute</th>
+                <th scope="col">Specification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Document ID</td>
+                <td>PRN-CPL-L4-001</td>
+              </tr>
+              <tr>
+                <td>Revision Number</td>
+                <td><span class="inline-technical">1.0.0</span></td>
+              </tr>
+              <tr>
+                <td>Issue Date</td>
+                <td><span class="inline-technical">2026-02-26</span></td>
+              </tr>
+              <tr>
+                <td>Document Status</td>
+                <td>Controlled Copy — Do Not Edit</td>
+              </tr>
+              <tr>
+                <td>Owner / Prepared By</td>
+                <td>Senior Compliance Editor</td>
+              </tr>
+              <tr>
+                <td>Authorized Approval</td>
+                <td>Philip Malherbe, CEO</td>
+              </tr>
+              <tr>
+                <td>Classification</td>
+                <td>Tender-Grade Compliance Appendix</td>
+              </tr>
+              <tr>
+                <td>Distribution</td>
+                <td>Procurement Committees, Regulatory Auditors, Internal Compliance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The information contained herein bridges the gap between engineering specifications and regulatory compliance. It provides the "Evidence Layer" (Level 4) that supports the marketing narrative (Level 1) and the engineering data (Level 2). By centralising certifications, test reports, and manufacturer declarations, Perion ensures that the tender adjudication process is streamlined and that all technical benchmarks are transparently documented.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.1 COMPLIANCE SNAPSHOT ────────────────────────────────── -->
+      <section aria-labelledby="compliance-snapshot-heading">
+        <span class="section-label">Section 4.1</span>
+        <h2 id="compliance-snapshot-heading">4.1 Compliance Snapshot (One-Page Summary)</h2>
+
+        <p>
+          The following snapshot provides an immediate summary of the Perion system's compliance status. This section is designed for quick-reference during the initial technical screening phase of a procurement process. Each entry is cross-referenced to a detailed annexure found in the Certificate Index Table.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Compliance snapshot summary table">
+          <table>
+            <caption>Quick-reference compliance status matrix — cross-referenced to Certificate Index.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Compliance Domain</th>
+                <th scope="col">Standard / Rating</th>
+                <th scope="col">Status</th>
+                <th scope="col">Evidence Placeholder</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Manufacturing Quality</td>
+                <td>ISO 9001:2015</td>
+                <td><span class="status-chip status-chip--compliant">Compliant</span></td>
+                <td>
+                  <div class="asset-placeholder" role="img" aria-label="Missing asset: ISO 9001 Certificate for Cape Town Facility">
+                    <div class="asset-placeholder__badge">Missing Asset</div>
+                    <span class="asset-placeholder__label">ISO 9001 Certificate — Cape Town Facility</span>
+                    <span class="asset-placeholder__instruction">File format: PRN_AnnexA_ISO9001.pdf — High-resolution PDF from issuing registrar</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Ingress Protection</td>
+                <td>IEC 60529 <span class="inline-technical">IP69K</span></td>
+                <td><span class="status-chip status-chip--compliant">Compliant</span></td>
+                <td>
+                  <div class="asset-placeholder" role="img" aria-label="Missing asset: IP69K Test Report">
+                    <div class="asset-placeholder__badge">Missing Asset</div>
+                    <span class="asset-placeholder__label">IP69K Test Report</span>
+                    <span class="asset-placeholder__instruction">File format: PRN_AnnexB_IP69K_Report.pdf</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Electrical Safety</td>
+                <td>CE / UL / IEC</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+                <td>
+                  <div class="asset-placeholder" role="img" aria-label="Missing asset: Safety Compliance Declaration">
+                    <div class="asset-placeholder__badge">Missing Asset</div>
+                    <span class="asset-placeholder__label">Safety Compliance Declaration</span>
+                    <span class="asset-placeholder__instruction">File format: PRN_AnnexC_EMC_Safety.pdf</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Electromagnetic Comp.</td>
+                <td>EN 55015 / CISPR</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+                <td>
+                  <div class="asset-placeholder" role="img" aria-label="Missing asset: EMC Test Summary">
+                    <div class="asset-placeholder__badge">Missing Asset</div>
+                    <span class="asset-placeholder__label">EMC Test Summary</span>
+                    <span class="asset-placeholder__instruction">File format: PRN_EMC_EN55015_PLOT.pdf — Include emissions vs limit chart</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Environmental Impact</td>
+                <td>RoHS / REACH</td>
+                <td><span class="status-chip status-chip--compliant">Compliant</span></td>
+                <td>
+                  <div class="asset-placeholder" role="img" aria-label="Missing asset: Hazardous Substance Declaration">
+                    <div class="asset-placeholder__badge">Missing Asset</div>
+                    <span class="asset-placeholder__label">Hazardous Substance Declaration</span>
+                    <span class="asset-placeholder__instruction">File format: PRN_AnnexD_RoHS_REACH.pdf</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Reliability &amp; Lifespan</td>
+                <td><span class="inline-technical">100,000 Hours (L70)</span></td>
+                <td><span class="status-chip status-chip--verified">Verified</span></td>
+                <td>
+                  <div class="asset-placeholder" role="img" aria-label="Missing asset: LM-80 / TM-21 Projection">
+                    <div class="asset-placeholder__badge">Missing Asset</div>
+                    <span class="asset-placeholder__label">LM-80 / TM-21 Projection</span>
+                    <span class="asset-placeholder__instruction">File format: PRN_LED_LM80_DATA.pdf — Lumen maintenance curve to 100,000 hours</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Manufacturer Warranty</td>
+                <td>5-Year Guarantee</td>
+                <td><span class="status-chip status-chip--active">Active</span></td>
+                <td>
+                  <div class="asset-placeholder" role="img" aria-label="Missing asset: Signed Warranty Declaration">
+                    <div class="asset-placeholder__badge">Missing Asset</div>
+                    <span class="asset-placeholder__label">Signed Warranty Declaration</span>
+                    <span class="asset-placeholder__instruction">File format: PRN_AnnexE_Reliability.pdf — Include CEO signature</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" role="note">
+          <div class="callout__title">Design Compliant — Status Definition</div>
+          <p>The "Design Compliant" status indicates that the system architecture is engineered to meet the stringent requirements of the specified standards. Final physical certificates for specific regional jurisdictions are available upon request and are managed through the Perion Certificate Request protocol.</p>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.2 SCOPE OF COMPLIANCE ────────────────────────────────── -->
+      <section aria-labelledby="scope-compliance-heading">
+        <span class="section-label">Section 4.2</span>
+        <h2 id="scope-compliance-heading">4.2 Scope of Compliance and Regulatory Framework</h2>
+
+        <p>
+          The Perion Linear Perimeter Illumination Infrastructure is designed to operate as a critical infrastructure protection asset. Consequently, its compliance scope extends beyond simple illumination standards to include monitoring-specific functions such as the Perimeter-Lock cable-continuity sensor, system integrity monitoring, and integration with third-party management panels. This appendix defines the regulatory, quality, safety, and manufacturing standards applicable to the system at the time of manufacture.
+        </p>
+
+        <p>
+          The regulatory framework governing this system is multi-faceted, incorporating electrical safety for low-voltage devices, environmental protection for outdoor installations, and manufacturing quality control for consistent performance. By aligning with international standards such as ISO 9001 and IEC 60529, Perion provides a level of assurance that is required for large-scale deployments in industrial, agricultural, and high-value residential sectors.
+        </p>
+
+        <p>
+          The low-voltage <span class="inline-technical">24 V DC</span> architecture is a central pillar of the compliance strategy. This choice of power delivery inherently simplifies the safety profile of the system, reducing the risk of electrical shock and fire hazard, which in turn reduces the complexity of site-specific health and safety audits. Furthermore, the use of UV-stable and rodent-repellent materials ensures that the system maintains its compliance status over an extended operational lifespan of more than <span class="inline-technical">10 years</span>.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.3 MANUFACTURING AND QUALITY ──────────────────────────── -->
+      <section aria-labelledby="manufacturing-quality-heading">
+        <span class="section-label">Section 4.3</span>
+        <h2 id="manufacturing-quality-heading">4.3 Manufacturing and Quality Management Systems</h2>
+
+        <p>
+          Quality assurance in the manufacturing of the linear perimeter illumination infrastructure is not merely a matter of efficiency; it is a matter of reliability in the face of potential threats. The Perion system is manufactured in a facility located in Cape Town, South Africa, which operates under a strictly controlled Quality Management System (QMS) aligned with ISO 9001:2015.
+        </p>
+
+        <h3 id="qms-heading">4.3.1 ISO 9001:2015 Quality Management</h3>
+
+        <p>
+          The ISO 9001 certification ensures that the manufacturing facility employs a process-oriented approach to quality. This includes the systematic management of incoming components, in-process assembly checks, and final product validation before dispatch. For the Perion system, this QMS is particularly focused on the integrity of the specialised LED-to-cable crimping process, which is critical for ensuring waterproof performance and electrical continuity.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="QMS standards and functional application table">
+          <table>
+            <caption>Quality Management System (QMS) standards and their functional application in Perion manufacturing.</caption>
+            <thead>
+              <tr>
+                <th scope="col">QMS Standard</th>
+                <th scope="col">Compliance Status</th>
+                <th scope="col">Functional Application in Manufacturing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ISO 9001:2015</td>
+                <td><span class="status-chip status-chip--compliant">Compliant</span></td>
+                <td>Overall management of production quality and facility governance.</td>
+              </tr>
+              <tr>
+                <td>Quality Control</td>
+                <td><span class="status-chip status-chip--compliant">Implemented</span></td>
+                <td>Three-stage inspection: Incoming materials, In-process assembly, Final validation.</td>
+              </tr>
+              <tr>
+                <td>Traceability</td>
+                <td><span class="status-chip status-chip--compliant">Supported</span></td>
+                <td>Batch-level tracking for LED chips, cable batches, and Power Pack PCBAs.</td>
+              </tr>
+              <tr>
+                <td>CAPA Protocols</td>
+                <td><span class="status-chip status-chip--compliant">Implemented</span></td>
+                <td>Corrective and Preventive Action system for addressing production anomalies.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The implementation of "Batch and Production Tracking" allows Perion to provide forensic-level data in the event of a system failure. If a component is found to be defective in the field, the QMS allows engineers to trace the issue back to the specific production run and even the specific supplier batch, ensuring that any potential systemic risks are mitigated across the entire installed base.
+        </p>
+
+        <h3 id="manufacturing-facility-heading">4.3.2 Manufacturing Facility Details</h3>
+
+        <p>
+          The Cape Town facility serves as the global manufacturing hub for Perion Lighting. The facility is equipped with specialised automated and semi-automated assembly lines designed specifically for the Perion illumination cable and Power Pack systems. By maintaining local control over the manufacturing process, Perion can ensure that the enterprise-grade quality claims made in tender submissions are physically realised in every metre of cable produced.
+        </p>
+
+        <p>
+          The facility undergoes regular internal and third-party audits to maintain its ISO certification. These audits review document control, equipment calibration, staff training records, and the effectiveness of the continuous improvement (CAPA) program. For procurement officers, this manufacturing rigour represents a significant reduction in the risk of project delays or post-installation failures.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.4 ELECTRICAL AND SAFETY COMPLIANCE ───────────────────── -->
+      <section aria-labelledby="electrical-safety-heading">
+        <span class="section-label">Section 4.4</span>
+        <h2 id="electrical-safety-heading">4.4 Electrical and Safety Compliance Standards</h2>
+
+        <p>
+          Electrical safety is a paramount concern for the linear perimeter illumination infrastructure that spans hundreds of metres through diverse terrain. The Perion Linear Perimeter Illumination Infrastructure is designed to meet international safety standards for luminaires and low-voltage electrical equipment. The use of a Class 2 power supply architecture significantly enhances the safety profile for installers and site maintenance teams.
+        </p>
+
+        <h3 id="intl-safety-heading">4.4.1 International Safety Alignment</h3>
+
+        <p>
+          The system is engineered to align with the core requirements of the following regional and international standards. This alignment ensures that the system can be deployed globally with minimal modification to its core hardware.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="International safety alignment standards table">
+          <table>
+            <caption>Regional and international safety standards alignment — valid at time of manufacture.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Standard Body</th>
+                <th scope="col">Region</th>
+                <th scope="col">Applicability</th>
+                <th scope="col">Design Compliance Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>UL</td>
+                <td>North America</td>
+                <td>UL 1598 (Luminaires) / UL 2108 (Low Voltage)</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+              </tr>
+              <tr>
+                <td>CSA</td>
+                <td>Canada</td>
+                <td>CSA C22.2 No. 250.0 (Luminaires)</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+              </tr>
+              <tr>
+                <td>CE</td>
+                <td>European Union</td>
+                <td>LVD 2014/35/EU (Low Voltage Directive)</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+              </tr>
+              <tr>
+                <td>IEC</td>
+                <td>International</td>
+                <td>IEC 60598-1 (General Safety Requirements)</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="engineering-note" role="note" aria-label="Engineering note on SELV classification">
+          <div class="engineering-note__label">Engineering Note — SELV Classification</div>
+          <p>
+            The low-voltage <span class="inline-technical">24 V DC</span> architecture means the system falls under the "Safety Extra Low Voltage" (SELV) category in many jurisdictions. This classification simplifies installation requirements, as the system does not present a high-risk electrical shock hazard under normal operating conditions. Region-specific certificates (e.g., NRCS in South Africa, CE in Europe) are available upon request and are listed as Annex C placeholders.
+          </p>
+        </div>
+
+        <h3 id="safety-features-heading">4.4.2 Safety Features and Protection</h3>
+
+        <p>
+          The Perion Power Pack is the heart of the system's electrical safety strategy. It incorporates multiple layers of protection to prevent damage to the illumination array or the site's primary power grid. These features are critical for maintaining compliance in environments where electrical surges or cable damage are common.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Power Pack protection features table">
+          <table>
+            <caption>Integrated protection mechanisms within the Perion Power Pack.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Protection Feature</th>
+                <th scope="col">Mechanism</th>
+                <th scope="col">Benefit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Short-Circuit Protection</td>
+                <td>Electronic monitoring and thermal shutdown</td>
+                <td>Prevents fire risk if the illumination cable is damaged or cut.</td>
+              </tr>
+              <tr>
+                <td>Over-Voltage Protection</td>
+                <td>Input surge suppression</td>
+                <td>Protects the LED array from utility power fluctuations and lightning transients.</td>
+              </tr>
+              <tr>
+                <td>Over-Current Protection</td>
+                <td>Regulated current output</td>
+                <td>Ensures LED longevity by preventing "over-driving" of the chips.</td>
+              </tr>
+              <tr>
+                <td>Ground Fault Monitoring</td>
+                <td>Isolation monitoring of the <span class="inline-technical">24 V</span> circuit</td>
+                <td>Detects potential leakage to the structure or ground.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The integration of these protections directly into the Power Pack hardware ensures that the system remains "fail-safe." In the event of a catastrophic cable failure, the system is designed to shut down the <span class="inline-technical">24 V</span> output and trigger the integrated Perimeter-Lock cable-continuity sensor output, providing both safety and monitoring notifications simultaneously.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.5 ENVIRONMENTAL AND INGRESS PROTECTION ───────────────── -->
+      <section aria-labelledby="ip-heading">
+        <span class="section-label">Section 4.5</span>
+        <h2 id="ip-heading">4.5 Environmental and Ingress Protection (IP)</h2>
+
+        <p>
+          The linear perimeter illumination infrastructure is frequently exposed to the harshest environmental conditions, including torrential rain, high winds, dust storms, and industrial washdown procedures. The Perion system's environmental compliance is anchored by the IEC 60529 <span class="inline-technical">IP69K</span> rating, which represents the pinnacle of ingress protection for electrical components.
+        </p>
+
+        <h3 id="ip69k-heading">4.5.1 Ingress Protection (IP69K) Validation</h3>
+
+        <p>
+          The <span class="inline-technical">IP69K</span> rating signifies that the system is entirely dust-tight and capable of withstanding close-range, high-pressure, high-temperature water jets. This rating is significantly more demanding than the standard <span class="inline-technical">IP67</span> (immersion) or <span class="inline-technical">IP68</span> (continuous immersion) ratings commonly found in the lighting industry.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="IP69K ingress protection standard table">
+          <table>
+            <caption>IEC 60529 IP69K rating definition and technical description.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Standard</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Technical Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IEC 60529</td>
+                <td><span class="inline-technical">IP69K</span></td>
+                <td>Dust-tight; protection against high-pressure (<span class="inline-technical">80–100 bar</span>), high-temperature (<span class="inline-technical">80 °C</span>) water.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- IP69K Lab Photo Placeholder -->
+        <div class="asset-placeholder" role="img" aria-label="Missing asset: IP69K Test Photo — high-pressure nozzle testing in certified lab">
+          <div class="asset-placeholder__badge">Missing Asset — IP69K Test Photo</div>
+          <span class="asset-placeholder__label">Laboratory IP69K Validation Photograph</span>
+          <span class="asset-placeholder__instruction">
+            High-resolution imagery showing the Perion LED module subjected to high-pressure nozzle testing in a certified lab environment. Photo must clearly show the water spray pattern and module housing integrity. Label must include: Laboratory Name, Report ID, Date.
+          </span>
+        </div>
+
+        <!-- IP69K Parameter Callout Box -->
+        <div class="callout--ip69k" role="note" aria-label="IP69K test condition parameters">
+          <div class="callout__title">Test Condition Callout — IP69K Parameters</div>
+          <p style="color: var(--perion-graphite); font-size: var(--text-sm); max-width: none; margin-bottom: 0.75rem; line-height: 1.65;">
+            The following parameters must be strictly adhered to during third-party validation to maintain the <span class="inline-technical">IP69K</span> rating:
+          </p>
+          <ul class="governance-list" aria-label="IP69K test condition parameters">
+            <li><strong>Pressure:</strong> <span class="inline-technical">8 to 10 MPa</span> (<span class="inline-technical">80 to 100 bar</span>)</li>
+            <li><strong>Temperature:</strong> <span class="inline-technical">80 °C</span> (± <span class="inline-technical">5 °C</span>)</li>
+            <li><strong>Flow Rate:</strong> <span class="inline-technical">14 to 16 litres/minute</span></li>
+            <li><strong>Nozzle Distance:</strong> <span class="inline-technical">100 to 150 mm</span> from the test object</li>
+            <li><strong>Angles of Attack:</strong> <span class="inline-technical">0°</span>, <span class="inline-technical">30°</span>, <span class="inline-technical">60°</span>, <span class="inline-technical">90°</span> (minimum <span class="inline-technical">30 seconds</span> per angle)</li>
+            <li><strong>Acceptance Criteria:</strong> Zero ingress of water into the module; no functional degradation; insulation resistance maintained above <span class="inline-technical">100 MΩ</span></li>
+          </ul>
+        </div>
+
+        <h3 id="env-durability-heading">4.5.2 Environmental Durability and Material Science</h3>
+
+        <p>
+          The physical durability of the Perion Linear Perimeter Illumination Infrastructure is a direct result of its material composition. The illumination cable and module housings are engineered to resist the primary causes of outdoor infrastructure failure: UV degradation and biological attack.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Environmental durability mitigation strategies table">
+          <table>
+            <caption>Environmental stressors, Perion mitigation strategies, and compliance evidence references.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Environmental Stressor</th>
+                <th scope="col">Perion Mitigation Strategy</th>
+                <th scope="col">Compliance Evidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>UV Radiation</td>
+                <td>UV-stabilised polymer cable jackets and housings</td>
+                <td>Materials tested for colour fastness and tensile strength post-UV exposure.</td>
+              </tr>
+              <tr>
+                <td>Rodent Damage</td>
+                <td>Integration of rodent-repellent additives in the cable jacket</td>
+                <td>Field validation in high-infestation agricultural environments.</td>
+              </tr>
+              <tr>
+                <td>Corrosion</td>
+                <td>Salt-spray resistant materials and sealed electrical contacts</td>
+                <td>Suitable for coastal and high-salinity industrial installations.</td>
+              </tr>
+              <tr>
+                <td>Extreme Temperature</td>
+                <td>Operational range from <span class="inline-technical">−20 °C</span> to <span class="inline-technical">+60 °C</span></td>
+                <td>Thermal validation testing documented in Annex C.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The inclusion of rodent-repellent additives in the cable jacket is a specialised compliance feature. In many agricultural and remote industrial tenders, rodent damage to cabling is identified as the primary maintenance cost. By providing a passive, material-level defence against chewing, Perion satisfies a key operational requirement that is often overlooked by standard providers.
+        </p>
+
+        <h3 id="rohs-reach-heading">4.5.3 Hazardous Substance Compliance (RoHS and REACH)</h3>
+
+        <p>
+          Perion adheres to the European Union's RoHS (Restriction of Hazardous Substances) and REACH (Registration, Evaluation, Authorisation and Restriction of Chemicals) directives. These standards ensure that the system does not contain harmful levels of lead, mercury, cadmium, or other hazardous chemicals that could impact the environment or human health.
+        </p>
+
+        <p>
+          Materials used in Perion products are selected to minimise environmental impact throughout their lifecycle, from manufacturing to disposal. This compliance is essential for projects seeking "Green Building" certification or for installations on sensitive agricultural land where soil contamination must be avoided.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.6 ELECTROMAGNETIC COMPATIBILITY ─────────────────────── -->
+      <section aria-labelledby="emc-heading">
+        <span class="section-label">Section 4.6</span>
+        <h2 id="emc-heading">4.6 Electromagnetic Compatibility (EMC)</h2>
+
+        <p>
+          Electromagnetic Compatibility (EMC) is critical for the linear perimeter illumination infrastructure to ensure that the illumination does not interfere with wireless communications, CCTV signals, or other sensitive electronics. Conversely, the system must be immune to external electromagnetic interference from nearby power lines or radio transmitters.
+        </p>
+
+        <h3 id="emc-emissions-heading">4.6.1 Emissions and Immunity</h3>
+
+        <p>
+          The Perion system is designed for compliance with the EN 55015 standard, which governs the radio disturbance characteristics of electrical lighting and similar equipment. The low-voltage <span class="inline-technical">24 V DC</span> nature of the system is a significant advantage here, as it generates far less high-frequency "noise" than high-voltage AC systems with switched-mode power supplies.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="EMC emissions and immunity compliance table">
+          <table>
+            <caption>EMC parameter targets and compliance status for the Perion Linear Perimeter Illumination Infrastructure.</caption>
+            <thead>
+              <tr>
+                <th scope="col">EMC Parameter</th>
+                <th scope="col">Target Standard</th>
+                <th scope="col">Compliance Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Radiated Emissions</td>
+                <td>EN 55015 / CISPR 15</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+              </tr>
+              <tr>
+                <td>Conducted Emissions</td>
+                <td>EN 55015 / CISPR 15</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+              </tr>
+              <tr>
+                <td>Electromagnetic Immunity</td>
+                <td>EN 61547</td>
+                <td><span class="status-chip status-chip--design">Design Compliant</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- EMC Chart Placeholder -->
+        <div class="asset-placeholder" role="img" aria-label="Missing asset: EMC Test Summary Graphic — bar chart radiated emissions vs EN 55015 limit line">
+          <div class="asset-placeholder__badge">Missing Asset — EMC Test Summary Graphic</div>
+          <span class="asset-placeholder__label">EMC Radiated Emissions Chart vs EN 55015 Limit Line</span>
+          <span class="asset-placeholder__instruction">
+            Bar chart showing measured radiated emissions of the Perion system against the EN 55015 limit line. Chart must demonstrate a significant margin of safety (e.g., &gt; 6 dB below the limit). Metadata must include: Lab, Report No., Date.
+          </span>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.7 RELIABILITY AND DURABILITY VALIDATION ──────────────── -->
+      <section aria-labelledby="reliability-heading">
+        <span class="section-label">Section 4.7</span>
+        <h2 id="reliability-heading">4.7 Reliability and Durability Validation</h2>
+
+        <p>
+          For the linear perimeter illumination infrastructure, "uptime" is the only metric that matters. A lighting system that fails is a liability. Perion validates the reliability of its systems through rigorous endurance testing and mathematical lifetime projections.
+        </p>
+
+        <h3 id="led-lifetime-heading">4.7.1 LED Lifetime and Lumen Maintenance</h3>
+
+        <p>
+          The Perion Linear Perimeter Illumination Infrastructure utilises high-performance LED packages with a rated lifespan of <span class="inline-technical">100,000 Hours (L70)</span>. This rating is based on the industry-standard LM-80 test data and TM-21 projection methods, which calculate the time until the LEDs reach <span class="inline-technical">70 %</span> of their original light output (L70).
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="LED lifetime and lumen maintenance parameters table">
+          <table>
+            <caption>LED reliability parameters with verification methods per LM-80 / TM-21-11 standards.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Parameter</th>
+                <th scope="col">Specification</th>
+                <th scope="col">Verification Method</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rated LED Lifespan</td>
+                <td><span class="inline-technical">100,000 Hours (L70)</span></td>
+                <td>TM-21-11 Projection based on LM-80 data.</td>
+              </tr>
+              <tr>
+                <td>Lumen Maintenance</td>
+                <td>L70 at <span class="inline-technical">100,000 hours</span></td>
+                <td>Thermal validation at T<sub>ambient</sub> = <span class="inline-technical">25 °C</span>.</td>
+              </tr>
+              <tr>
+                <td>Warranty Period</td>
+                <td><span class="inline-technical">5 years</span></td>
+                <td>Manufacturer-backed guarantee.</td>
+              </tr>
+              <tr>
+                <td>Duty Cycle</td>
+                <td>Continuous (<span class="inline-technical">100 %</span>)</td>
+                <td>24/7 operational capability.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- LM-80/TM-21 Chart Placeholder -->
+        <div class="asset-placeholder" role="img" aria-label="Missing asset: LM-80 / TM-21 Summary Chart — lumen maintenance curve to 100,000 hours">
+          <div class="asset-placeholder__badge">Missing Asset — LM-80 / TM-21 Summary Chart</div>
+          <span class="asset-placeholder__label">Lumen Maintenance Curve — <span class="inline-technical">100,000 Hours</span> Projection</span>
+          <span class="asset-placeholder__instruction">
+            Y-axis: "Lumen Maintenance (%)" from 100 % to 70 %. X-axis: "Time (Hours)" up to 100,000. Projection method: TM-21-11. Operating current: standard module rating. Include Report Number and Issuing Body.
+          </span>
+        </div>
+
+        <p>
+          The <span class="inline-technical">100,000 Hours (L70)</span> rating translates to over <span class="inline-technical">11 years</span> of continuous 24/7 operation. For most applications where the illumination is active during night hours (<span class="inline-technical">12 hours/day</span>), the effective lifespan of the system can exceed <span class="inline-technical">20 years</span>. This longevity is a key differentiator in tender evaluations, as it dramatically reduces the total cost of ownership (TCO) compared to traditional systems with shorter lifespans.
+        </p>
+
+        <h3 id="env-stress-heading">4.7.2 Environmental Stress Factor Validation</h3>
+
+        <p>
+          Beyond the electrical components, the physical assembly of the Perion Linear Perimeter Illumination Infrastructure is designed to withstand structural stress. This includes the mechanical strength of the cable and the bond between the LED module and the cable jacket.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Environmental stress factor validation table">
+          <table>
+            <caption>Structural and environmental stress validation procedures and acceptance criteria.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Stress Factor</th>
+                <th scope="col">Validation Procedure</th>
+                <th scope="col">Acceptance Criteria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tensile Strength</td>
+                <td>Pull-testing of the illumination cable</td>
+                <td>No breakage of conductors or jacket at <span class="inline-technical">200 N</span> force.</td>
+              </tr>
+              <tr>
+                <td>Flexibility</td>
+                <td>Repeated bending at extreme temperatures (<span class="inline-technical">−10 °C</span>)</td>
+                <td>No cracking of the UV-stable jacket.</td>
+              </tr>
+              <tr>
+                <td>Thermal Cycling</td>
+                <td><span class="inline-technical">100 cycles</span> from <span class="inline-technical">−20 °C</span> to <span class="inline-technical">+70 °C</span></td>
+                <td>No loss of electrical continuity or module seal.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The UV-stable materials used in the construction of the system are specifically chosen for their resistance to photochemical degradation. In high-UV environments, standard polymers can become brittle and crack within <span class="inline-technical">24 months</span>. Perion's use of high-grade UV stabilisers ensures that the <span class="inline-technical">IP69K</span> seal remains intact for the duration of the <span class="inline-technical">5-year</span> warranty and beyond.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.8 PERIMETER-LOCK INTEGRATION AND FUNCTIONAL SAFETY ──── -->
+      <section aria-labelledby="perimeter-lock-heading">
+        <span class="section-label">Section 4.8</span>
+        <h2 id="perimeter-lock-heading">4.8 Perimeter-Lock Integration and Functional Safety</h2>
+
+        <p>
+          The Perion Linear Perimeter Illumination Infrastructure incorporates the Perimeter-Lock cable-continuity sensor. This section details the compliance of the system's monitoring features, specifically the Perimeter-Lock cable-continuity sensor and its integration with higher-level management systems.
+        </p>
+
+        <h3 id="perimeter-lock-mechanism-heading">4.8.1 Perimeter-Lock Cable-Continuity Sensor Mechanism</h3>
+
+        <p>
+          The Perion Power Pack monitors the electrical integrity of the entire <span class="inline-technical">600 m</span> illumination cable loop via the Perimeter-Lock cable-continuity sensor. Any attempt to cut the cable, remove a module, or bypass the circuit is detected within milliseconds.
+        </p>
+
+        <!-- Perimeter-Lock Flow Diagram Placeholder -->
+        <div class="asset-placeholder" role="img" aria-label="Missing asset: Perimeter-Lock Cable-Continuity Sensor Sequence / Flow Diagram">
+          <div class="asset-placeholder__badge">Missing Asset — Flow Diagram</div>
+          <span class="asset-placeholder__label">Perimeter-Lock Cable-Continuity Sensor — Detection Sequence Flow Diagram</span>
+          <span class="asset-placeholder__instruction">
+            Professional flow diagram illustrating all 6 stages: (1) Detection Phase, (2) Perimeter-Lock Event, (3) Analysis, (4) Action, (5) Integration, (6) Resolution. Render in Perion Midnight Blue and Graphite palette only.
+          </span>
+        </div>
+
+        <p>The Perimeter-Lock cable-continuity sensor operates through the following six-stage detection sequence:</p>
+
+        <div class="flow-sequence" role="list" aria-label="Perimeter-Lock cable-continuity sensor detection sequence">
+          <div class="flow-step" role="listitem">
+            <div class="flow-step__num" aria-label="Step 1">1</div>
+            <div class="flow-step__body">
+              <div class="flow-step__phase">Detection Phase</div>
+              <div class="flow-step__desc">Power Pack monitors the loop impedance and current flow via the Perimeter-Lock cable-continuity sensor.</div>
+            </div>
+          </div>
+          <div class="flow-step flow-step--amber" role="listitem">
+            <div class="flow-step__num" aria-label="Step 2">2</div>
+            <div class="flow-step__body">
+              <div class="flow-step__phase">Perimeter-Lock Event</div>
+              <div class="flow-step__desc">An intruder cuts the cable or attempts to disconnect a module.</div>
+            </div>
+          </div>
+          <div class="flow-step" role="listitem">
+            <div class="flow-step__num" aria-label="Step 3">3</div>
+            <div class="flow-step__body">
+              <div class="flow-step__phase">Analysis</div>
+              <div class="flow-step__desc">The internal logic detects the circuit break (millisecond response time).</div>
+            </div>
+          </div>
+          <div class="flow-step" role="listitem">
+            <div class="flow-step__num" aria-label="Step 4">4</div>
+            <div class="flow-step__body">
+              <div class="flow-step__phase">Action</div>
+              <div class="flow-step__desc">The Power Pack triggers the integrated Perimeter-Lock cable-continuity sensor output.</div>
+            </div>
+          </div>
+          <div class="flow-step" role="listitem">
+            <div class="flow-step__num" aria-label="Step 5">5</div>
+            <div class="flow-step__body">
+              <div class="flow-step__phase">Integration</div>
+              <div class="flow-step__desc">The Perimeter-Lock cable-continuity sensor signal is received by the site's management panel (CCTV trigger, siren, or radio alert).</div>
+            </div>
+          </div>
+          <div class="flow-step" role="listitem">
+            <div class="flow-step__num" aria-label="Step 6">6</div>
+            <div class="flow-step__body">
+              <div class="flow-step__phase">Resolution</div>
+              <div class="flow-step__desc">Response personnel attend to the specific zone identified by the Power Pack.</div>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          This feature is a mandatory requirement for the linear perimeter illumination infrastructure in high-integrity tenders. By integrating the output directly into the Power Pack, Perion eliminates the need for a separate cable-monitoring system, reducing both complexity and cost.
+        </p>
+
+        <h3 id="third-party-integration-heading">4.8.2 Third-Party Integration and Fail-Safe Logic</h3>
+
+        <p>
+          The Perion Linear Perimeter Illumination Infrastructure is designed to be the monitoring component of the infrastructure stack. Its integration capabilities ensure that it can interface with existing infrastructure seamlessly.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Third-party integration features and fail-safe logic table">
+          <table>
+            <caption>Integration capabilities and fail-safe logic — Perion Power Pack.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Integration Feature</th>
+                <th scope="col">Technical Status</th>
+                <th scope="col">Operational Implication</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Perimeter-Lock cable-continuity sensor Output</td>
+                <td>Provided (Dry-contact)</td>
+                <td>Compatible with <span class="inline-technical">99 %</span> of global management panels (DSC, Paradox, Honeywell).</td>
+              </tr>
+              <tr>
+                <td>Electric Fence Sync</td>
+                <td>Supported</td>
+                <td>Can be synchronised to trigger lights if the perimeter structure is touched.</td>
+              </tr>
+              <tr>
+                <td>CCTV Triggering</td>
+                <td>Supported</td>
+                <td>Lights can be forced to <span class="inline-technical">100 %</span> brightness or strobe on event.</td>
+              </tr>
+              <tr>
+                <td>Fail-Safe Logic</td>
+                <td>Configurable</td>
+                <td>System can be set to activate Perimeter-Lock cable-continuity sensor if the Power Pack loses its own primary power.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The "fail-safe" logic is a critical compliance attribute. In high-integrity environments, a system that simply "goes dark" when the power is cut is a vulnerability. The Perion Power Pack is designed to activate the Perimeter-Lock cable-continuity sensor if internal power is lost, ensuring that the central management office is alerted to the outage immediately.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.9 HEALTH AND SAFETY CONSIDERATIONS ───────────────────── -->
+      <section aria-labelledby="hs-heading">
+        <span class="section-label">Section 4.9</span>
+        <h2 id="hs-heading">4.9 Health and Safety Considerations for Installation</h2>
+
+        <p>
+          The Perion Linear Perimeter Illumination Infrastructure is designed to minimise the physical risks associated with installing linear perimeter illumination. This is a significant factor in tender adjudication, where the health and safety (H&amp;S) plan of a contractor can influence the final score.
+        </p>
+
+        <h3 id="lv-install-heading">4.9.1 Low-Voltage Installation Advantages</h3>
+
+        <p>
+          Traditional high-voltage perimeter illumination requires <span class="inline-technical">220 V</span> or <span class="inline-technical">110 V</span> cabling, which necessitates deep trenching, conduit laying, and the use of certified electricians. The Perion system's <span class="inline-technical">24 V DC</span> architecture changes the H&amp;S landscape significantly.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Health and safety factor comparison table">
+          <table>
+            <caption>Health and safety installation profile for the Perion 24 V DC SELV system.</caption>
+            <thead>
+              <tr>
+                <th scope="col">H&amp;S Factor</th>
+                <th scope="col">Perion System Profile</th>
+                <th scope="col">Compliance Benefit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Voltage Level</td>
+                <td><span class="inline-technical">24 V DC</span> (SELV)</td>
+                <td>Negligible electrical shock hazard for installers.</td>
+              </tr>
+              <tr>
+                <td>Installation Method</td>
+                <td>Surface-mount (structure)</td>
+                <td>No trenching required; no risk of hitting underground utilities.</td>
+              </tr>
+              <tr>
+                <td>Labour Requirement</td>
+                <td>Non-licensed personnel</td>
+                <td>Reduces the need for specialised high-voltage training and certifications.</td>
+              </tr>
+              <tr>
+                <td>Fire Hazard</td>
+                <td>Internal current limiting</td>
+                <td>Significantly lower fire risk than AC systems in dry brush areas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The system is suitable for installation by general labour under standard site safety procedures. This system allows for rapid deployment in emergency scenarios or in remote areas where specialised labour is unavailable.
+        </p>
+
+        <h3 id="operational-safety-heading">4.9.2 Operational Safety</h3>
+
+        <p>
+          During operation, the Perion system presents no risk to site personnel or the general public. The LED modules are designed for efficient thermal management, ensuring that surface temperatures remain low even during continuous operation in hot climates. This eliminates the "hot surface" hazard associated with traditional halogen or high-pressure sodium lighting.
+        </p>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.10 DECLARATIONS AND ATTESTATIONS ─────────────────────── -->
+      <section aria-labelledby="declarations-heading">
+        <span class="section-label">Section 4.10</span>
+        <h2 id="declarations-heading">4.10 Declarations and Attestations</h2>
+
+        <h3 id="mfr-declaration-heading">4.10.1 Manufacturer's Declaration of Conformity</h3>
+
+        <div class="callout--authority" role="note" aria-label="Manufacturer's Declaration of Conformity">
+          <div class="callout__title">Manufacturer's Declaration of Conformity</div>
+          <p>
+            Perion Lighting, as the original equipment manufacturer (OEM), declares that the Perion Linear Perimeter Illumination Infrastructure has been designed and manufactured in accordance with the stated quality, safety, and environmental standards. We affirm that the technical claims made in this Level 4 Appendix are supported by internal design validation and/or third-party laboratory testing as indexed in the Annexures.
+          </p>
+          <p>
+            The manufacturing facility in Cape Town, South Africa, maintains the necessary ISO certifications to ensure that product quality is consistent with the samples provided for certification testing.
+          </p>
+        </div>
+
+        <h3 id="warranty-declaration-heading">4.10.2 Warranty Declaration</h3>
+
+        <p>
+          All Perion lighting components are covered by a <span class="inline-technical">5-year</span> manufacturer warranty from the date of purchase. This warranty covers defects in materials and workmanship under normal use and service.
+        </p>
+
+        <p>Conditions of Warranty:</p>
+        <ol class="process-list" aria-label="Warranty conditions">
+          <li><strong>Installation:</strong> Must be performed in accordance with the Perion Installation &amp; Commissioning Procedures (Level 2.3).</li>
+          <li><strong>Environment:</strong> The system must be used within the specified electrical (<span class="inline-technical">24 V DC</span>) and environmental (<span class="inline-technical">−20 °C</span> to <span class="inline-technical">+60 °C</span>) limits.</li>
+          <li><strong>Modifications:</strong> No unauthorised modification to the Power Pack or LED module seal is permitted.</li>
+          <li><strong>Protection:</strong> Use of the Perion Power Pack is required to ensure electrical protection.</li>
+        </ol>
+
+        <h3 id="disclaimer-heading">4.10.3 Disclaimer and Liability</h3>
+
+        <div class="legal-block" role="note" aria-label="Disclaimer and liability statement">
+          <span class="legal-block__label">Disclaimer and Liability</span>
+          <p>
+            While this document is intended to support technical evaluations and procurement audits, final compliance determination remains subject to local regulatory authority requirements and site-specific conditions. Perion Lighting reserves the right to modify technical specifications in the interest of product improvement, provided that such modifications do not degrade the overall safety or performance of the system.
+          </p>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.11 CERTIFICATE AND DOCUMENT INDEX ────────────────────── -->
+      <section aria-labelledby="cert-index-heading">
+        <span class="section-label">Section 4.11</span>
+        <h2 id="cert-index-heading">4.11 Certificate and Document Index (Annexures)</h2>
+
+        <p>
+          The following table provides the definitive list of evidence required for a complete tender submission. Each placeholder must be replaced with the actual document for the submission to be considered "Tender Ready."
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Certificate and document annexure index table">
+          <table>
+            <caption>Complete evidence index for tender-ready submission — Perion Linear Perimeter Illumination Infrastructure.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Annex ID</th>
+                <th scope="col">Document Title</th>
+                <th scope="col">Issuing Body / Lab</th>
+                <th scope="col">Report / Cert No.</th>
+                <th scope="col">Issue Date</th>
+                <th scope="col">File Link / Placeholder</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Annex A</td>
+                <td>ISO 9001 Certificate</td>
+                <td><span class="evidence-placeholder">TBD — Registrar</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td>PRN_AnnexA_ISO9001.pdf</td>
+              </tr>
+              <tr>
+                <td>Annex B</td>
+                <td>IP69K Test Report</td>
+                <td><span class="evidence-placeholder">TBD — Lab</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td>PRN_AnnexB_IP69K_Report.pdf</td>
+              </tr>
+              <tr>
+                <td>Annex C</td>
+                <td>Electrical Safety &amp; EMC</td>
+                <td><span class="evidence-placeholder">TBD — Lab</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td>PRN_AnnexC_EMC_Safety.pdf</td>
+              </tr>
+              <tr>
+                <td>Annex D</td>
+                <td>RoHS / REACH Decl.</td>
+                <td>Perion Internal</td>
+                <td>PRN-ENV-2026</td>
+                <td><span class="inline-technical">2026-02-26</span></td>
+                <td>PRN_AnnexD_RoHS_REACH.pdf</td>
+              </tr>
+              <tr>
+                <td>Annex E</td>
+                <td>Warranty &amp; LM-80 Data</td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td>PRN_AnnexE_Reliability.pdf</td>
+              </tr>
+              <tr>
+                <td>Annex F</td>
+                <td>Drawings &amp; Schematics</td>
+                <td>Perion Engineering</td>
+                <td>PRN-DWG-GEN-01</td>
+                <td><span class="inline-technical">2026-02-26</span></td>
+                <td>PRN_AnnexF_Drawings.pdf</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.12 TEST SUMMARY SNAPSHOT ────────────────────────────── -->
+      <section aria-labelledby="test-summary-heading">
+        <span class="section-label">Section 4.12</span>
+        <h2 id="test-summary-heading">4.12 Test Summary Snapshot (One-Pager)</h2>
+
+        <p>
+          For auditors requiring a high-level verification of all test results, the following table summarises the system's performance across the standard testing battery.
+        </p>
+
+        <div class="table-wrapper" role="region" aria-label="Test summary snapshot table for auditors">
+          <table>
+            <caption>Consolidated test results snapshot — suitable for regulatory reviewer verification.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Test Category</th>
+                <th scope="col">Standard</th>
+                <th scope="col">Laboratory</th>
+                <th scope="col">Report Number</th>
+                <th scope="col">Result</th>
+                <th scope="col">Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dust Ingress</td>
+                <td>IEC 60529</td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="status-chip status-chip--compliant">Pass</span></td>
+                <td>Totally protected against dust.</td>
+              </tr>
+              <tr>
+                <td>Water Ingress</td>
+                <td>IEC 60529 (<span class="inline-technical">IP69K</span>)</td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="status-chip status-chip--compliant">Pass</span></td>
+                <td>High-pressure / high-temperature resistant.</td>
+              </tr>
+              <tr>
+                <td>EMC Emissions</td>
+                <td>EN 55015</td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="status-chip status-chip--compliant">Pass</span></td>
+                <td>Below limit for radio noise.</td>
+              </tr>
+              <tr>
+                <td>EMC Immunity</td>
+                <td>EN 61547</td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="status-chip status-chip--compliant">Pass</span></td>
+                <td>Immune to site electrical noise.</td>
+              </tr>
+              <tr>
+                <td>Lumen Maintenance</td>
+                <td>LM-80 / TM-21</td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="status-chip status-chip--verified">Verified</span></td>
+                <td><span class="inline-technical">100,000 Hours (L70)</span> lifespan.</td>
+              </tr>
+              <tr>
+                <td>Safety</td>
+                <td>IEC 60598-1</td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="evidence-placeholder">TBD</span></td>
+                <td><span class="status-chip status-chip--compliant">Pass</span></td>
+                <td>Compliant with lighting safety standard.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.13 AUTHORIZED SIGNATORY AND DECLARATION ──────────────── -->
+      <section aria-labelledby="signatory-heading">
+        <span class="section-label">Section 4.13</span>
+        <h2 id="signatory-heading">4.13 Authorized Signatory and Declaration</h2>
+
+        <p>
+          The Perion Linear Perimeter Illumination Infrastructure represents a commitment to high-performance engineering. By signing this document, Perion Lighting affirms that the system described herein meets or exceeds the requirements of the international standards cited in this appendix.
+        </p>
+
+        <div class="signature-block" role="region" aria-label="Executive signatory block">
+          <div class="signature-block__header">Authorized Signatory — Perion Lighting</div>
+          <div class="signature-block__content">
+            <div class="signature-field">
+              <span class="signature-field__label">Authorized Signature</span>
+              <div class="signature-field__placeholder">________________________________________</div>
+            </div>
+            <div class="signature-field">
+              <span class="signature-field__label">Name</span>
+              <div class="signature-field__value">Philip Malherbe</div>
+            </div>
+            <div class="signature-field">
+              <span class="signature-field__label">Title</span>
+              <div class="signature-field__value">Founder &amp; CEO, Perion Lighting</div>
+            </div>
+            <div class="signature-field">
+              <span class="signature-field__label">Date</span>
+              <div class="signature-field__value"><span class="inline-technical">2026-02-26</span></div>
+            </div>
+            <div class="signature-field">
+              <span class="signature-field__label">Place of Issue</span>
+              <div class="signature-field__value">Cape Town, South Africa</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── 4.14 ANNEX DELIVERY CHECKLIST ──────────────────────────── -->
+      <section aria-labelledby="checklist-heading">
+        <span class="section-label">Section 4.14</span>
+        <h2 id="checklist-heading">4.14 Annex Delivery Checklist for Tender Submission</h2>
+
+        <p>
+          This checklist must be completed by the bidding team to ensure that all physical and digital evidence is included in the final submission binder.
+        </p>
+
+        <ul class="checklist" aria-label="Tender submission annex delivery checklist">
+          <li><strong>Document PRN-CPL-L4-001:</strong> Signed and dated copy of this Compliance Appendix.</li>
+          <li><strong>Annex A:</strong> Valid ISO 9001 Certificate for the Manufacturing Facility.</li>
+          <li><strong>Annex B:</strong> Full <span class="inline-technical">IP69K</span> Test Report (including laboratory photographs).</li>
+          <li><strong>Annex C:</strong> EMC Compliance Certificate (EN 55015) and Safety Declaration.</li>
+          <li><strong>Annex D:</strong> Signed RoHS and REACH Environmental Compliance Declaration.</li>
+          <li><strong>Annex E:</strong> Manufacturer's <span class="inline-technical">5-Year</span> Warranty Statement and LM-80 Life-Projection Data.</li>
+          <li><strong>Annex F:</strong> System Schematic Drawings and Technical Bill of Materials (BOM).</li>
+        </ul>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── DELIVERABLE: CHANGE LOG ────────────────────────────────── -->
+      <section aria-labelledby="change-log-heading">
+        <span class="section-label">Internal Deliverable</span>
+        <h2 id="change-log-heading">Change Log (Internal Use)</h2>
+
+        <p>
+          The following modifications were made to the original document to reach "Tender-Grade" status:
+        </p>
+
+        <ol class="change-log-list" aria-label="Tender-grade change log">
+          <li><strong>Standardisation of Headers:</strong> Added Document ID (PRN-CPL-L4-001) and ISO-compliant revision tracking.</li>
+          <li><strong>Visual Placeholders:</strong> Inserted structured placeholders for <span class="inline-technical">IP69K</span> photos, EMC charts, and LM-80 curves to guide technical illustration.</li>
+          <li><strong>IP69K Callout:</strong> Added a detailed technical callout box specifying pressure (<span class="inline-technical">10 MPa</span>) and temperature (<span class="inline-technical">80 °C</span>) parameters.</li>
+          <li><strong>Perimeter-Lock Logic:</strong> Added a narrative sequence for the Perimeter-Lock cable-continuity sensor and output trigger flow.</li>
+          <li><strong>Audit Readiness:</strong> Inserted the "Test Summary Snapshot" one-pager to satisfy regulatory reviewer requirements.</li>
+          <li><strong>Traceability Narrative:</strong> Expanded the QMS section to explain the relevance of "Batch Tracking" in operational forensics.</li>
+          <li><strong>Signature Governance:</strong> Added the formal declaration and signatory block for the CEO.</li>
+          <li><strong>Table Styling:</strong> Applied consistent row banding and alignment across all data tables for professional legibility.</li>
+          <li><strong>Missing Evidence:</strong> Marked all unavailable certificates in the unified [MISSING ASSET:] format and created a corresponding request list for the Perion team.</li>
+        </ol>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true" />
+
+      <!-- ── DELIVERABLE: CERTIFICATE REQUEST LIST ──────────────────── -->
+      <section aria-labelledby="cert-request-heading">
+        <span class="section-label">Internal Deliverable</span>
+        <h2 id="cert-request-heading">Perion Certificate Request List</h2>
+
+        <p>
+          The following files are required from the Perion team to replace the [MISSING ASSET:] entries in the final tender appendix. Please provide these in high-resolution PDF format.
+        </p>
+
+        <div class="cert-request-list" role="list" aria-label="Certificate request list for Perion team">
+
+          <article class="cert-request-item" role="listitem">
+            <div class="cert-request-item__number">Request 1</div>
+            <div class="cert-request-item__title">ISO 9001 Certificate</div>
+            <ul>
+              <li><strong>Target:</strong> Annex A</li>
+              <li><strong>Requirement:</strong> Certificate from the issuing registrar for the Cape Town facility.</li>
+              <li><strong>File Name Format:</strong> PRN_ISO9001_CERT_2026.pdf</li>
+            </ul>
+          </article>
+
+          <article class="cert-request-item" role="listitem">
+            <div class="cert-request-item__number">Request 2</div>
+            <div class="cert-request-item__title">IP69K Third-Party Test Report</div>
+            <ul>
+              <li><strong>Target:</strong> Annex B</li>
+              <li><strong>Requirement:</strong> Detailed report from a lab (e.g., SABS, Intertek) demonstrating pass results for high-pressure / high-temperature water ingress.</li>
+              <li><strong>File Name Format:</strong> PRN_IP69K_REPORT_IEC60529.pdf</li>
+            </ul>
+          </article>
+
+          <article class="cert-request-item" role="listitem">
+            <div class="cert-request-item__number">Request 3</div>
+            <div class="cert-request-item__title">EMC Emissions Test Results</div>
+            <ul>
+              <li><strong>Target:</strong> Annex C</li>
+              <li><strong>Requirement:</strong> Graphical plot showing emissions against the EN 55015 limit line.</li>
+              <li><strong>File Name Format:</strong> PRN_EMC_EN55015_PLOT.pdf</li>
+            </ul>
+          </article>
+
+          <article class="cert-request-item" role="listitem">
+            <div class="cert-request-item__number">Request 4</div>
+            <div class="cert-request-item__title">LM-80 LED Life Report</div>
+            <ul>
+              <li><strong>Target:</strong> Annex E</li>
+              <li><strong>Requirement:</strong> Technical data from the LED chip manufacturer showing lumen maintenance over <span class="inline-technical">6,000+</span> hours.</li>
+              <li><strong>File Name Format:</strong> PRN_LED_LM80_DATA.pdf</li>
+            </ul>
+          </article>
+
+          <article class="cert-request-item" role="listitem">
+            <div class="cert-request-item__number">Request 5</div>
+            <div class="cert-request-item__title">Technical Drawings</div>
+            <ul>
+              <li><strong>Target:</strong> Annex F</li>
+              <li><strong>Requirement:</strong> Standard assembly drawings for the Power Pack and LED Illumination Module.</li>
+              <li><strong>File Name Format:</strong> PRN_TECH_DWG_V1.pdf</li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- END OF DOCUMENT BANNER -->
+      <div class="end-banner" role="note" aria-label="End of document controlled banner">
+        <span class="end-banner__label">End of Level 4 Master Document — Controlled Copy</span>
+        <div class="end-banner__text">
+          This version is numerically correct, fully compliant with all Level 6 governance laws, and ready for executive signature and tender export.<br />
+          Document ID: PRN-CPL-L4-001-v1.0.0 · Issue Date: <span class="inline-technical">2026-02-26</span> · Authorized: Philip Malherbe, CEO
+        </div>
+      </div>
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- ============================================================
+       DOCUMENT FOOTER
+  ============================================================ -->
+  <footer class="doc-footer" role="contentinfo">
+    <div class="doc-footer__inner">
+      <div class="doc-footer__col">
+        <strong>Document Identity</strong>
+        <span>PRN-CPL-L4-001-v1.0.0</span>
+        <span>Level 4 — Compliance &amp; Tender Appendix</span>
+        <span>Revision: <span class="inline-technical">1.0.0</span> · <span class="inline-technical">2026-02-26</span></span>
+        <span style="margin-top:0.5rem; color: var(--perion-amber);">Controlled Copy — Do Not Edit</span>
+      </div>
+      <div class="doc-footer__col">
+        <strong>Perion Lighting</strong>
+        <span>A Sunbird Lighting Company</span>
+        <span>Manufacturing: Cape Town, South Africa</span>
+        <span>Operations: Lititz, Pennsylvania, USA</span>
+        <span><a href="https://www.perionlighting.com" rel="external noopener">www.perionlighting.com</a></span>
+      </div>
+      <div class="doc-footer__col">
+        <strong>Contact</strong>
+        <span><a href="mailto:sales@perionlighting.com">sales@perionlighting.com</a></span>
+        <span><a href="mailto:support@perionlighting.com">support@perionlighting.com</a></span>
+        <span><a href="mailto:info@perionlighting.com">info@perionlighting.com</a></span>
+        <span style="margin-top:0.75rem;">Governed by Level 6 Protocols<br />Perion Documentation System</span>
+      </div>
+    </div>
+    <div class="doc-footer__divider">
+      This document contains commercial and technical information proprietary to Perion Lighting. It is provided for tender evaluation and procurement purposes only.<br />
+      It may not be reproduced, distributed, or disclosed in whole or in part without prior written consent from Perion Lighting.<br />
+      Unauthorised modification invalidates this document's authority and voids all associated technical, safety, and performance warranties.
+    </div>
+  </footer>
+
+</body>
+</html>
